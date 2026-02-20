@@ -1,68 +1,79 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { siteConfig } from "@/config/site";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="inline-block bg-primary text-primary-foreground py-2 px-8 rounded-md mb-8">
+      <h2 className="font-headline text-3xl font-bold tracking-tight">
+        {children}
+      </h2>
+    </div>
+  );
+}
 
 export default function FeaturedWork() {
-  const featuredProjects = siteConfig.projects.slice(0, 3);
-  const imageMap = new Map(PlaceHolderImages.map(img => [img.id, img]));
+  const webImg1 = PlaceHolderImages.find(img => img.id === 'website-dev-1');
+  const webImg2 = PlaceHolderImages.find(img => img.id === 'website-dev-2');
+  const appImg1 = PlaceHolderImages.find(img => img.id === 'app-dev-1');
+  const appImg2 = PlaceHolderImages.find(img => img.id === 'app-dev-2');
 
   return (
-    <section>
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">
-            Featured Work
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            See how we've helped our clients transform their industries.
-          </p>
+    <>
+      <section>
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+            <SectionTitle>Website Development</SectionTitle>
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="space-y-4">
+                    {webImg1 && (
+                         <Image
+                            src={webImg1.imageUrl}
+                            alt={webImg1.description}
+                            data-ai-hint={webImg1.imageHint}
+                            width={400}
+                            height={600}
+                            className="w-full rounded-lg object-cover shadow-lg"
+                        />
+                    )}
+                </div>
+                 <div>
+                    {webImg2 && (
+                         <Image
+                            src={webImg2.imageUrl}
+                            alt={webImg2.description}
+                            data-ai-hint={webImg2.imageHint}
+                            width={400}
+                            height={600}
+                            className="w-full rounded-lg object-cover shadow-lg"
+                        />
+                    )}
+                </div>
+            </div>
         </div>
-
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {featuredProjects.map((project) => {
-            const image = imageMap.get(project.image);
-            return (
-              <Card key={project.title} className="overflow-hidden transition-shadow duration-300 hover:shadow-xl">
-                <CardHeader>
-                  {image && (
+      </section>
+      <section className="pt-0">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+            <SectionTitle>App Development</SectionTitle>
+            <div className="mt-8 grid grid-cols-1 gap-8">
+                 {appImg1 && (
                     <Image
-                      src={image.imageUrl}
-                      alt={image.description}
-                      data-ai-hint={image.imageHint}
-                      width={600}
-                      height={400}
-                      className="aspect-video w-full rounded-md object-cover"
+                        src={appImg1.imageUrl}
+                        alt={appImg1.description}
+                        data-ai-hint={appImg1.imageHint}
+                        width={1200}
+                        height={800}
+                        className="w-full rounded-lg object-cover shadow-lg"
                     />
-                  )}
-                  <CardTitle className="font-headline pt-4">{project.title}</CardTitle>
-                  <Badge variant="secondary" className="w-fit">{project.category}</Badge>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    {project.problem}
-                  </p>
-                </CardContent>
-              </Card>
-            );
-          })}
+                )}
+            </div>
+             <div className="mt-8 text-center">
+              <Button asChild size="lg" variant="outline" className="border-2 bg-transparent border-foreground text-foreground hover:bg-foreground hover:text-background">
+                <Link href="/work">Try the App</Link>
+              </Button>
+            </div>
         </div>
-
-        <div className="mt-12 text-center">
-          <Button asChild size="lg">
-            <Link href="/work">Explore All Projects</Link>
-          </Button>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

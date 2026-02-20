@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -18,8 +18,8 @@ export default function Header() {
     <Link
       href={href}
       className={cn(
-        "text-sm font-medium transition-colors hover:text-primary",
-        pathname === href ? "text-primary" : "text-muted-foreground"
+        "text-sm font-medium transition-colors hover:text-primary-foreground hover:bg-primary px-3 py-2 rounded-md",
+        pathname === href ? "bg-primary text-primary-foreground" : "text-muted-foreground"
       )}
       onClick={() => isMobileMenuOpen && setIsMobileMenuOpen(false)}
     >
@@ -29,23 +29,24 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 max-w-7xl items-center">
+      <div className="container flex h-16 max-w-7xl items-center justify-between">
         <div className="mr-4 flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Logo className="h-6 w-auto" />
+            <Logo />
           </Link>
-          <nav className="hidden items-center space-x-6 md:flex">
+        </div>
+        
+        <div className="flex flex-1 items-center justify-end space-x-4">
+           <nav className="hidden items-center space-x-2 md:flex">
             {siteConfig.navLinks.map((link) => (
               <NavLink key={link.href} href={link.href}>
                 {link.label}
               </NavLink>
             ))}
           </nav>
-        </div>
-        
-        <div className="flex flex-1 items-center justify-end space-x-4">
-          <Button asChild className="hidden md:inline-flex">
-            <Link href="/contact">Contact Us</Link>
+
+          <Button asChild>
+            <Link href="/contact">Contact</Link>
           </Button>
 
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -64,7 +65,7 @@ export default function Header() {
                 className="mb-8 flex items-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                <Logo className="mr-2 h-6 w-auto" />
+                <Logo />
               </Link>
               <div className="flex flex-col space-y-4">
                 {siteConfig.navLinks.map((link) => (
@@ -72,10 +73,8 @@ export default function Header() {
                     {link.label}
                   </NavLink>
                 ))}
+                 <NavLink href="/contact">Contact</NavLink>
               </div>
-               <Button asChild className="mt-8 w-full mr-6">
-                 <Link href="/contact">Contact Us</Link>
-               </Button>
             </SheetContent>
           </Sheet>
         </div>

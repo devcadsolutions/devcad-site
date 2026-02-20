@@ -8,9 +8,10 @@ export const siteConfig = {
     email: "contact@devcad.solutions",
   },
   navLinks: [
+    { href: "/about", label: "About Me" },
     { href: "/services", label: "Services" },
-    { href: "/work", label: "Work" },
-    { href: "/about", label: "About" },
+    { href: "/work", label: "Portfolio" },
+    { href: "/downloads", label: "Downloads" },
   ],
   services: [
     {

@@ -29,6 +29,42 @@
       "description": "A modern office with engineers collaborating.",
       "imageUrl": "https://images.unsplash.com/photo-1581090697136-6bb1384e9700?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxlbmdpbmVlcmluZyUyMG9mZmljZXxlbnwwfHx8fDE3NzE1NTI0NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "engineering office"
+    },
+    {
+      "id": "hero-image-1",
+      "description": "An abstract visualization of a digital city grid with AI accents.",
+      "imageUrl": "https://images.unsplash.com/photo-1544380904-c686aad2fc40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxkaWdpdGFsJTIwY2l0eXxlbnwwfHx8fDE3NzE1NTMyMTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "digital city"
+    },
+    {
+      "id": "website-dev-1",
+      "description": "Screenshot of a modern coffee brand website.",
+      "imageUrl": "https://images.unsplash.com/photo-1678690833065-965b52c0fa8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb2ZmZWUlMjB3ZWJzaXRlfGVufDB8fHx8MTc3MTU1MzIxMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "coffee website"
+    },
+    {
+      "id": "website-dev-2",
+      "description": "Promotional graphic for a social media management solution with a chatbot.",
+      "imageUrl": "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzb2NpYWwlMjBtZWRpYXxlbnwwfHx8fDE3NzE0NzY5OTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "social media"
+    },
+    {
+      "id": "app-dev-1",
+      "description": "Screenshot of a dark-themed desktop application for creative work.",
+      "imageUrl": "https://images.unsplash.com/photo-1620287341401-e2945a4b9daa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkZXNrdG9wJTIwYXBwbGljYXRpb258ZW58MHx8fHwxNzcxNTUzMjEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "desktop application"
+    },
+    {
+      "id": "app-dev-2",
+      "description": "Another app image.",
+      "imageUrl": "https://images.unsplash.com/photo-1547027072-332f09bd6bb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhcHAlMjB1aXxlbnwwfHx8fDE3NzE1NTMyMTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "app ui"
+    },
+    {
+      "id": "footer-avatar",
+      "description": "Cartoon avatar of a creative professional at their desk.",
+      "imageUrl": "https://images.unsplash.com/photo-1750535135635-3783825e996c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjYXJ0b29uJTIwYXZhdGFyfGVufDB8fHx8MTc3MTU1MzIxMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cartoon avatar"
     }
   ]
 }
