@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "project-1",
+      "description": "A detailed CAD model of a mechanical assembly.",
+      "imageUrl": "https://images.unsplash.com/photo-1715498886718-652e4c5c27b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxDQUQlMjBtb2RlbHxlbnwwfHx8fDE3NzE1NTI0NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "CAD model"
+    },
+    {
+      "id": "project-2",
+      "description": "A complex software interface for industrial machinery.",
+      "imageUrl": "https://images.unsplash.com/photo-1759752394755-1241472b589d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxzb2Z0d2FyZSUyMGludGVyZmFjZXxlbnwwfHx8fDE3NzE0NzM4MDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "software interface"
+    },
+    {
+      "id": "project-3",
+      "description": "A 3D printed prototype of a consumer product.",
+      "imageUrl": "https://images.unsplash.com/photo-1597765206445-a28d547c86f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHwzRCUyMHByaW50aW5nfGVufDB8fHx8MTc3MTU1MjQ1MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "3D printing"
+    },
+    {
+      "id": "project-4",
+      "description": "System architecture diagram on a whiteboard.",
+      "imageUrl": "https://images.unsplash.com/photo-1706535849689-59e888460d10?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhcmNoaXRlY3R1cmUlMjBkaWFncmFtfGVufDB8fHx8MTc3MTU1MjQ1MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "architecture diagram"
+    },
+    {
+      "id": "about-image",
+      "description": "A modern office with engineers collaborating.",
+      "imageUrl": "https://images.unsplash.com/photo-1581090697136-6bb1384e9700?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxlbmdpbmVlcmluZyUyMG9mZmljZXxlbnwwfHx8fDE3NzE1NTI0NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "engineering office"
+    }
+  ]
 }
