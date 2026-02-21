@@ -73,22 +73,40 @@
       "imageHint": "tech cube"
     },
     {
-      "id": "bobby-app-1",
-      "description": "Screenshot of the Bobbie color analysis application interface.",
-      "imageUrl": "https://images.unsplash.com/photo-1646737554389-49329965ef01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhcHAlMjBpbnRlcmZhY2V8ZW58MHx8fHwxNzcxNTkzODc5fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "app interface"
+      "id": "excel-dash-1",
+      "description": "Excel dashboard screenshot of a 3D model form",
+      "imageUrl": "https://images.unsplash.com/photo-1610024522550-5345c210db2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxleGNlbCUyMGRhc2hib2FyZHxlbnwwfHx8fDE3NzE2MzU2NTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "excel dashboard"
     },
     {
-      "id": "bobby-app-2",
-      "description": "Screenshot of the Bobbie color analysis application results.",
-      "imageUrl": "https://images.unsplash.com/photo-1726064855857-4540ed3834db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhcHAlMjByZXN1bHRzfGVufDB8fHx8MTc3MTYzNDM1MHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "app results"
+      "id": "excel-dash-2",
+      "description": "Excel dashboard screenshot of a bar chart",
+      "imageUrl": "https://images.unsplash.com/photo-1768055104923-a6f76e7478c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZXhjZWwlMjBjaGFydHxlbnwwfHx8fDE3NzE2MzU2NTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "excel chart"
     },
     {
-      "id": "qr-code",
-      "description": "QR code to access the Bobbie application.",
-      "imageUrl": "https://images.unsplash.com/photo-1629128625414-374a9e16d56a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8UVIlMjBjb2RlfGVufDB8fHx8MTc3MTYzNDM1MHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "QR code"
+      "id": "excel-dash-3",
+      "description": "Excel dashboard screenshot of a UI",
+      "imageUrl": "https://picsum.photos/seed/excel3/600/700",
+      "imageHint": "excel ui"
+    },
+    {
+      "id": "excel-dash-4",
+      "description": "Excel dashboard screenshot of a line graph",
+      "imageUrl": "https://images.unsplash.com/photo-1711898387672-8535c5e2cddc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxleGNlbCUyMGdyYXBofGVufDB8fHx8MTc3MTYzNTY1Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "excel graph"
+    },
+    {
+      "id": "autocad-palette",
+      "description": "A screenshot of a custom AutoCAD tool palette.",
+      "imageUrl": "https://picsum.photos/seed/autocad-palette/400/600",
+      "imageHint": "AutoCAD palette"
+    },
+    {
+      "id": "training-material",
+      "description": "Thumbnail for a training video on AutoLISP.",
+      "imageUrl": "https://images.unsplash.com/photo-1758521961330-2004fb10800f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0cmFpbmluZyUyMHZpZGVvfGVufDB8fHx8MTc3MTYzNTY1Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "training video"
     }
   ]
 }

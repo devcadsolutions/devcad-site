@@ -10,7 +10,7 @@ export const siteConfig = {
   navLinks: [
     { href: "/about", label: "About Me" },
     { href: "/services", label: "Services" },
-    { href: "/work", label: "Portfolio/Webapps" },
+    { href: "/work", label: "Portfolio" },
     { href: "/downloads", label: "Downloads" },
   ],
   services: [
@@ -43,16 +43,7 @@ export const siteConfig = {
       tools: ["LabVIEW", "ROS", "PLC Programming", "Wireshark"]
     }
   ],
-  projects: [
-    {
-      title: "Bobbie (Color Analysis)",
-      category: "Web Application",
-      problem: "The color analysis tool helps you discover your ideal color palette. Simply upload a clear photo of yourself, and the AI will analyze your skin's undertones and features to determine your 'color season.'",
-      approach: "You'll receive a personalized report with your most flattering colors, shades to avoid, and makeup recommendations. You can even download a shareable infographic of your results.",
-      result: "A personalized, shareable report, empowering users to make confident style choices.",
-      image: "bobby-app-1"
-    }
-  ]
+  projects: []
 };
 
 export type SiteConfig = typeof siteConfig;
