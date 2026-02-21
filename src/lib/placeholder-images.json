@@ -107,6 +107,12 @@
       "description": "Thumbnail for a training video on AutoLISP.",
       "imageUrl": "https://images.unsplash.com/photo-1758521961330-2004fb10800f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0cmFpbmluZyUyMHZpZGVvfGVufDB8fHx8MTc3MTYzNTY1Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "training video"
+    },
+    {
+      "id": "autolisp-blueprints",
+      "description": "Technical blueprints with drafting tools.",
+      "imageUrl": "https://images.unsplash.com/photo-1581092921434-c22d71a8f9f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxibHVlcHJpbnRzfGVufDB8fHx8MTc3MTcwMjM1OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "blueprints drafting"
     }
   ]
 }

@@ -1,3 +1,4 @@
+
 export const siteConfig = {
   name: "DevCAD Solutions",
   url: "https://devcad.site",
@@ -43,7 +44,34 @@ export const siteConfig = {
       tools: ["LabVIEW", "ROS", "PLC Programming", "Wireshark"]
     }
   ],
-  projects: []
+  projects: [],
+  downloads: [
+    {
+      function: "Copy Rotate",
+      description: "Copy objects then rotate it",
+      link: "#",
+    },
+    {
+      function: "Cursor Rotate",
+      description: "Set the cursor and the snap angle same as that of the reference object",
+      link: "#",
+    },
+    {
+      function: "Endipe",
+      description: "Creates an endpipe connecting two points of selection",
+      link: "#",
+    },
+    {
+      function: "Join Text",
+      description: "Joins two text selection",
+      link: "#",
+    },
+    {
+      function: "Quit All But Active",
+      description: "Closes all open drawings except the active one",
+      link: "#",
+    },
+  ]
 };
 
 export type SiteConfig = typeof siteConfig;
