@@ -3,14 +3,14 @@ export const siteConfig = {
   url: "https://devcad.site",
   ogImage: "/og.jpg",
   description:
-    "From concept to creation, we deliver precision engineering and development solutions that drive innovation and accelerate market entry.",
+    "Improving lives - one code at a time",
   links: {
     email: "devcadsolutions@gmail.com",
   },
   navLinks: [
     { href: "/about", label: "About Me" },
     { href: "/services", label: "Services" },
-    { href: "/work", label: "Portfolio" },
+    { href: "/work", label: "Portfolio/Webapps" },
     { href: "/downloads", label: "Downloads" },
   ],
   services: [
@@ -45,28 +45,12 @@ export const siteConfig = {
   ],
   projects: [
     {
-      title: "Autonomous Inspection Drone",
-      category: "System Integration",
-      problem: "A client in the energy sector needed to automate the inspection of remote pipelines, which was costly and hazardous for human crews.",
-      approach: "We designed and built a custom drone platform with integrated thermal and high-resolution cameras. A companion software suite was developed for autonomous navigation along pre-defined pipeline routes and automated fault detection using computer vision.",
-      result: "The solution reduced inspection costs by 60% and eliminated safety risks. The automated system can cover 5x more distance in a day than a manual crew.",
-      image: "project-1"
-    },
-    {
-      title: "Smart Home Hub Firmware",
-      category: "Software Development",
-      problem: "A startup was developing a new smart home hub but lacked the embedded systems expertise to create stable and scalable firmware.",
-      approach: "Our team developed a secure, OTA-updatable firmware from the ground up. We focused on low-power operation and created a modular architecture to easily support new third-party device integrations in the future.",
-      result: "The client successfully launched their product on time, with firmware that was praised for its reliability and responsiveness. The modular design has since allowed them to add over 50 new devices without a major rewrite.",
-      image: "project-2"
-    },
-    {
-      title: "Next-Gen Prosthetic Hand",
-      category: "CAD & 3D Modeling",
-      problem: "An innovator in prosthetics had a novel mechanism for a more life-like robotic hand but needed to translate their sketches into a manufacturable and ergonomic design.",
-      approach: "Using advanced surfacing and parametric modeling techniques, we developed a complete 3D CAD assembly of the hand. We performed stress analysis on critical components and used 3D printed prototypes to test ergonomics and grip patterns with users.",
-      result: "The final design was lightweight, strong, and received overwhelmingly positive feedback from test users. The detailed manufacturing-ready CAD files enabled the client to secure a manufacturing partner and move into production.",
-      image: "project-3"
+      title: "Bobbie (Color Analysis)",
+      category: "Web Application",
+      problem: "The color analysis tool helps you discover your ideal color palette. Simply upload a clear photo of yourself, and the AI will analyze your skin's undertones and features to determine your 'color season.'",
+      approach: "You'll receive a personalized report with your most flattering colors, shades to avoid, and makeup recommendations. You can even download a shareable infographic of your results.",
+      result: "A personalized, shareable report, empowering users to make confident style choices.",
+      image: "bobby-app-1"
     }
   ]
 };
