@@ -1,6 +1,6 @@
-# DevCAD Studio
+# DevCAD Solutions
 
-This is a modern, professional, high-conversion marketing website for DevCAD Studio, built with Next.js, TypeScript, and Tailwind CSS. It was bootstrapped with Firebase Studio.
+This is a modern, professional, high-conversion marketing website for DevCAD Solutions, built with Next.js, TypeScript, and Tailwind CSS. It was bootstrapped with Firebase Studio.
 
 ## Getting Started
 

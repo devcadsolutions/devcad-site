@@ -3,7 +3,7 @@ import Portfolio from "@/components/sections/Portfolio";
 
 export const metadata: Metadata = {
   title: "Our Work",
-  description: "Browse a selection of projects by DevCAD Studio, showcasing our expertise in solving complex engineering and software challenges.",
+  description: "Browse a selection of projects by DevCAD Solutions, showcasing our expertise in solving complex engineering and software challenges.",
 };
 
 export default function WorkPage() {

@@ -15,7 +15,7 @@ export default function AboutTeaser() {
               Your Innovation Partner
             </h2>
             <p className="text-lg text-muted-foreground">
-              DevCAD Studio was founded on the principle that great ideas deserve brilliant execution. We are a team of passionate engineers, designers, and developers dedicated to solving complex challenges and building the products of tomorrow. We act as a true extension of your team, providing the expertise and capacity to turn ambitious visions into reality.
+              DevCAD Solutions was founded on the principle that great ideas deserve brilliant execution. We are a team of passionate engineers, designers, and developers dedicated to solving complex challenges and building the products of tomorrow. We act as a true extension of your team, providing the expertise and capacity to turn ambitious visions into reality.
             </p>
             <Button asChild size="lg" variant="outline">
               <Link href="/about">More About Us</Link>

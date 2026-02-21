@@ -4,7 +4,7 @@ import CtaBand from "@/components/sections/CtaBand";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Learn about the mission, values, and team behind DevCAD Studio. Discover what drives us to deliver exceptional engineering and development solutions.",
+  description: "Learn about the mission, values, and team behind DevCAD Solutions. Discover what drives us to deliver exceptional engineering and development solutions.",
 };
 
 export default function AboutPage() {

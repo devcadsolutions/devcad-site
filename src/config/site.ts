@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "DevCAD Studio",
+  name: "DevCAD Solutions",
   url: "https://devcad.site",
   ogImage: "/og.jpg",
   description:

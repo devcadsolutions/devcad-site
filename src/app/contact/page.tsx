@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Get in touch with the DevCAD Studio team. Let's discuss your project and how we can help you achieve your goals.",
+  description: "Get in touch with the DevCAD Solutions team. Let's discuss your project and how we can help you achieve your goals.",
 };
 
 export default function ContactPage() {

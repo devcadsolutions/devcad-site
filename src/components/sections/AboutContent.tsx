@@ -19,10 +19,10 @@ export default function AboutContent() {
                         <div>
                             <h2 className="font-headline text-3xl font-bold">Our Story</h2>
                             <p className="mt-4 text-muted-foreground">
-                                Founded by a group of veteran engineers, DevCAD Studio was born from a shared frustration: too many brilliant hardware and software ideas fail due to a lack of integrated, expert execution. We saw a gap between concept and creation, where siloed teams and fragmented expertise led to delays, budget overruns, and compromised products.
+                                Founded by a group of veteran engineers, DevCAD Solutions was born from a shared frustration: too many brilliant hardware and software ideas fail due to a lack of integrated, expert execution. We saw a gap between concept and creation, where siloed teams and fragmented expertise led to delays, budget overruns, and compromised products.
                             </p>
                             <p className="mt-4 text-muted-foreground">
-                                We built DevCAD Studio to be the solution. We are a single, cohesive unit of multidisciplinary experts—in mechanical design, electronics, embedded systems, and application software. Our mission is to provide the seamless, end-to-end technical partnership needed to navigate the complexities of product development and bring innovative ideas to market, faster and more reliably.
+                                We built DevCAD Solutions to be the solution. We are a single, cohesive unit of multidisciplinary experts—in mechanical design, electronics, embedded systems, and application software. Our mission is to provide the seamless, end-to-end technical partnership needed to navigate the complexities of product development and bring innovative ideas to market, faster and more reliably.
                             </p>
                         </div>
                         <div>
