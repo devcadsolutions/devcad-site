@@ -5,7 +5,7 @@ export const siteConfig = {
   description:
     "From concept to creation, we deliver precision engineering and development solutions that drive innovation and accelerate market entry.",
   links: {
-    email: "contact@devcad.solutions",
+    email: "devcadsolutions@gmail.com",
   },
   navLinks: [
     { href: "/about", label: "About Me" },
