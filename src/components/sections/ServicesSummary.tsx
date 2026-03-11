@@ -42,22 +42,25 @@ const services = [
     icon: <ServiceIcon1 />,
     title: "CAD & Revit Automation",
     description: "Get good work done faster. Custom tools for AutoCAD, Revit, and other design software. Save time, reduce errors, and improve your workflow.",
+    delay: "delay-100",
   },
   {
     icon: <ServiceIcon2 />,
     title: "Custom Revit API Add-ins",
     description: "Custom add-ins that plug into Revit and automate your firm's specific day-to-day tasks and workflows. Free up your team to focus on design.",
+    delay: "delay-200",
   },
   {
     icon: <ServiceIcon3 />,
     title: "Website & Data Viz",
     description: "Web apps that visualize your data and tell your story. Custom dashboards, interactive charts, and maps that bring your data to life.",
+    delay: "delay-300",
   },
 ];
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
     return (
-      <div className="inline-block bg-primary text-primary-foreground py-2 px-8 rounded-md mb-8">
+      <div className="inline-block bg-primary text-primary-foreground py-2 px-8 rounded-md mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
         <h2 className="font-headline text-3xl font-bold tracking-tight">
           {children}
         </h2>
@@ -70,13 +73,16 @@ export default function ServicesSummary() {
     <section>
       <div className="container mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         <SectionTitle>Services</SectionTitle>
-        <p className="mx-auto mt-4 max-w-3xl text-xl text-foreground -translate-y-4">
+        <p className="mx-auto mt-4 max-w-3xl text-xl text-foreground -translate-y-4 animate-in fade-in duration-700 delay-200 fill-mode-both">
             Custom CAD automation, Revit API tooling, and visual storytelling for design and fabrication teams.
         </p>
         <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-3">
-          {services.map((service) => (
-            <div key={service.title} className="flex flex-col items-center text-center">
-              <div className="text-primary">{service.icon}</div>
+          {services.map((service, index) => (
+            <div 
+              key={service.title} 
+              className={`flex flex-col items-center text-center group transition-all duration-300 hover:-translate-y-2 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both ${service.delay}`}
+            >
+              <div className="text-primary transition-transform duration-500 group-hover:scale-110">{service.icon}</div>
               <h3 className="mt-4 font-headline text-xl font-bold">{service.title}</h3>
               <p className="mt-2 text-muted-foreground">{service.description}</p>
             </div>

@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,7 +12,7 @@ export const metadata: Metadata = {
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <div className="inline-block bg-primary text-primary-foreground py-2 px-8 rounded-md mb-8">
+    <div className="inline-block bg-primary text-primary-foreground py-2 px-8 rounded-md mb-8 animate-in fade-in slide-in-from-left-4 duration-500">
       <h2 className="font-headline text-3xl font-bold tracking-tight">
         {children}
       </h2>
@@ -46,13 +45,13 @@ export default function WorkPage() {
       <header className="relative pt-24 pb-12 md:pt-32 md:pb-20 overflow-hidden">
         <div
           aria-hidden="true"
-          className="absolute inset-0 top-0 h-full bg-cover bg-center"
+          className="absolute inset-0 top-0 h-full bg-cover bg-center animate-in fade-in duration-1000"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1550745165-9bc0b252726a?q=80&w=2070&auto=format&fit=crop')" }}
         >
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
         </div>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center">
+          <div className="text-center animate-in fade-in slide-in-from-top-4 duration-700">
             <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-foreground">
               DevCAD Solutions
             </h1>
@@ -69,24 +68,28 @@ export default function WorkPage() {
             <SectionTitle>Website Development</SectionTitle>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
                 {webDevCoffee && (
-                    <Image
-                        src={webDevCoffee.imageUrl}
-                        alt={webDevCoffee.description}
-                        data-ai-hint={webDevCoffee.imageHint}
-                        width={600}
-                        height={400}
-                        className="w-full rounded-lg object-cover shadow-lg"
-                    />
+                    <div className="overflow-hidden rounded-lg shadow-lg animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
+                      <Image
+                          src={webDevCoffee.imageUrl}
+                          alt={webDevCoffee.description}
+                          data-ai-hint={webDevCoffee.imageHint}
+                          width={600}
+                          height={400}
+                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      />
+                    </div>
                 )}
                 {webDevChatbot && (
-                     <Image
-                        src={webDevChatbot.imageUrl}
-                        alt={webDevChatbot.description}
-                        data-ai-hint={webDevChatbot.imageHint}
-                        width={600}
-                        height={400}
-                        className="w-full rounded-lg object-cover shadow-lg"
-                    />
+                     <div className="overflow-hidden rounded-lg shadow-lg animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 fill-mode-both">
+                       <Image
+                          src={webDevChatbot.imageUrl}
+                          alt={webDevChatbot.description}
+                          data-ai-hint={webDevChatbot.imageHint}
+                          width={600}
+                          height={400}
+                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      />
+                     </div>
                 )}
             </div>
         </div>
@@ -96,9 +99,9 @@ export default function WorkPage() {
       <section>
         <div className="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
           <SectionTitle>Projects</SectionTitle>
-          <Card className="mt-8 text-center shadow-lg">
+          <Card className="mt-8 text-center shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both">
             <CardContent className="p-8">
-                <div className="flex justify-center mb-4">
+                <div className="flex justify-center mb-4 animate-bounce">
                     <DownArrowsIcon />
                 </div>
                 <p className="text-sm text-muted-foreground">Genkit</p>
@@ -106,7 +109,7 @@ export default function WorkPage() {
                 <p className="mt-4 text-muted-foreground">
                     The core of the system is the AI chatbot, which acts as the main interface for users. This chatbot is designed to be helpful, and conversational.
                 </p>
-                <Button variant="link" asChild className="mt-4">
+                <Button variant="link" asChild className="mt-4 transition-colors hover:text-primary">
                     <Link href="#">See documentation</Link>
                 </Button>
                 <p className="text-xs text-muted-foreground mt-8">Note: This is a back-end project with no user interface.</p>
@@ -120,10 +123,18 @@ export default function WorkPage() {
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <SectionTitle>Excel Dashboards</SectionTitle>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-                {excelDash1 && <Image src={excelDash1.imageUrl} alt={excelDash1.description} data-ai-hint={excelDash1.imageHint} width={600} height={500} className="w-full rounded-lg object-cover shadow-lg" />}
-                {excelDash2 && <Image src={excelDash2.imageUrl} alt={excelDash2.description} data-ai-hint={excelDash2.imageHint} width={600} height={500} className="w-full rounded-lg object-cover shadow-lg" />}
-                {excelDash3 && <Image src={excelDash3.imageUrl} alt={excelDash3.description} data-ai-hint={excelDash3.imageHint} width={600} height={700} className="w-full rounded-lg object-cover shadow-lg" />}
-                {excelDash4 && <Image src={excelDash4.imageUrl} alt={excelDash4.description} data-ai-hint={excelDash4.imageHint} width={600} height={700} className="w-full rounded-lg object-cover shadow-lg" />}
+                {[excelDash1, excelDash2, excelDash3, excelDash4].map((img, i) => img && (
+                    <div key={img.id} className={`overflow-hidden rounded-lg shadow-lg animate-in fade-in slide-in-from-bottom-8 duration-700 delay-${(i + 1) * 100} fill-mode-both`}>
+                        <Image 
+                            src={img.imageUrl} 
+                            alt={img.description} 
+                            data-ai-hint={img.imageHint} 
+                            width={600} 
+                            height={i < 2 ? 500 : 700} 
+                            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
+                        />
+                    </div>
+                ))}
             </div>
         </div>
       </section>
@@ -132,7 +143,7 @@ export default function WorkPage() {
       <section>
         <div className="container mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 text-center">
             <SectionTitle>AutoCAD Tool Palette</SectionTitle>
-            <div className="mt-8">
+            <div className="mt-8 animate-in fade-in zoom-in duration-700">
                 {autocadPalette && (
                     <Image
                         src={autocadPalette.imageUrl}
@@ -140,7 +151,7 @@ export default function WorkPage() {
                         data-ai-hint={autocadPalette.imageHint}
                         width={400}
                         height={600}
-                        className="mx-auto rounded-lg shadow-lg"
+                        className="mx-auto rounded-lg shadow-lg transition-transform duration-500 hover:scale-105"
                     />
                 )}
             </div>
@@ -155,18 +166,18 @@ export default function WorkPage() {
             </div>
             <div className="mt-8 grid md:grid-cols-2 gap-8 items-center">
                 {trainingMaterial && (
-                    <div className="aspect-video bg-black rounded-lg shadow-lg flex items-center justify-center">
+                    <div className="aspect-video bg-black rounded-lg shadow-lg flex items-center justify-center overflow-hidden animate-in fade-in slide-in-from-left-8 duration-700">
                         <Image
                             src={trainingMaterial.imageUrl}
                             alt={trainingMaterial.description}
                             data-ai-hint={trainingMaterial.imageHint}
                             width={1280}
                             height={720}
-                            className="w-full h-auto object-contain rounded-lg"
+                            className="w-full h-auto object-contain rounded-lg transition-transform duration-700 hover:scale-105"
                         />
                     </div>
                 )}
-                <div className="space-y-4">
+                <div className="space-y-4 animate-in fade-in slide-in-from-right-8 duration-700 delay-200 fill-mode-both">
                     <h3 className="font-headline text-2xl font-bold">AutoLISP Utilization & CAD Optimization</h3>
                     <p className="text-muted-foreground">
                         The purpose of this course is for you to learn how to create your own tools in AutoLISP. Using the Visual LISP Integrated Development Environment (VLIDE), you will learn how to write, test and debug your own code. This course will show you how to write code that interacts with the user, improving your workflow and efficiency.
