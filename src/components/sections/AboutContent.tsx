@@ -15,7 +15,7 @@ export default function AboutContent() {
         <section>
             <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="grid gap-16 lg:grid-cols-2">
-                    <div className="space-y-8">
+                    <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-700">
                         <div>
                             <h2 className="font-headline text-3xl font-bold">Our Story</h2>
                             <p className="mt-4 text-muted-foreground">
@@ -28,8 +28,8 @@ export default function AboutContent() {
                         <div>
                             <h2 className="font-headline text-3xl font-bold">Our Values</h2>
                             <ul className="mt-4 space-y-4">
-                                {values.map((value) => (
-                                    <li key={value.name} className="flex items-start">
+                                {values.map((value, idx) => (
+                                    <li key={value.name} className={`flex items-start animate-in fade-in slide-in-from-bottom-2 duration-500 fill-mode-both`} style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
                                         <CheckCircle className="h-6 w-6 text-primary mr-3 mt-1 shrink-0" />
                                         <div>
                                             <h4 className="font-semibold">{value.name}</h4>
@@ -40,7 +40,7 @@ export default function AboutContent() {
                             </ul>
                         </div>
                     </div>
-                     <div className="flex items-center justify-center">
+                     <div className="flex items-center justify-center animate-in fade-in slide-in-from-right-8 duration-700 delay-300 fill-mode-both">
                         {aboutImage && (
                             <Image
                                 src={aboutImage.imageUrl}
@@ -48,7 +48,7 @@ export default function AboutContent() {
                                 data-ai-hint={aboutImage.imageHint}
                                 width={800}
                                 height={800}
-                                className="rounded-lg object-cover shadow-lg aspect-square"
+                                className="rounded-lg object-cover shadow-lg aspect-square transition-transform duration-500 hover:scale-105"
                             />
                         )}
                     </div>

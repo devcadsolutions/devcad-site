@@ -75,7 +75,7 @@ export default function WorkPage() {
                           data-ai-hint={webDevCoffee.imageHint}
                           width={600}
                           height={400}
-                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                       />
                     </div>
                 )}
@@ -87,7 +87,7 @@ export default function WorkPage() {
                           data-ai-hint={webDevChatbot.imageHint}
                           width={600}
                           height={400}
-                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                       />
                      </div>
                 )}
@@ -104,15 +104,15 @@ export default function WorkPage() {
                 <div className="flex justify-center mb-4 animate-bounce">
                     <DownArrowsIcon />
                 </div>
-                <p className="text-sm text-muted-foreground">Genkit</p>
+                <p className="text-sm text-muted-foreground font-mono uppercase tracking-widest">Genkit Powered</p>
                 <h3 className="font-headline text-2xl font-bold mt-2">Cloud Based Third Party AI Platform</h3>
                 <p className="mt-4 text-muted-foreground">
                     The core of the system is the AI chatbot, which acts as the main interface for users. This chatbot is designed to be helpful, and conversational.
                 </p>
-                <Button variant="link" asChild className="mt-4 transition-colors hover:text-primary">
+                <Button variant="link" asChild className="mt-4 transition-transform hover:translate-x-1">
                     <Link href="#">See documentation</Link>
                 </Button>
-                <p className="text-xs text-muted-foreground mt-8">Note: This is a back-end project with no user interface.</p>
+                <p className="text-xs text-muted-foreground mt-8 italic">Note: This is a back-end project with no user interface.</p>
             </CardContent>
           </Card>
         </div>
@@ -182,6 +182,7 @@ export default function WorkPage() {
                     <p className="text-muted-foreground">
                         The purpose of this course is for you to learn how to create your own tools in AutoLISP. Using the Visual LISP Integrated Development Environment (VLIDE), you will learn how to write, test and debug your own code. This course will show you how to write code that interacts with the user, improving your workflow and efficiency.
                     </p>
+                    <Button variant="outline" className="transition-all hover:bg-primary hover:text-primary-foreground">Enroll Now</Button>
                 </div>
             </div>
         </div>

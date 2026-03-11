@@ -111,7 +111,7 @@ export default function DownloadsPage() {
                     </TableHeader>
                     <TableBody>
                         {siteConfig.downloads.map((item, index) => (
-                        <TableRow key={item.function} className="group">
+                        <TableRow key={item.function} className="group transition-colors hover:bg-muted/50">
                             <TableCell className="font-medium transition-colors group-hover:text-primary">{item.function}</TableCell>
                             <TableCell className="text-muted-foreground group-hover:text-foreground transition-colors">{item.description}</TableCell>
                             <TableCell className="text-right">
