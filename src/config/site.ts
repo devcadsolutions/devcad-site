@@ -3,12 +3,12 @@ export const siteConfig = {
   name: "DevCAD Solutions",
   url: "https://devcad.site",
   ogImage: "/og.jpg",
-  description:
-    "Improving lives - one code at a time",
+  description: "Improving lives - one code at a time",
   links: {
     email: "devcadsolutions@gmail.com",
   },
   navLinks: [
+    { href: "/", label: "Home" },
     { href: "/about", label: "About Me" },
     { href: "/services", label: "Services" },
     { href: "/work", label: "Portfolio" },
@@ -16,35 +16,37 @@ export const siteConfig = {
   ],
   services: [
     {
-      title: "CAD & 3D Modeling",
-      description: "Precision-driven design for manufacturing, simulation, and visualization.",
-      details: "Our experts utilize state-of-the-art CAD software to create detailed 3D models and technical drawings. We focus on design for manufacturability (DFM) to ensure your concepts are ready for production. Deliverables include 3D part/assembly files, 2D manufacturing drawings, and photorealistic renderings.",
-      timeline: "2-6 Weeks",
-      tools: ["SolidWorks", "AutoCAD", "Fusion 360", "Keyshot"]
+      title: "CAD & Revit Automation",
+      description: "Get good work done faster. Custom tools for AutoCAD, Revit, and other design software.",
+      details: "I provide custom CAD automation for architects, engineers, designers and fabricators. We save time, automate repetitive tasks, and reduce human error.",
+      timeline: "2-4 Weeks",
+      tools: ["AutoLISP", "C#", "Python", "Revit API"]
     },
     {
       title: "Custom Software Development",
       description: "Bespoke software solutions to control, analyze, and integrate your hardware.",
-      details: "We build robust software applications, from embedded firmware for microcontrollers to desktop and web apps for data analysis and control. Our solutions are tailored to your specific hardware and operational needs, ensuring seamless integration and reliable performance.",
-      timeline: "8-16 Weeks",
-      tools: ["C++", "Python", "React", "Docker", "PlatformIO"]
-    },
-    {
-      title: "Prototyping & Fabrication",
-      description: "Rapidly turning digital designs into tangible, functional prototypes.",
-      details: "Leveraging 3D printing, CNC machining, and electronics assembly, we create high-fidelity prototypes for testing, validation, and investor demos. This iterative process allows for rapid design refinement and significantly reduces time-to-market.",
-      timeline: "1-4 Weeks",
-      tools: ["FDM/SLA 3D Printing", "3-Axis CNC", "PCB Fabrication"]
-    },
-    {
-      title: "System Integration",
-      description: "Ensuring all mechanical, electronic, and software components work in harmony.",
-      details: "We specialize in the complex task of system integration, combining disparate subsystems into a single, cohesive, and functional product. Our process includes interface design, communication protocols, and rigorous system-level testing to guarantee reliability.",
+      details: "We build robust software applications, from desktop utilities to web platforms that integrate with your technical data.",
       timeline: "4-12 Weeks",
-      tools: ["LabVIEW", "ROS", "PLC Programming", "Wireshark"]
+      tools: ["React", "TypeScript", "Next.js", "Node.js"]
+    },
+    {
+      title: "Data Visualization",
+      description: "Web apps that visualize your data and tell your story.",
+      details: "Custom dashboards, interactive charts, and maps that bring your technical data to life for better decision making.",
+      timeline: "2-6 Weeks",
+      tools: ["D3.js", "Recharts", "Excel VBA", "Google Apps Script"]
     }
   ],
-  projects: [],
+  projects: [
+    {
+      title: "Bobbie (Color Analysis)",
+      category: "App Development",
+      image: "app-dev-1",
+      problem: "Traditional color analysis is time-consuming and subjective.",
+      approach: "Built a custom interface for automated color matching and palette generation.",
+      result: "A streamlined tool that provides instant, objective color analysis results."
+    }
+  ],
   downloads: [
     {
       function: "Copy Rotate",
