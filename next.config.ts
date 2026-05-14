@@ -3,6 +3,9 @@ import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   output: 'export',
+  // trailingSlash ensures that each route gets its own directory with an index.html file,
+  // which is the most reliable way to handle routing on static hosts like GitHub Pages.
+  trailingSlash: true,
   images: {
     unoptimized: true,
     remotePatterns: [
