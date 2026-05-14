@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     images: [siteConfig.ogImage],
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: siteConfig.favicon,
   },
 };
 

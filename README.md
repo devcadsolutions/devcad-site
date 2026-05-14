@@ -1,29 +1,33 @@
 
-# DevCAD Solutions - Static Site
+# DevCAD Solutions
 
-This is a modern, high-performance static website for DevCAD Solutions, built with Next.js and optimized for GitHub Pages.
+Static Next.js site configured for GitHub Pages deployment.
 
-## Where is index.html?
+## Local development
 
-Because this is a Next.js project, you edit the code in `src/app/page.tsx`. The actual `index.html` file is created automatically when you build the project.
+```bash
+npm install
+npm run dev
+```
 
-1. **Build the project**:
-   ```bash
-   npm run build
-   ```
-2. **Find the output**:
-   After the build finishes, a new folder named `out` will appear in your project root.
-3. **Entry Point**:
-   Inside that `out` folder, you will find `index.html`. This is your main entry point.
+## Production build
 
-## Deployment to GitHub Pages
+```bash
+npm run build
+```
 
-1. Run `npm run build`.
-2. Upload the entire contents of the `out` folder to your GitHub repository (specifically to the `gh-pages` branch or the root of your repo depending on your GitHub settings).
-3. GitHub Pages will then serve `index.html` as your homepage.
+The static export is written to `out/`.
 
-## Features
-- Fully static export (no server required)
-- Optimized for GitHub Pages
-- Responsive design with Lucide icons
-- Smooth entrance animations
+## GitHub Pages deployment
+
+This repo includes a GitHub Actions workflow at `.github/workflows/deploy-pages.yml`.
+
+1. In GitHub, open `Settings > Pages`.
+2. Set the source to `GitHub Actions`.
+3. Push to `main`.
+
+The workflow will build the site and publish the contents of `out/` to GitHub Pages.
+
+The Next.js config automatically uses the repository subpath when deployed from GitHub Actions, so this works for project Pages URLs such as:
+
+`https://devcadsolutions.github.io/devcad-site/`

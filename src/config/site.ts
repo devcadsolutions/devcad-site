@@ -1,8 +1,20 @@
 
+const [repositoryOwner = "devcadsolutions", repositoryName = "devcad-site"] =
+  process.env.GITHUB_REPOSITORY?.split("/") ?? [];
+const isGithubActions = process.env.GITHUB_ACTIONS === "true";
+const isUserOrOrgPagesRepo = repositoryName.endsWith(".github.io");
+const basePath =
+  isGithubActions && !isUserOrOrgPagesRepo ? `/${repositoryName}` : "";
+const defaultSiteUrl = isGithubActions
+  ? `https://${repositoryOwner}.github.io${basePath}`
+  : "https://devcad.site";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? defaultSiteUrl;
+
 export const siteConfig = {
   name: "DevCAD Solutions",
-  url: "https://devcad.site",
-  ogImage: "/og.jpg",
+  url: siteUrl,
+  ogImage: `${siteUrl}/og.jpg`,
+  favicon: `${basePath}/favicon.ico`,
   description: "Improving lives - one code at a time",
   links: {
     email: "devcadsolutions@gmail.com",
