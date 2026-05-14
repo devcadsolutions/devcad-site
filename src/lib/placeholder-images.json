@@ -26,93 +26,93 @@
     },
     {
       "id": "about-image",
-      "description": "A modern office with engineers collaborating.",
-      "imageUrl": "https://images.unsplash.com/photo-1581090697136-6bb1384e9700?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxlbmdpbmVlcmluZyUyMG9mZmljZXxlbnwwfHx8fDE3NzE1NTI0NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "engineering office"
+      "description": "Legacy studio planning image from the previous DevCAD website.",
+      "imageUrl": "/legacy/about-studio.jpg",
+      "imageHint": "studio planning"
     },
     {
       "id": "hero-image-1",
-      "description": "An abstract visualization of a digital city grid with AI accents.",
-      "imageUrl": "https://images.unsplash.com/photo-1544380904-c686aad2fc40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxkaWdpdGFsJTIwY2l0eXxlbnwwfHx8fDE3NzE1NTMyMTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "digital city"
+      "description": "Profile portrait for DevCAD Solutions.",
+      "imageUrl": "/profile/prof-pic.png",
+      "imageHint": "profile portrait"
     },
     {
       "id": "website-dev-1",
-      "description": "Screenshot of a modern coffee brand website.",
-      "imageUrl": "https://images.unsplash.com/photo-1678690833065-965b52c0fa8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb2ZmZWUlMjB3ZWJzaXRlfGVufDB8fHx8MTc3MTU1MzIxMnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "coffee website"
+      "description": "Legacy brand collateral image from the previous DevCAD website.",
+      "imageUrl": "/legacy/brand-collateral-1.jpg",
+      "imageHint": "brand collateral"
     },
     {
       "id": "website-dev-2",
-      "description": "Promotional graphic for a social media management solution with a chatbot.",
-      "imageUrl": "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzb2NpYWwlMjBtZWRpYXxlbnwwfHx8fDE3NzE0NzY5OTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "social media"
+      "description": "Second legacy brand collateral image from the previous DevCAD website.",
+      "imageUrl": "/legacy/brand-collateral-2.jpg",
+      "imageHint": "brand identity"
     },
     {
       "id": "app-dev-1",
-      "description": "Screenshot of a dark-themed desktop application for creative work.",
-      "imageUrl": "https://images.unsplash.com/photo-1620287341401-e2945a4b9daa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkZXNrdG9wJTIwYXBwbGljYXRpb258ZW58MHx8fHwxNzcxNTUzMjEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "desktop application"
+      "description": "Bobbie application screenshot from the previous DevCAD website.",
+      "imageUrl": "/legacy/bobbie-app-1.png",
+      "imageHint": "bobbie app"
     },
     {
       "id": "app-dev-2",
-      "description": "Another app image.",
-      "imageUrl": "https://images.unsplash.com/photo-1547027072-332f09bd6bb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhcHAlMjB1aXxlbnwwfHx8fDE3NzE1NTMyMTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "app ui"
+      "description": "Second Bobbie application screenshot from the previous DevCAD website.",
+      "imageUrl": "/legacy/bobbie-app-2.png",
+      "imageHint": "app interface"
     },
     {
       "id": "footer-avatar",
-      "description": "Cartoon avatar of a creative professional at their desk.",
-      "imageUrl": "https://images.unsplash.com/photo-1750535135635-3783825e996c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjYXJ0b29uJTIwYXZhdGFyfGVufDB8fHx8MTc3MTU1MzIxMnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "cartoon avatar"
+      "description": "Profile portrait for DevCAD Solutions.",
+      "imageUrl": "/profile/prof-pic.png",
+      "imageHint": "profile portrait"
     },
     {
       "id": "service-digital-grid",
-      "description": "A digital city grid with a glowing cube.",
-      "imageUrl": "https://images.unsplash.com/photo-1620288627223-262f721c9c42?q=80&w=800&h=600&auto=format&fit=crop",
-      "imageHint": "tech cube"
+      "description": "Legacy planning image from the previous DevCAD website.",
+      "imageUrl": "/legacy/page-header.jpg",
+      "imageHint": "planning desk"
     },
     {
       "id": "excel-dash-1",
-      "description": "Excel dashboard screenshot of a 3D model form",
-      "imageUrl": "https://images.unsplash.com/photo-1610024522550-5345c210db2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxleGNlbCUyMGRhc2hib2FyZHxlbnwwfHx8fDE3NzE2MzU2NTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "excel dashboard"
+      "description": "Legacy CAD workflow screenshot from the previous DevCAD website.",
+      "imageUrl": "/legacy/cad-workflow-1.png",
+      "imageHint": "cad workflow"
     },
     {
       "id": "excel-dash-2",
-      "description": "Excel dashboard screenshot of a bar chart",
-      "imageUrl": "https://images.unsplash.com/photo-1768055104923-a6f76e7478c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZXhjZWwlMjBjaGFydHxlbnwwfHx8fDE3NzE2MzU2NTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "excel chart"
+      "description": "Second legacy CAD workflow screenshot from the previous DevCAD website.",
+      "imageUrl": "/legacy/cad-workflow-2.png",
+      "imageHint": "cad layout"
     },
     {
       "id": "excel-dash-3",
-      "description": "Excel dashboard screenshot of a UI",
-      "imageUrl": "https://picsum.photos/seed/excel3/600/700",
-      "imageHint": "excel ui"
+      "description": "Legacy AutoLISP loading screenshot from the previous DevCAD website.",
+      "imageUrl": "/legacy/autolisp-load-dialog.png",
+      "imageHint": "autolisp load"
     },
     {
       "id": "excel-dash-4",
-      "description": "Excel dashboard screenshot of a line graph",
-      "imageUrl": "https://images.unsplash.com/photo-1711898387672-8535c5e2cddc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxleGNlbCUyMGdyYXBofGVufDB8fHx8MTc3MTYzNTY1Mnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "excel graph"
+      "description": "Legacy AutoCAD tool palette screenshot from the previous DevCAD website.",
+      "imageUrl": "/legacy/autocad-tool-palette.png",
+      "imageHint": "tool palette"
     },
     {
       "id": "autocad-palette",
-      "description": "A screenshot of a custom AutoCAD tool palette.",
-      "imageUrl": "https://picsum.photos/seed/autocad-palette/400/600",
-      "imageHint": "AutoCAD palette"
+      "description": "Legacy AutoCAD tool palette screenshot from the previous DevCAD website.",
+      "imageUrl": "/legacy/autocad-tool-palette.png",
+      "imageHint": "autocad palette"
     },
     {
       "id": "training-material",
-      "description": "Thumbnail for a training video on AutoLISP.",
-      "imageUrl": "https://images.unsplash.com/photo-1758521961330-2004fb10800f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0cmFpbmluZyUyMHZpZGVvfGVufDB8fHx8MTc3MTYzNTY1Mnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "training video"
+      "description": "Legacy training screenshot from the previous DevCAD website.",
+      "imageUrl": "/legacy/training-materials.png",
+      "imageHint": "training materials"
     },
     {
       "id": "autolisp-blueprints",
-      "description": "Technical blueprints with drafting tools.",
-      "imageUrl": "https://images.unsplash.com/photo-1581092921434-c22d71a8f9f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxibHVlcHJpbnRzfGVufDB8fHx8MTc3MTcwMjM1OXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "blueprints drafting"
+      "description": "Legacy AutoLISP loading screenshot from the previous DevCAD website.",
+      "imageUrl": "/legacy/autolisp-load-dialog.png",
+      "imageHint": "autolisp loading"
     }
   ]
 }

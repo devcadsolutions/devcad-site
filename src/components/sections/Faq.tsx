@@ -31,7 +31,7 @@ export default function Faq() {
   return (
     <section className="bg-secondary">
       <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <div className="text-center reveal-up">
           <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">
             Frequently Asked Questions
           </h2>
@@ -40,7 +40,7 @@ export default function Faq() {
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="mt-12 w-full animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
+        <Accordion type="single" collapsible className="mt-12 w-full reveal-up" style={{ animationDelay: "140ms" }}>
           {faqs.map((faq, index) => (
             <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger className="text-left text-lg font-semibold hover:text-primary transition-colors">

@@ -1,71 +1,77 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { CheckCircle } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
+import { siteConfig } from "@/config/site";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function Hero() {
     const heroImage = PlaceHolderImages.find(img => img.id === 'hero-image-1');
 
     return (
-        <section className="relative pt-24 pb-12 md:pt-32 md:pb-20 overflow-hidden">
-             <div
-                aria-hidden="true"
-                className="absolute inset-0 top-0 h-full bg-cover bg-center animate-in fade-in duration-1000"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1550745165-9bc0b252726a?q=80&w=2070&auto=format&fit=crop')" }}
-            >
-                <div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
-            </div>
-            <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-                <div className="text-center animate-in fade-in slide-in-from-top-8 duration-700">
-                    <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-foreground">
-                        DevCAD Solutions
-                    </h1>
-                    <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground md:text-xl">
-                        Innovating ideas - one code at a time
-                    </p>
+        <section>
+            <div className="relative overflow-hidden pt-24 pb-12 md:pt-32 md:pb-16">
+                <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-cover bg-center reveal-up"
+                    style={{ backgroundImage: `url('${siteConfig.basePath}/legacy/page-header.jpg')` }}
+                >
+                    <div className="absolute inset-0 bg-background/78"></div>
                 </div>
-
-                <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2 md:items-center">
-                    <div className="space-y-6 animate-in fade-in slide-in-from-left-8 duration-700 delay-300 fill-mode-both">
-                        <h2 className="font-headline text-2xl font-bold">
-                            AutoCAD automation and Revit scripting for architects and engineers
-                        </h2>
-                        <p className="text-muted-foreground">
-                            I provide custom CAD automation for architects, engineers, designers and fabricators. We save time, automate repetitive tasks, and reduce human error.
+                <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div className="text-center reveal-up">
+                        <span className="eyebrow">DevCAD Solutions</span>
+                        <h1 className="mx-auto mt-5 max-w-5xl font-headline text-4xl font-bold tracking-tighter text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+                            I build automation tools for Revit, AutoCAD, and AEC workflows.
+                        </h1>
+                        <p className="mx-auto mt-5 max-w-4xl text-lg leading-8 text-muted-foreground md:text-xl">
+                            Specializing in Revit API, AutoCAD .NET, AutoLISP modernization, WPF desktop tools, and Autodesk Platform Services integrations for BIM/CAD teams.
                         </p>
-                        <ul className="space-y-2 text-muted-foreground">
-                            <li className="flex items-center transition-transform hover:translate-x-2 duration-300">
-                                <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
-                                <span>Save time on your day-to-day tasks</span>
-                            </li>
-                            <li className="flex items-center transition-transform hover:translate-x-2 duration-300">
-                                <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
-                                <span>Plug holes in your day-to-day CAD workflows</span>
-                            </li>
-                            <li className="flex items-center transition-transform hover:translate-x-2 duration-300">
-                                <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
-                                <span>Gap-fill your production line with custom software</span>
-                            </li>
-                        </ul>
-                        <div className="flex gap-4">
-                            <Button asChild size="lg" variant="outline" className="border-2 bg-transparent border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300">
-                                <Link href="/work">View Portfolio</Link>
+                    </div>
+                </div>
+            </div>
+
+            <div className="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 md:py-16">
+                <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:items-center">
+                    <div className="space-y-6 reveal-left" style={{ animationDelay: "120ms" }}>
+                        <span className="eyebrow">What I Build</span>
+                        <p className="max-w-xl text-base leading-7 text-muted-foreground md:text-lg">
+                            Custom tools for BIM and CAD teams that want less manual work, cleaner delivery, and more reliable internal workflows.
+                        </p>
+                        <div className="flex flex-wrap gap-2 text-sm">
+                            <span className="rounded-full border border-border/70 bg-white/75 px-3 py-1.5 text-foreground/85">Revit API</span>
+                            <span className="rounded-full border border-border/70 bg-white/75 px-3 py-1.5 text-foreground/85">AutoCAD .NET</span>
+                            <span className="rounded-full border border-border/70 bg-white/75 px-3 py-1.5 text-foreground/85">AutoLISP Modernization</span>
+                            <span className="rounded-full border border-border/70 bg-white/75 px-3 py-1.5 text-foreground/85">WPF Tools</span>
+                            <span className="rounded-full border border-border/70 bg-white/75 px-3 py-1.5 text-foreground/85">APS Integrations</span>
+                        </div>
+                        <div className="flex flex-wrap gap-3">
+                            <Button asChild size="lg" className="rounded-full px-6">
+                                <Link href="/work">
+                                    View Projects
+                                    <ArrowRight className="ml-2 h-4 w-4" />
+                                </Link>
                             </Button>
-                            <Button asChild variant="ghost" size="lg" className="transition-all duration-300 hover:bg-primary/10">
-                                <Link href="/contact">Request a Quote</Link>
+                            <Button asChild size="lg" variant="outline" className="rounded-full border-2 bg-transparent border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300">
+                                <Link href="/contact">Contact Me</Link>
+                            </Button>
+                            <Button asChild variant="ghost" size="lg" className="rounded-full transition-all duration-300 hover:bg-primary/10">
+                                <Link href="/downloads">
+                                    <Download className="mr-2 h-4 w-4" />
+                                    Download CV / Portfolio
+                                </Link>
                             </Button>
                         </div>
                     </div>
-                    <div className="flex justify-center animate-in fade-in slide-in-from-right-8 duration-700 delay-500 fill-mode-both">
+                    <div className="flex justify-center reveal-right" style={{ animationDelay: "220ms" }}>
                         {heroImage && (
                             <Image
                                 src={heroImage.imageUrl}
                                 alt={heroImage.description}
                                 data-ai-hint={heroImage.imageHint}
-                                width={400}
-                                height={400}
-                                className="rounded-lg object-cover shadow-lg transition-transform hover:scale-105 duration-500"
+                                width={1080}
+                                height={1350}
+                                className="w-full max-w-sm rounded-lg object-cover shadow-lg transition-transform hover:scale-105 duration-500"
                             />
                         )}
                     </div>

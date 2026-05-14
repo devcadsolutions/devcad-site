@@ -102,8 +102,108 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image:
+      radial-gradient(circle at top, hsl(34 52% 90% / 0.65), transparent 38%),
+      linear-gradient(180deg, hsl(35 27% 98%), hsl(32 26% 94%));
   }
   section {
     @apply w-full py-12 md:py-16 lg:py-20;
+  }
+
+  /* Let the browser defer offscreen section rendering during scroll. */
+  @supports (content-visibility: auto) {
+    section {
+      content-visibility: auto;
+      contain-intrinsic-size: 1px 900px;
+    }
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes reveal-left {
+  from {
+    opacity: 0;
+    transform: translate3d(-20px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes reveal-right {
+  from {
+    opacity: 0;
+    transform: translate3d(20px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@layer utilities {
+  .section-shell {
+    @apply rounded-[2rem] border border-white/60 bg-white/92 shadow-[0_24px_70px_-36px_rgba(79,62,46,0.45)];
+  }
+
+  .soft-panel {
+    @apply rounded-[1.5rem] border border-white/70 bg-white/94 shadow-[0_18px_40px_-30px_rgba(79,62,46,0.4)];
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center rounded-full border border-primary/15 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-primary/80;
+  }
+
+  .section-heading {
+    @apply font-headline text-3xl font-bold tracking-tight text-foreground md:text-4xl;
+  }
+
+  .section-copy {
+    @apply text-base leading-7 text-muted-foreground md:text-lg;
+  }
+
+  .reveal-up,
+  .reveal-left,
+  .reveal-right {
+    opacity: 0;
+    animation-duration: 680ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-fill-mode: both;
+  }
+
+  .reveal-up {
+    animation-name: reveal-up;
+  }
+
+  .reveal-left {
+    animation-name: reveal-left;
+  }
+
+  .reveal-right {
+    animation-name: reveal-right;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up,
+  .reveal-left,
+  .reveal-right {
+    opacity: 1;
+    animation: none;
+    transform: none;
   }
 }

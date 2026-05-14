@@ -9,16 +9,31 @@ export default function AboutTeaser() {
   return (
     <section>
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="space-y-4">
+        <div className="section-shell grid items-center gap-12 px-6 py-10 sm:px-8 lg:grid-cols-2 lg:px-12">
+          <div className="space-y-5">
+            <span className="eyebrow">Why Work With Me</span>
             <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">
-              Your Innovation Partner
+              Engineering-aware software, built for real production work.
             </h2>
             <p className="text-lg text-muted-foreground">
-              DevCAD Solutions was founded on the principle that great ideas deserve brilliant execution. We are a team of passionate engineers, designers, and developers dedicated to solving complex challenges and building the products of tomorrow. We act as a true extension of your team, providing the expertise and capacity to turn ambitious visions into reality.
+              I combine hands-on AEC workflow understanding with implementation skills, so the output is not just technically correct. It is usable, maintainable, and relevant to the teams doing the work.
             </p>
-            <Button asChild size="lg" variant="outline">
-              <Link href="/about">More About Us</Link>
+            <div className="grid gap-3 sm:grid-cols-3">
+              <div className="soft-panel p-4">
+                <p className="text-sm font-semibold text-foreground">AEC Context</p>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">Built with drafting, BIM, and delivery realities in mind.</p>
+              </div>
+              <div className="soft-panel p-4">
+                <p className="text-sm font-semibold text-foreground">Clear Output</p>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">Focused on tools that reduce friction and improve consistency.</p>
+              </div>
+              <div className="soft-panel p-4">
+                <p className="text-sm font-semibold text-foreground">Long-Term Value</p>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">Solutions designed to be easier to maintain and roll out.</p>
+              </div>
+            </div>
+            <Button asChild size="lg" variant="outline" className="rounded-full">
+              <Link href="/about">Read My Background</Link>
             </Button>
           </div>
           <div className="order-first lg:order-last">
@@ -29,7 +44,7 @@ export default function AboutTeaser() {
                 data-ai-hint={aboutImage.imageHint}
                 width={800}
                 height={600}
-                className="rounded-lg object-cover shadow-lg"
+                className="rounded-[1.75rem] object-cover shadow-lg"
               />
             )}
           </div>

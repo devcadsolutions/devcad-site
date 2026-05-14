@@ -1,26 +1,190 @@
 import type { Metadata } from "next";
-import AboutContent from "@/components/sections/AboutContent";
+import Image from "next/image";
+import Link from "next/link";
+import { Lightbulb, Target } from "lucide-react";
+import { siteConfig } from "@/config/site";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Button } from "@/components/ui/button";
 import CtaBand from "@/components/sections/CtaBand";
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description: "Learn about the mission, values, and team behind DevCAD Solutions. Discover what drives us to deliver exceptional engineering and development solutions.",
+  title: "About Me",
+  description:
+    "Learn more about Justine Bautista, the solutions engineer behind DevCAD Solutions.",
 };
 
+function Divider() {
+  return <div className="mx-auto h-px w-full max-w-6xl bg-primary/60" />;
+}
+
 export default function AboutPage() {
+  const profileImage =
+    PlaceHolderImages.find((img) => img.id === "hero-image-1") ??
+    PlaceHolderImages.find((img) => img.id === "footer-avatar");
+
   return (
     <>
-      <header className="bg-secondary overflow-hidden">
-        <div className="container mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <div className="text-center animate-in fade-in slide-in-from-top-4 duration-700">
-            <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Engineering the Future, Together</h1>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground animate-in fade-in duration-1000 delay-300 fill-mode-both">
-              We are a collective of thinkers, builders, and problem-solvers passionate about turning great ideas into impactful products.
-            </p>
+      <section className="bg-gradient-to-b from-secondary/60 via-background to-background pt-24 md:pt-32">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="overflow-hidden border border-border/70 bg-card shadow-[0_20px_60px_rgba(90,82,76,0.12)]">
+            <div className="grid lg:grid-cols-[0.95fr_1.1fr]">
+              <div className="flex flex-col items-center justify-center gap-6 bg-card px-8 py-12 text-center md:px-12">
+                {profileImage && (
+                  <Image
+                    src={profileImage.imageUrl}
+                    alt={profileImage.description}
+                    data-ai-hint={profileImage.imageHint}
+                    width={320}
+                    height={320}
+                    className="h-52 w-52 rounded-sm object-cover shadow-lg"
+                  />
+                )}
+                <div className="space-y-3">
+                  <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+                    Justine Bautista
+                  </h1>
+                  <p className="text-xl text-muted-foreground">Solutions Engineer</p>
+                </div>
+                <Button
+                  asChild
+                  className="min-w-40 rounded-none bg-primary px-8 text-primary-foreground hover:bg-primary/90"
+                >
+                  <Link href={`mailto:${siteConfig.links.email}`}>Email me</Link>
+                </Button>
+              </div>
+
+              <div className="bg-primary px-8 py-12 text-primary-foreground md:px-14 lg:px-16">
+                <div className="mx-auto max-w-xl space-y-8">
+                  <div className="space-y-6">
+                    <h2 className="font-headline text-4xl font-bold tracking-tight text-primary-foreground sm:text-5xl">
+                      About Me
+                    </h2>
+                    <p className="text-lg leading-8 text-primary-foreground/90">
+                      I&apos;m a civil engineer turned software builder focused on automation for BIM, CAD, and technical delivery teams. My work sits at the intersection of engineering workflows, internal tooling, and practical software implementation.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-4">
+                    <Button
+                      asChild
+                      className="min-w-40 rounded-none border border-[#b07c3b] bg-[#b07c3b] text-white hover:bg-[#9a6c33]"
+                    >
+                      <Link href="/downloads">Resume</Link>
+                    </Button>
+                    <Button
+                      asChild
+                      className="min-w-40 rounded-none border border-[#b07c3b] bg-[#b07c3b] text-white hover:bg-[#9a6c33]"
+                    >
+                      <Link href="/work">Portfolio</Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-10 bg-card px-8 py-10 md:px-12">
+              <div className="space-y-6 text-lg leading-8 text-foreground/85">
+                <p>Solutions is actually my middle name.</p>
+                <p>
+                  I started from engineering and drafting work, which made repetitive production pain easy to spot. The more I saw how much time teams were losing to manual tasks, the more I moved toward building tools instead of working around the friction.
+                </p>
+                <p>
+                  That evolved into a more specialized focus on Revit API tools, AutoCAD automation, workflow utilities, structured estimators, and support material that helps internal teams actually adopt the systems they invest in.
+                </p>
+              </div>
+
+              <Divider />
+
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/75">Professional Timeline</p>
+                  <h3 className="font-headline text-3xl font-bold tracking-tight text-foreground">How the work evolved</h3>
+                  <p className="max-w-3xl text-sm leading-7 text-muted-foreground">
+                    A concise career arc based on the public profile context available and the work represented throughout this site.
+                  </p>
+                </div>
+
+                <div className="space-y-5">
+                  <div className="grid gap-4 md:grid-cols-[180px_1fr] md:items-start">
+                    <div className="soft-panel p-4">
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/75">Phase 1</p>
+                      <p className="mt-2 font-semibold text-foreground">Engineering Foundation</p>
+                    </div>
+                    <div className="soft-panel p-5">
+                      <p className="text-sm leading-7 text-foreground/85">
+                        Started in engineering and drafting-oriented work, building a practical understanding of production workflows, modeling needs, and where teams typically lose time.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-4 md:grid-cols-[180px_1fr] md:items-start">
+                    <div className="soft-panel p-4">
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/75">Phase 2</p>
+                      <p className="mt-2 font-semibold text-foreground">Process and Operations Exposure</p>
+                    </div>
+                    <div className="soft-panel p-5">
+                      <p className="text-sm leading-7 text-foreground/85">
+                        Expanded into work that involved process thinking, internal coordination, and support for digital systems. That exposure helped sharpen the focus on repeatability, training, and operational clarity.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-4 md:grid-cols-[180px_1fr] md:items-start">
+                    <div className="soft-panel p-4">
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/75">Phase 3</p>
+                      <p className="mt-2 font-semibold text-foreground">Automation Shift</p>
+                    </div>
+                    <div className="soft-panel p-5">
+                      <p className="text-sm leading-7 text-foreground/85">
+                        Moved from solving workflow pain manually into building tools, scripts, estimators, and support systems that reduce repetitive work and make delivery more consistent.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-4 md:grid-cols-[180px_1fr] md:items-start">
+                    <div className="soft-panel p-4">
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/75">Phase 4</p>
+                      <p className="mt-2 font-semibold text-foreground">Current Specialization</p>
+                    </div>
+                    <div className="soft-panel p-5">
+                      <p className="text-sm leading-7 text-foreground/85">
+                        The current focus is Revit API tooling, AutoCAD .NET, AutoLISP modernization, APS-connected workflows, documentation, and rollout support for BIM and CAD teams.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <Divider />
+
+              <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
+                <div className="space-y-5">
+                  <p className="max-w-md text-xl italic leading-8 text-muted-foreground">
+                    To improve drafting and modeling workflows through more efficient, accurate, and sustainable technical systems.
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <Target className="h-16 w-16 shrink-0 text-foreground" strokeWidth={1.8} />
+                    <h3 className="font-headline text-5xl font-bold tracking-tight text-foreground">
+                      Mission
+                    </h3>
+                  </div>
+                </div>
+
+                <div className="space-y-5">
+                  <div className="flex items-center gap-4">
+                    <h3 className="font-headline text-5xl font-bold tracking-tight text-foreground">
+                      Vision
+                    </h3>
+                    <Lightbulb className="h-16 w-16 shrink-0 text-foreground" strokeWidth={1.8} />
+                  </div>
+                  <p className="max-w-md text-xl leading-8 text-muted-foreground">
+                    To provide local and global teams with dependable CAD, BIM, and automation solutions that improve delivery quality and reduce avoidable manual work.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </header>
-      <AboutContent />
+      </section>
       <CtaBand />
     </>
   );

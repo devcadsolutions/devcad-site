@@ -39,9 +39,9 @@ export default function ContactPage() {
         <div
             aria-hidden="true"
             className="absolute inset-0 top-0 h-full bg-cover bg-center animate-in fade-in duration-1000"
-            style={{ backgroundImage: "url('https://images.unsplash.com/photo-1550745165-9bc0b252726a?q=80&w=2070&auto=format&fit=crop')" }}
+            style={{ backgroundImage: `url('${siteConfig.basePath}/legacy/page-header.jpg')` }}
         >
-            <div className="absolute inset-0 bg-background/80 backdrop-blur-sm"></div>
+            <div className="absolute inset-0 bg-background/84"></div>
         </div>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
             <div className="text-center animate-in fade-in slide-in-from-top-4 duration-700">

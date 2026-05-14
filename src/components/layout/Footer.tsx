@@ -1,35 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import { MapPin, Mail, MoveRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
-const LinkedInIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256" fill="#0077B5">
-      <path d="M218.12,218.12H181.69V156.35c0-14.83-.27-33.91-20.66-33.91-20.69,0-23.86,16.15-23.86,32.83v62.85H100.74V100.74h35.49v16.28h.51a38.86,38.86,0,0,1,35-19.26c37.4,0,44.28,24.62,44.28,56.63Z" strokeWidth="0" />
-      <path d="M57,79.43a22,22,0,1,1,22-22A22,22,0,0,1,57,79.43Z" strokeWidth="0" />
-      <rect x="37.83" y="100.74" width="38.34" height="117.38" strokeWidth="0"/>
-      <path d="M237.26,0H18.74A18.74,18.74,0,0,0,0,18.74V237.26A18.74,18.74,0,0,0,18.74,256H237.26A18.74,18.74,0,0,0,256,237.26V18.74A18.74,18.74,0,0,0,237.26,0ZM232,232H24a8,8,0,0,1-8-8V24a8,8,0,0,1,8-8H232a8,8,0,0,1,8,8V224A8,8,0,0,1,232,232Z" strokeWidth="0" fillRule="nonzero" />
-    </svg>
-);
-
-const WhatsAppIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256" fill="#25D366">
-        <path d="M167.59,141.44a13.33,13.33,0,0,1,4.3,3.71,2.54,2.54,0,0,1,.18,3.95,23.36,23.36,0,0,1-4,3.58,11.89,11.89,0,0,1-5.46,1.48,15.1,15.1,0,0,1-6.2-1.3,42.18,42.18,0,0,1-16.09-9.15,48.24,48.24,0,0,1-12.72-14.73,3,3,0,0,1-.13-3.21l.1-.15a2.53,2.53,0,0,1,2.15-1.45l.13,0a3,3,0,0,1,2.28.94l.11.12a8.08,8.08,0,0,0,4.78,2.78,1.7,1.7,0,0,0,1.83-1.14l.05-.15a1.73,1.73,0,0,0-1-2.09,10,10,0,0,1-3.66-2.2,7.39,7.39,0,0,1-2.18-5.78,8.47,8.47,0,0,1,2.08-6.15l.1-.12A7.44,7.44,0,0,1,128,94.2a7.35,7.35,0,0,1,6.09,2.83l.1.13a8.33,8.33,0,0,1,2,5.53,1.72,1.72,0,0,0,2.2,1.52,1.69,1.69,0,0,0,1.3-1.87,11.82,11.82,0,0,0-2.8-8l-.13-.15a11.9,11.9,0,0,0-9.84-4.5h-.11a12.82,12.82,0,0,0-10.22,4.45l-.11.14a13.88,13.88,0,0,0-3.32,10.66,3.67,3.67,0,0,0,.41,1.79l0,.11,0,.09c.47,1.21.61,2.23.11,3.48l-.09.2c-.44,1.06-.51,2-.15,3.12l.1.27c1.47,4.3,3.7,8.23,6.71,11.75s6.87,6.34,10.76,8.51c1.31.73,2.83,1.3,4.42,1.71a17.3,17.3,0,0,0,8.46.22,14,14,0,0,0,7.27-3.2l.2-.16a18.3,18.3,0,0,0,4.86-5.41,2.54,2.54,0,0,1,3.49-1.5,13.33,13.33,0,0,1,4.3,3.71Z" strokeWidth="0"/><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM128,224a96,96,0,1,1,96-96A96.11,96.11,0,0,1,128,224Zm69-52.53-7-2.34a8,8,0,0,0-7.85,1.71,48.24,48.24,0,0,1-20.06,14.65l-.3.12-6.52,2.18,2.19-6.31.12-.3a48.59,48.59,0,0,1,1.1-23.7,8,8,0,0,0-2.58-7.3l-20-20.15a8,8,0,0,0-11.83,0,48.33,48.33,0,0,1-14.7,19.86,8,8,0,0,0-2,7.74l2.36,7a8,8,0,0,0,5.2,5.4,63.18,63.18,0,0,0,32,0,8,8,0,0,0,5.22-5.4l2.36-7A8,8,0,0,0,197,171.47Z" strokeWidth="0"/>
-    </svg>
-);
-
-const GmailIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
-        <path fill="#4285F4" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"/>
-        <path fill="#FFFFFF" d="m12 13-8-5h16z"/>
-        <path fill="#EA4335" d="M4 6l8 5 8-5v2l-8 5-8-5z"/>
-        <path fill="#34A853" d="M20 18H4V8l8 5 8-5v10z"/>
-        <path fill="#FBBC05" d="m4 18 8-5 8 5H4z"/>
-    </svg>
-);
-
 export default function Footer() {
-  const footerAvatar = PlaceHolderImages.find(img => img.id === 'footer-avatar');
+  const footerAvatar = PlaceHolderImages.find((img) => img.id === "footer-avatar");
   const footerLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About Me" },
@@ -40,58 +16,77 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-background border-t">
-        <div className="bg-primary text-primary-foreground">
-            <div className="container mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-                <div className="flex justify-center space-x-4 sm:space-x-8 mb-8 flex-wrap">
-                    {footerLinks.map((link) => (
-                    <Link key={link.href} href={link.href} className="text-base sm:text-lg font-medium hover:underline">
-                        {link.label}
-                    </Link>
-                    ))}
+    <footer className="border-t border-border/70 bg-[linear-gradient(180deg,hsl(34_27%_95%),hsl(33_22%_92%))]">
+      <div className="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="section-shell px-6 py-8 sm:px-8 lg:px-10">
+          <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-start">
+            <div className="space-y-6">
+              <span className="eyebrow">DevCAD Solutions</span>
+              <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
+                {footerAvatar && (
+                  <Image
+                    src={footerAvatar.imageUrl}
+                    alt={footerAvatar.description}
+                    data-ai-hint={footerAvatar.imageHint}
+                    width={120}
+                    height={120}
+                    className="h-28 w-28 rounded-[1.5rem] border border-white/70 object-cover shadow-[0_20px_40px_-28px_rgba(79,62,46,0.5)]"
+                  />
+                )}
+                <div className="max-w-xl space-y-3">
+                  <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground">Software built around real workflow friction.</h2>
+                  <p className="text-sm leading-7 text-muted-foreground sm:text-base">
+                    I help architects, engineers, and technical teams turn repetitive process pain into cleaner tools,
+                    better automation, and more reliable day-to-day delivery.
+                  </p>
                 </div>
+              </div>
+            </div>
 
-                <div className="grid md:grid-cols-2 gap-8 items-center">
-                    <div className="flex gap-4 items-center">
-                    {footerAvatar && (
-                        <Image
-                        src={footerAvatar.imageUrl}
-                        alt={footerAvatar.description}
-                        data-ai-hint={footerAvatar.imageHint}
-                        width={120}
-                        height={120}
-                        className="rounded-lg shrink-0"
-                        />
-                    )}
-                    <p className="text-sm text-primary-foreground/80">
-                        Hi, I'm Justine — a creative and technical strategist, poet, and digital tinkerer. I love turning ideas into stories, whether through branding, chatbot design, or late-night verses. This space is where I share experiments, insights, and the occasional caffeine-fueled thought. Let's explore together!
-                    </p>
-                    </div>
-                    <div className="flex flex-col items-center md:items-end space-y-4">
-                        <div className="flex space-x-2">
-                            <a href="#" className="transition-transform hover:scale-110" title="LinkedIn">
-                                <LinkedInIcon />
-                            </a>
-                             <a href="#" className="transition-transform hover:scale-110" title="WhatsApp">
-                                <WhatsAppIcon />
-                            </a>
-                            <a href={`mailto:${siteConfig.links.email}`} className="transition-transform hover:scale-110" title="Email">
-                               <GmailIcon />
-                            </a>
-                        </div>
-                        <p className="text-sm text-primary-foreground/80 text-center md:text-right">
-                            {siteConfig.links.email} | Parañaque City, Philippines
-                        </p>
-                    </div>
+            <div className="soft-panel p-5">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/75">Contact</p>
+              <div className="mt-4 space-y-3 text-sm text-foreground/85">
+                <a
+                  href={`mailto:${siteConfig.links.email}`}
+                  className="flex items-center gap-3 rounded-2xl border border-border/70 bg-white/80 px-4 py-3 transition hover:bg-white"
+                >
+                  <Mail className="h-4 w-4 text-primary" />
+                  <span>{siteConfig.links.email}</span>
+                </a>
+                <div className="flex items-center gap-3 rounded-2xl border border-border/70 bg-white/75 px-4 py-3">
+                  <MapPin className="h-4 w-4 text-primary" />
+                  <span>Paranaque City, Philippines</span>
                 </div>
+                <Link
+                  href="/contact"
+                  className="flex items-center justify-between rounded-2xl bg-primary px-4 py-3 font-medium text-primary-foreground transition hover:bg-primary/92"
+                >
+                  <span>Discuss a project</span>
+                  <MoveRight className="h-4 w-4" />
+                </Link>
+              </div>
             </div>
-        </div>
-        <div className="bg-secondary py-3">
-            <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-xs text-muted-foreground">
-                <p>Design created by {siteConfig.name}</p>
-                <p>&copy; 2025 {siteConfig.name}. All rights reserved.</p>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-5 border-t border-border/70 pt-6 md:flex-row md:items-center md:justify-between">
+            <nav className="flex flex-wrap gap-3 text-sm text-muted-foreground">
+              {footerLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-full border border-transparent px-3 py-1.5 transition hover:border-border hover:bg-white/65 hover:text-foreground"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+            <div className="text-sm text-muted-foreground">
+              <p>Design created by {siteConfig.name}</p>
+              <p>&copy; 2025 {siteConfig.name}. All rights reserved.</p>
             </div>
+          </div>
         </div>
+      </div>
     </footer>
   );
 }

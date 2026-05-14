@@ -12,9 +12,10 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? defaultSiteUrl;
 
 export const siteConfig = {
   name: "DevCAD Solutions",
+  basePath,
   url: siteUrl,
   ogImage: `${siteUrl}/og.jpg`,
-  favicon: `${basePath}/favicon.ico`,
+  favicon: `${basePath}/icon.svg`,
   description: "Improving lives - one code at a time",
   links: {
     email: "devcadsolutions@gmail.com",
@@ -26,27 +27,55 @@ export const siteConfig = {
     { href: "/work", label: "Portfolio" },
     { href: "/downloads", label: "Downloads" },
   ],
+  portfolioCategories: [
+    { href: "/work/cad-tools", label: "CAD Tools" },
+    { href: "/work/bim-tools", label: "BIM Tools" },
+    { href: "/work/desktop-software", label: "Desktop Software" },
+    { href: "/work/web-apps-sites", label: "Web Apps & Sites" },
+    { href: "/work/mobile-app", label: "Mobile App" },
+  ],
   services: [
     {
-      title: "CAD & Revit Automation",
-      description: "Get good work done faster. Custom tools for AutoCAD, Revit, and other design software.",
-      details: "I provide custom CAD automation for architects, engineers, designers and fabricators. We save time, automate repetitive tasks, and reduce human error.",
-      timeline: "2-4 Weeks",
-      tools: ["AutoLISP", "C#", "Python", "Revit API"]
-    },
-    {
-      title: "Custom Software Development",
-      description: "Bespoke software solutions to control, analyze, and integrate your hardware.",
-      details: "We build robust software applications, from desktop utilities to web platforms that integrate with your technical data.",
-      timeline: "4-12 Weeks",
-      tools: ["React", "TypeScript", "Next.js", "Node.js"]
-    },
-    {
-      title: "Data Visualization",
-      description: "Web apps that visualize your data and tell your story.",
-      details: "Custom dashboards, interactive charts, and maps that bring your technical data to life for better decision making.",
+      title: "Revit API Tool Development",
+      description: "Custom Revit add-ins for model checking, alignment, sheet workflows, schedules, exports, and automation.",
+      details: "Custom add-ins for checks, sheets, schedules, exports, and model automation.",
       timeline: "2-6 Weeks",
-      tools: ["D3.js", "Recharts", "Excel VBA", "Google Apps Script"]
+      tools: ["Revit API", "C#", ".NET", "WPF"]
+    },
+    {
+      title: "AutoCAD Automation",
+      description: "AutoCAD .NET, AutoLISP, tool palettes, batch processing, standards checking, drawing cleanup, and productivity tools.",
+      details: "Commands, utilities, and drafting helpers that improve speed and standards.",
+      timeline: "1-5 Weeks",
+      tools: ["AutoCAD .NET", "AutoLISP", "C#", "Tool Palettes"]
+    },
+    {
+      title: "APS / Autodesk Cloud Automation",
+      description: "Autodesk Platform Services workflows for model derivative, ACC/Docs integration, PDF/DWG extraction, cloud processing, and data pipelines.",
+      details: "Cloud-connected workflows for exports, Docs integration, and processing pipelines.",
+      timeline: "3-8 Weeks",
+      tools: ["APS", "ACC/Docs", "Forge APIs", "Node.js"]
+    },
+    {
+      title: "BIM/CAD Workflow Automation",
+      description: "Tools that connect models, drawings, spreadsheets, and project data into cleaner workflows.",
+      details: "Connect models, sheets, data, and spreadsheets into one cleaner flow.",
+      timeline: "2-6 Weeks",
+      tools: ["Excel", "Google Sheets", "Revit", "AutoCAD"]
+    },
+    {
+      title: "Legacy Tool Modernization",
+      description: "Converting older AutoLISP scripts into maintainable C#/.NET applications.",
+      details: "Move aging scripts into cleaner, more maintainable .NET tools.",
+      timeline: "2-5 Weeks",
+      tools: ["AutoLISP", "C#", ".NET", "WPF"]
+    },
+    {
+      title: "Technical Documentation & Training",
+      description: "User guides, onboarding decks, workflow documentation, and support materials for internal tool rollout.",
+      details: "Rollout guides, onboarding decks, and support material for internal adoption.",
+      timeline: "1-3 Weeks",
+      tools: ["Documentation", "Training Decks", "SOPs", "Rollout Guides"]
     }
   ],
   projects: [
