@@ -1,13 +1,6 @@
 
-const [repositoryOwner = "devcadsolutions", repositoryName = "devcad-site"] =
-  process.env.GITHUB_REPOSITORY?.split("/") ?? [];
-const isGithubActions = process.env.GITHUB_ACTIONS === "true";
-const isUserOrOrgPagesRepo = repositoryName.endsWith(".github.io");
-const basePath =
-  isGithubActions && !isUserOrOrgPagesRepo ? `/${repositoryName}` : "";
-const defaultSiteUrl = isGithubActions
-  ? `https://${repositoryOwner}.github.io${basePath}`
-  : "https://devcad.site";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const defaultSiteUrl = "https://devcad.site";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? defaultSiteUrl;
 
 export const siteConfig = {
