@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { siteConfig } from "@/config/site";
 import PortfolioTagBrowser from "@/components/portfolio/PortfolioTagBrowser";
 import { portfolioProjects } from "@/lib/portfolio-projects";
@@ -68,7 +69,19 @@ export default function WorkPage() {
         </div>
       </section>
 
-      <PortfolioTagBrowser projects={portfolioProjects} />
+      <Suspense
+        fallback={
+          <section className="pt-0">
+            <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="section-shell px-6 py-8 sm:px-8">
+                <p className="text-sm text-muted-foreground">Loading portfolio browser...</p>
+              </div>
+            </div>
+          </section>
+        }
+      >
+        <PortfolioTagBrowser projects={portfolioProjects} />
+      </Suspense>
     </>
   );
 }
