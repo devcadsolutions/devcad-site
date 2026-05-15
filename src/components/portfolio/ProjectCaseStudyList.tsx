@@ -56,30 +56,37 @@ export default function ProjectCaseStudyList({ projects, title, intro }: Project
                       ))}
                     </div>
                   </div>
+                  <div className="soft-panel p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary/70">Tags</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <Link
+                          key={tag}
+                          href={`/work?tag=${encodeURIComponent(tag)}`}
+                          className="rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary transition hover:bg-primary hover:text-primary-foreground"
+                        >
+                          {tag}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
                 <div className="space-y-5">
                   <div className="space-y-3">
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary/70">Case Study</p>
                     <h3 className="font-headline text-3xl font-bold tracking-tight text-foreground">{project.title}</h3>
+                    <p className="text-base leading-7 text-muted-foreground">{project.engagement}</p>
                   </div>
 
-                  <div className="grid gap-4 lg:grid-cols-3">
-                    <DetailCard label="Problem" value={project.problem} />
-                    <DetailCard label="Solution" value={project.solution} />
-                    <DetailCard label="Result" value={project.result} />
+                  <div className="grid gap-4 lg:grid-cols-2">
+                    <DetailCard label="Workflow Need" value={project.problem} />
+                    <DetailCard label="Delivery Outcome" value={project.result} />
                   </div>
 
                   <div className="soft-panel p-5">
-                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/75">Key Features</p>
-                    <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                      {project.keyFeatures.slice(0, 4).map((feature) => (
-                        <p key={feature} className="flex items-start gap-2 text-sm leading-6 text-foreground/85">
-                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" />
-                          <span>{feature}</span>
-                        </p>
-                      ))}
-                    </div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/75">Build Approach</p>
+                    <p className="mt-4 text-sm leading-7 text-foreground/85">{project.solution}</p>
                   </div>
 
                   <div>

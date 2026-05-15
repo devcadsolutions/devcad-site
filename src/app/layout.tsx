@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next';
-import { Toaster } from '@/components/ui/toaster';
 import { siteConfig } from '@/config/site';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -63,7 +62,6 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
-        <Toaster />
       </body>
     </html>
   );

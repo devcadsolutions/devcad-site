@@ -15,6 +15,7 @@ type CaseStudyPageProps = {
 const categoryLabels: Record<string, string> = {
   "/work/bim-tools": "BIM Tools",
   "/work/cad-tools": "CAD Tools",
+  "/work/aps": "APS / Cloud Automation",
   "/work/desktop-software": "Desktop Software",
   "/work/web-apps-sites": "Web Apps & Sites",
   "/work/mobile-app": "Mobile App",
@@ -80,6 +81,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               {project.title}
             </h1>
             <p className="text-lg leading-8 text-muted-foreground">{project.overview}</p>
+            <p className="max-w-3xl text-base leading-7 text-foreground/80">{project.engagement}</p>
           </div>
 
           <div className="section-shell overflow-hidden p-5 sm:p-6 lg:p-8">
@@ -110,27 +112,36 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                     ))}
                   </div>
                 </div>
+
+                <div className="soft-panel p-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/75">Tags</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <Link
+                        key={tag}
+                        href={`/work?tag=${encodeURIComponent(tag)}`}
+                        className="rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary transition hover:bg-primary hover:text-primary-foreground"
+                      >
+                        {tag}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               </div>
 
               <div className="space-y-6">
                 <div className="grid gap-4 lg:grid-cols-3">
                   <DetailCard label="Problem" value={project.problem} />
-                  <DetailCard label="Solution" value={project.solution} />
-                  <DetailCard label="Result" value={project.result} />
+                  <DetailCard label="Approach" value={project.solution} />
+                  <DetailCard label="Outcome" value={project.result} />
                 </div>
 
                 <div className="soft-panel p-6">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/75">Project Breakdown</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/75">Project Story</p>
                   <div className="mt-4 space-y-4 text-sm leading-7 text-foreground/85">
-                    <p>
-                      <span className="font-semibold text-foreground">Problem:</span> {project.problem}
-                    </p>
-                    <p>
-                      <span className="font-semibold text-foreground">Solution:</span> {project.solution}
-                    </p>
-                    <p>
-                      <span className="font-semibold text-foreground">Impact:</span> {project.result}
-                    </p>
+                    <p>{project.engagement}</p>
+                    <p>{project.solution}</p>
+                    <p>{project.result}</p>
                   </div>
                 </div>
 

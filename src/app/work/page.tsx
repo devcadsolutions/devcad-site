@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import ProjectCaseStudyList from "@/components/portfolio/ProjectCaseStudyList";
+import PortfolioTagBrowser from "@/components/portfolio/PortfolioTagBrowser";
 import { portfolioProjects } from "@/lib/portfolio-projects";
 
 export const metadata: Metadata = {
@@ -29,7 +29,7 @@ export default function WorkPage() {
               Automation projects for BIM, CAD, and technical teams.
             </h1>
             <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-muted-foreground md:text-xl">
-              Browse by category, then review concise case studies.
+              Browse by category, then review concise case studies across CAD, BIM, APS, and delivery tooling.
             </p>
           </div>
         </div>
@@ -68,15 +68,7 @@ export default function WorkPage() {
         </div>
       </section>
 
-      <section className="pt-0">
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ProjectCaseStudyList
-            projects={portfolioProjects}
-            title="Featured Projects"
-            intro="Problem. Build. Stack. Result."
-          />
-        </div>
-      </section>
+      <PortfolioTagBrowser projects={portfolioProjects} />
     </>
   );
 }

@@ -29,6 +29,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+.next-dev.log
+.next-dev.err.log
 
 # vercel
 .vercel
@@ -46,3 +48,7 @@ firestore-debug.log
 
 # local IDE
 .vs/
+
+# local scratch
+tmp/
+.modified

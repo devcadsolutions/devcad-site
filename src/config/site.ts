@@ -30,6 +30,7 @@ export const siteConfig = {
   portfolioCategories: [
     { href: "/work/cad-tools", label: "CAD Tools" },
     { href: "/work/bim-tools", label: "BIM Tools" },
+    { href: "/work/aps", label: "APS / Cloud Automation" },
     { href: "/work/desktop-software", label: "Desktop Software" },
     { href: "/work/web-apps-sites", label: "Web Apps & Sites" },
     { href: "/work/mobile-app", label: "Mobile App" },

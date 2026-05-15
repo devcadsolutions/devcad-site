@@ -155,6 +155,16 @@
   }
 }
 
+@keyframes filter-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 @layer utilities {
   .section-shell {
     @apply rounded-[2rem] border border-white/60 bg-white/90 shadow-[0_24px_70px_-36px_rgba(79,62,46,0.45)];
@@ -195,6 +205,10 @@
 
   .reveal-right {
     animation-name: reveal-right;
+  }
+
+  .filter-fade {
+    animation: filter-fade 220ms ease-out;
   }
 }
 
