@@ -1,30 +1,19 @@
 import Link from "next/link";
-import Image from "next/image";
+import LightboxImage from "@/components/ui/LightboxImage";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import PageHeroBackground from "@/components/layout/PageHeroBackground";
+import AvatarHero from "@/components/sections/AvatarHero";
 
 export default function Hero() {
     const heroImage = PlaceHolderImages.find(img => img.id === 'hero-image-1');
 
     return (
-        <section>
-            <div className="relative overflow-hidden pt-24 pb-12 md:pt-32 md:pb-16">
-                <PageHeroBackground />
-                <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="text-center reveal-up">
-                        <span className="eyebrow">AEC Automation Specialist</span>
-                        <h1 className="mx-auto mt-5 max-w-5xl font-headline text-4xl font-bold text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
-                            I build automation tools for Revit, AutoCAD, and AEC workflows.
-                        </h1>
-                        <p className="mx-auto mt-5 max-w-4xl text-lg text-muted-foreground md:text-xl">
-                            Specializing in Revit API, AutoCAD .NET, AutoLISP modernization, WPF desktop tools, and Autodesk Platform Services integrations for BIM/CAD teams.
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <>
+            {/* ── Animated avatar hero ── */}
+            <AvatarHero />
 
+            {/* ── What I Build + screenshot grid ── */}
             <div className="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 md:py-16">
                 <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:items-center">
                     <div className="space-y-6 reveal-left" style={{ animationDelay: "120ms" }}>
@@ -53,18 +42,18 @@ export default function Hero() {
                     </div>
                     <div className="flex justify-center reveal-right" style={{ animationDelay: "220ms" }}>
                         {heroImage && (
-                            <Image
+                            <LightboxImage
                                 src={heroImage.imageUrl}
                                 alt={heroImage.description}
                                 data-ai-hint={heroImage.imageHint}
                                 width={1080}
                                 height={1350}
-                                className="w-full max-w-sm rounded-lg object-cover shadow-lg transition-transform hover:scale-105 duration-500"
+                                className="w-full max-w-sm rounded-lg object-cover shadow-lg"
                             />
                         )}
                     </div>
                 </div>
             </div>
-        </section>
+        </>
     );
 }

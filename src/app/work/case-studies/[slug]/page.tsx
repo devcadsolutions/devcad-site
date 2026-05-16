@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import LightboxImage from "@/components/ui/LightboxImage";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Building2, ShieldAlert } from "lucide-react";
@@ -100,13 +101,14 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
             <div className="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
               <div className="space-y-4">
                 {galleryImages.map((img, i) => img && (
-                  <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-white/70 bg-primary/10">
-                    <Image
+                  <div key={i} className="overflow-hidden rounded-[1.5rem] border border-white/70 bg-primary/10">
+                    <LightboxImage
                       src={img.imageUrl}
                       alt={img.description}
                       data-ai-hint={img.imageHint}
-                      fill
-                      className="object-cover"
+                      width={800}
+                      height={600}
+                      className="w-full h-auto object-contain"
                     />
                   </div>
                 ))}

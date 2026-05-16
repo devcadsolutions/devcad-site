@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import LightboxImage from "@/components/ui/LightboxImage";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import ServiceDetails from "@/components/sections/ServiceDetails";
+import WhatIDo from "@/components/sections/WhatIDo";
 import PageHeroBackground from "@/components/layout/PageHeroBackground";
 
 export const metadata: Metadata = {
@@ -29,6 +30,8 @@ export default function ServicesPage() {
         </div>
       </header>
 
+      <WhatIDo />
+
       <section>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="section-shell grid gap-10 px-6 py-8 sm:px-8 md:grid-cols-2 md:items-center">
@@ -41,13 +44,13 @@ export default function ServicesPage() {
             </div>
             <div className="flex justify-center reveal-right">
               {serviceImage && (
-                <Image
+                <LightboxImage
                   src={serviceImage.imageUrl}
                   alt={serviceImage.description}
                   data-ai-hint={serviceImage.imageHint}
                   width={600}
                   height={450}
-                  className="rounded-[1.5rem] object-cover shadow-lg"
+                  className="w-full h-auto rounded-[1.5rem] object-contain shadow-lg"
                 />
               )}
             </div>

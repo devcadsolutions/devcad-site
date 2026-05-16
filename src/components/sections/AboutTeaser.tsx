@@ -1,4 +1,4 @@
-import Image from "next/image";
+import LightboxImage from "@/components/ui/LightboxImage";
 import Link from "next/link";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
@@ -38,13 +38,13 @@ export default function AboutTeaser() {
           </div>
           <div className="order-first lg:order-last">
             {aboutImage && (
-              <Image
+              <LightboxImage
                 src={aboutImage.imageUrl}
                 alt={aboutImage.description}
                 data-ai-hint={aboutImage.imageHint}
                 width={800}
                 height={600}
-                className="w-full aspect-[4/3] rounded-[1.75rem] object-cover shadow-lg"
+                className="w-full h-auto rounded-[1.75rem] object-contain shadow-lg"
               />
             )}
           </div>

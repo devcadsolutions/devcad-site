@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import LightboxImage from "@/components/ui/LightboxImage";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
@@ -60,13 +61,13 @@ export default function DownloadsPage() {
                 </div>
                 <div className="flex justify-center animate-in fade-in slide-in-from-right-8 duration-700 delay-200 fill-mode-both">
                   {digitalGridImage && (
-                      <Image
+                      <LightboxImage
                           src={digitalGridImage.imageUrl}
                           alt={digitalGridImage.description}
                           data-ai-hint={digitalGridImage.imageHint}
                           width={600}
                           height={450}
-                          className="rounded-lg object-cover shadow-lg transition-transform duration-500 hover:scale-105"
+                          className="w-full h-auto rounded-lg object-contain shadow-lg"
                       />
                   )}
                 </div>
@@ -79,13 +80,13 @@ export default function DownloadsPage() {
             <div className="grid md:grid-cols-2 gap-8 items-center mb-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
                 {autolispImage && (
                     <div className="overflow-hidden rounded-lg shadow-lg">
-                      <Image 
+                      <LightboxImage 
                           src={autolispImage.imageUrl}
                           alt={autolispImage.description}
                           data-ai-hint={autolispImage.imageHint}
                           width={500}
                           height={350}
-                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                          className="w-full h-auto object-contain"
                       />
                     </div>
                 )}

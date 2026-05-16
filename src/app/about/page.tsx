@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import LightboxImage from "@/components/ui/LightboxImage";
 import Link from "next/link";
 import { Lightbulb, Target } from "lucide-react";
 import { siteConfig } from "@/config/site";
@@ -55,7 +56,7 @@ export default function AboutPage() {
             <div className="grid lg:grid-cols-[0.95fr_1.1fr]">
               <div className="flex flex-col items-center justify-center gap-6 bg-card px-8 py-12 text-center md:px-12">
                 {profileImage && (
-                  <Image
+                  <LightboxImage
                     src={profileImage.imageUrl}
                     alt={profileImage.description}
                     data-ai-hint={profileImage.imageHint}

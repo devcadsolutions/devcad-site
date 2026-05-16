@@ -17,6 +17,8 @@ export type PortfolioProject = {
   employer?: string;
   /** Shown as a notice when the project was done under employment */
   employerNote?: string;
+  /** Optional live URL — shows 'Open Project' button in lightbox */
+  liveUrl?: string;
 };
 
 export const portfolioProjects: PortfolioProject[] = [

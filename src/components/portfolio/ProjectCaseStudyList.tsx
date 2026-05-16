@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Building2 } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import type { PortfolioProject } from "@/lib/portfolio-projects";
+import LightboxImage from "@/components/ui/LightboxImage";
 
 type ProjectCaseStudyListProps = {
   projects: PortfolioProject[];
@@ -33,13 +33,13 @@ export default function ProjectCaseStudyList({ projects, title, intro }: Project
               <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
                 <div className="space-y-4">
                   {image && (
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-white/70 bg-primary/10">
-                      <Image
+                    <div className="overflow-hidden rounded-[1.5rem] border border-white/70 bg-primary/10">
+                      <LightboxImage
                         src={image.imageUrl}
                         alt={image.description}
-                        data-ai-hint={image.imageHint}
-                        fill
-                        className="object-cover"
+                        width={800}
+                        height={600}
+                        className="w-full h-auto object-contain"
                       />
                     </div>
                   )}
