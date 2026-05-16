@@ -2,23 +2,15 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Building2, ShieldAlert } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { getProjectBySlug, portfolioProjects } from "@/lib/portfolio-projects";
+import { siteConfig } from "@/config/site";
 
 type CaseStudyPageProps = {
   params: Promise<{
     slug: string;
   }>;
-};
-
-const categoryLabels: Record<string, string> = {
-  "/work/bim-tools": "BIM Tools",
-  "/work/cad-tools": "CAD Tools",
-  "/work/aps": "APS / Cloud Automation",
-  "/work/desktop-software": "Desktop Software",
-  "/work/web-apps-sites": "Web Apps & Sites",
-  "/work/mobile-app": "Mobile App",
 };
 
 export function generateStaticParams() {
@@ -52,7 +44,12 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   }
 
   const image = PlaceHolderImages.find((item) => item.id === project.imageId);
-  const categoryLabel = categoryLabels[project.categoryHref] ?? "Portfolio";
+  const galleryImages = project.imageIds
+    ? project.imageIds.map((id) => PlaceHolderImages.find((item) => item.id === id)).filter(Boolean)
+    : image
+    ? [image]
+    : [];
+  const categoryLabel = siteConfig.portfolioCategories.find((c) => c.href === project.categoryHref)?.label ?? "Portfolio";
 
   return (
     <section className="pt-24 md:pt-32">
@@ -77,27 +74,42 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         <div className="space-y-10">
           <div className="max-w-4xl space-y-4">
             <span className="eyebrow">Case Study</span>
-            <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+            <h1 className="font-headline text-4xl font-bold text-foreground sm:text-5xl">
               {project.title}
             </h1>
-            <p className="text-lg leading-8 text-muted-foreground">{project.overview}</p>
-            <p className="max-w-3xl text-base leading-7 text-foreground/80">{project.engagement}</p>
+            {project.employer && (
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/8 px-3 py-1 text-xs font-semibold text-primary">
+                  <Building2 className="h-3 w-3" />
+                  Currently employed at {project.employer}
+                </span>
+              </div>
+            )}
+            <p className="text-lg text-muted-foreground">{project.overview}</p>
+            <p className="max-w-3xl text-base text-foreground/80">{project.engagement}</p>
           </div>
+
+          {project.employerNote && (
+            <div className="flex items-start gap-3 rounded-2xl border border-amber-200/80 bg-amber-50/80 px-5 py-4 text-sm text-amber-900/85">
+              <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
+              <p>{project.employerNote}</p>
+            </div>
+          )}
 
           <div className="section-shell overflow-hidden p-5 sm:p-6 lg:p-8">
             <div className="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
               <div className="space-y-4">
-                {image && (
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-white/70 bg-primary/10">
+                {galleryImages.map((img, i) => img && (
+                  <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-white/70 bg-primary/10">
                     <Image
-                      src={image.imageUrl}
-                      alt={image.description}
-                      data-ai-hint={image.imageHint}
+                      src={img.imageUrl}
+                      alt={img.description}
+                      data-ai-hint={img.imageHint}
                       fill
                       className="object-cover"
                     />
                   </div>
-                )}
+                ))}
 
                 <div className="soft-panel p-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/75">Technologies</p>
@@ -138,7 +150,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
                 <div className="soft-panel p-6">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/75">Project Story</p>
-                  <div className="mt-4 space-y-4 text-sm leading-7 text-foreground/85">
+                  <div className="mt-4 space-y-4 text-sm text-foreground/85">
                     <p>{project.engagement}</p>
                     <p>{project.solution}</p>
                     <p>{project.result}</p>
@@ -149,7 +161,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/75">Key Features</p>
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
                     {project.keyFeatures.map((feature) => (
-                      <p key={feature} className="flex items-start gap-2 text-sm leading-6 text-foreground/85">
+                      <p key={feature} className="flex items-start gap-2 text-sm text-foreground/85">
                         <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" />
                         <span>{feature}</span>
                       </p>
@@ -169,7 +181,7 @@ function DetailCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="soft-panel p-5">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/75">{label}</p>
-      <p className="mt-3 text-sm leading-6 text-foreground/85">{value}</p>
+      <p className="mt-3 text-sm text-foreground/85">{value}</p>
     </div>
   );
 }

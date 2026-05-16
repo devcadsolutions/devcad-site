@@ -12,7 +12,7 @@ export default function AboutTeaser() {
         <div className="section-shell grid items-center gap-12 px-6 py-10 sm:px-8 lg:grid-cols-2 lg:px-12">
           <div className="space-y-5">
             <span className="eyebrow">Why Work With Me</span>
-            <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="font-headline text-3xl font-bold sm:text-4xl">
               Engineering-aware software, built for real production work.
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -21,15 +21,15 @@ export default function AboutTeaser() {
             <div className="grid gap-3 sm:grid-cols-3">
               <div className="soft-panel p-4">
                 <p className="text-sm font-semibold text-foreground">AEC Context</p>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">Built with drafting, BIM, and delivery realities in mind.</p>
+                <p className="mt-2 text-sm text-muted-foreground">Built with drafting, BIM, and delivery realities in mind.</p>
               </div>
               <div className="soft-panel p-4">
                 <p className="text-sm font-semibold text-foreground">Clear Output</p>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">Focused on tools that reduce friction and improve consistency.</p>
+                <p className="mt-2 text-sm text-muted-foreground">Focused on tools that reduce friction and improve consistency.</p>
               </div>
               <div className="soft-panel p-4">
                 <p className="text-sm font-semibold text-foreground">Long-Term Value</p>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">Solutions designed to be easier to maintain and roll out.</p>
+                <p className="mt-2 text-sm text-muted-foreground">Solutions designed to be easier to maintain and roll out.</p>
               </div>
             </div>
             <Button asChild size="lg" variant="outline" className="rounded-full">
@@ -44,7 +44,7 @@ export default function AboutTeaser() {
                 data-ai-hint={aboutImage.imageHint}
                 width={800}
                 height={600}
-                className="rounded-[1.75rem] object-cover shadow-lg"
+                className="w-full aspect-[4/3] rounded-[1.75rem] object-cover shadow-lg"
               />
             )}
           </div>

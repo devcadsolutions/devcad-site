@@ -10,6 +10,21 @@ npm install
 npm run dev
 ```
 
+The dev server runs on **http://localhost:9002** (not the default 3000).
+
+### Windows — portable Node.js (no installer)
+
+If Node.js is not on your PATH, prefix each command with the full path to the portable binary, or add it to your session first:
+
+```powershell
+# PowerShell — set PATH for current session
+$env:PATH += ";C:\path\to\node-win-x64"
+
+cd C:\path\to\devcad-site
+npm install
+npm run dev
+```
+
 ## Production build
 
 ```bash

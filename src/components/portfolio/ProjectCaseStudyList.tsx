@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Building2 } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import type { PortfolioProject } from "@/lib/portfolio-projects";
 
@@ -75,18 +75,20 @@ export default function ProjectCaseStudyList({ projects, title, intro }: Project
                 <div className="space-y-5">
                   <div className="space-y-3">
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary/70">Case Study</p>
-                    <h3 className="font-headline text-3xl font-bold tracking-tight text-foreground">{project.title}</h3>
-                    <p className="text-base leading-7 text-muted-foreground">{project.engagement}</p>
+                    <h3 className="font-headline text-3xl font-bold text-foreground">{project.title}</h3>
+                    {project.employer && (
+                      <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/8 px-3 py-1 text-xs font-semibold text-primary">
+                        <Building2 className="h-3 w-3" />
+                        Currently employed at {project.employer}
+                      </span>
+                    )}
+                    <p className="text-base text-muted-foreground">{project.engagement}</p>
                   </div>
 
-                  <div className="grid gap-4 lg:grid-cols-2">
-                    <DetailCard label="Workflow Need" value={project.problem} />
-                    <DetailCard label="Delivery Outcome" value={project.result} />
-                  </div>
-
-                  <div className="soft-panel p-5">
-                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/75">Build Approach</p>
-                    <p className="mt-4 text-sm leading-7 text-foreground/85">{project.solution}</p>
+                  <div className="grid gap-4 lg:grid-cols-3">
+                    <DetailCard label="Problem" value={project.problem} />
+                    <DetailCard label="Approach" value={project.solution} />
+                    <DetailCard label="Outcome" value={project.result} />
                   </div>
 
                   <div>
@@ -112,7 +114,7 @@ function DetailCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="soft-panel p-4">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/75">{label}</p>
-      <p className="mt-2 text-sm leading-6 text-foreground/85">{value}</p>
+      <p className="mt-2 text-sm text-foreground/85">{value}</p>
     </div>
   );
 }

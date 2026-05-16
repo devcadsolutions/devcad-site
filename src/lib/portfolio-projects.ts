@@ -11,6 +11,12 @@ export type PortfolioProject = {
   technologies: string[];
   keyFeatures: string[];
   imageId: string;
+  /** Additional image IDs shown as a gallery in the case study */
+  imageIds?: string[];
+  /** Employer/client context chip, e.g. "Cracknell" */
+  employer?: string;
+  /** Shown as a notice when the project was done under employment */
+  employerNote?: string;
 };
 
 export const portfolioProjects: PortfolioProject[] = [
@@ -198,8 +204,10 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     slug: "revit-link-manager-reference-workflow-tool",
-    title: "Revit Link Manager / Reference Workflow Tool",
+    title: "Revit Link Manager",
     categoryHref: "/work/bim-tools",
+    employer: "Cracknell",
+    employerNote: "This project was developed during my employment at Cracknell. Images and context are owned by Cracknell. Source code is proprietary and not available. Included here for portfolio purposes only.",
     overview:
       "Built and researched workflows for detecting, managing, and reloading Revit links, including cloud-hosted and local reference scenarios.",
     engagement:
@@ -219,7 +227,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Helps troubleshoot missing or unresolved references",
       "Assists with ACC vs local Desktop Connector workflows",
     ],
-    imageId: "about-image",
+    imageId: "cracknell-extract-links",
   },
   {
     slug: "autocad-tool-palette-cad-productivity-tools",
@@ -251,6 +259,8 @@ export const portfolioProjects: PortfolioProject[] = [
     slug: "revit-toposolid-topography-alignment-tool",
     title: "Revit Toposolid / Topography Alignment Tool",
     categoryHref: "/work/bim-tools",
+    employer: "Cracknell",
+    employerNote: "This project was developed during my employment at Cracknell. Images and context are owned by Cracknell. Source code is proprietary and not available. Included here for portfolio purposes only.",
     overview:
       "Designed automation logic for aligning Revit toposolids and topography by projecting points from one surface to another, supporting landscape modeling workflows.",
     engagement:
@@ -269,7 +279,148 @@ export const portfolioProjects: PortfolioProject[] = [
       "Revit 2024/2026 compatibility considerations",
       "Landscape modeling workflow support",
     ],
-    imageId: "excel-dash-1",
+    imageId: "cracknell-aligntopo-1",
+    imageIds: ["cracknell-aligntopo-1", "cracknell-aligntopo-2"],
+  },
+  {
+    slug: "cracknell-import-family-via-cad",
+    title: "Import Family via CAD",
+    categoryHref: "/work/bim-tools",
+    employer: "Cracknell",
+    employerNote: "This project was developed during my employment at Cracknell. Images and context are owned by Cracknell. Source code is proprietary and not available. Included here for portfolio purposes only.",
+    overview:
+      "Built a Revit tool that reads CAD geometry and automatically places the corresponding Revit families at the correct positions, eliminating manual placement from CAD references.",
+    engagement:
+      "A CAD-to-Revit placement utility for the Cracknell team that turns CAD block positions into properly placed Revit families in one step.",
+    problem:
+      "Placing Revit families manually based on CAD drawings was slow and error-prone, especially on large landscape projects with many repeated elements.",
+    solution:
+      "Developed a tool that reads CAD geometry or block references and uses their positions to automatically place the matching Revit family instances in the model.",
+    result:
+      "Significantly reduced family placement time and improved positional accuracy when working from CAD source drawings.",
+    tags: ["Revit", "BIM", "CAD Import", "Family Placement", "Landscape", "Automation"],
+    technologies: ["C#", "Revit API", "CAD Import", "WPF"],
+    keyFeatures: [
+      "Reads CAD geometry for placement positions",
+      "Automatically places Revit family instances",
+      "Handles repeated elements across large drawings",
+      "Reduces manual placement steps",
+      "Improves positional accuracy from CAD source",
+    ],
+    imageId: "cracknell-add-family-1",
+    imageIds: ["cracknell-add-family-1", "cracknell-add-family-2"],
+  },
+  {
+    slug: "cracknell-import-topo-from-cad",
+    title: "Import Topo from CAD",
+    categoryHref: "/work/bim-tools",
+    employer: "Cracknell",
+    employerNote: "This project was developed during my employment at Cracknell. Images and context are owned by Cracknell. Source code is proprietary and not available. Included here for portfolio purposes only.",
+    overview:
+      "Built a Revit tool that reads contour lines or point data from a linked CAD drawing and generates a Revit toposolid from the extracted geometry.",
+    engagement:
+      "A CAD-to-toposolid conversion tool that removes the manual effort of recreating terrain from CAD contour data inside Revit.",
+    problem:
+      "Recreating site topography from CAD contour drawings in Revit required tedious manual point placement that was slow and inconsistent.",
+    solution:
+      "Developed a tool that reads CAD contour geometry from a linked DWG and converts it directly into a Revit toposolid with the correct elevation data.",
+    result:
+      "Reduced topography creation time significantly and produced more accurate terrain models aligned to the original CAD survey data.",
+    tags: ["Revit", "BIM", "CAD Import", "Topography", "Landscape", "Automation"],
+    technologies: ["C#", "Revit API", "CAD Import", "Geometry API", "WPF"],
+    keyFeatures: [
+      "Reads CAD contour lines from linked DWG",
+      "Extracts elevation data from CAD geometry",
+      "Generates Revit toposolid automatically",
+      "Maintains accuracy from original survey data",
+      "Removes manual point placement steps",
+    ],
+    imageId: "cracknell-import-topo-1",
+    imageIds: ["cracknell-import-topo-1", "cracknell-import-topo-2"],
+  },
+  {
+    slug: "cracknell-cleanup-points",
+    title: "Clean-up Points",
+    categoryHref: "/work/bim-tools",
+    employer: "Cracknell",
+    employerNote: "This project was developed during my employment at Cracknell. Images and context are owned by Cracknell. Source code is proprietary and not available. Included here for portfolio purposes only.",
+    overview:
+      "Built a Revit tool for cleaning up redundant or misplaced topography points, improving surface accuracy and reducing noise in landscape site models.",
+    engagement:
+      "A geometry cleanup utility for site teams dealing with messy imported point data that caused inaccurate toposolid surfaces.",
+    problem:
+      "Imported CAD topography often brought in duplicate, stacked, or off-grid points that made Revit surfaces unreliable.",
+    solution:
+      "Developed a point cleanup tool that identifies and removes problematic points from toposolid geometry to produce cleaner, more accurate surfaces.",
+    result:
+      "Improved surface quality, reduced manual point editing, and sped up the topography cleanup step in the landscape BIM workflow.",
+    tags: ["Revit", "BIM", "Topography", "Geometry", "Cleanup", "Landscape"],
+    technologies: ["C#", "Revit API", "Geometry API", "WPF"],
+    keyFeatures: [
+      "Identifies duplicate and stacked points",
+      "Removes off-grid or noisy topography points",
+      "Improves toposolid surface accuracy",
+      "Reduces manual point editing",
+      "Integrates into landscape BIM workflow",
+    ],
+    imageId: "cracknell-cleanup-points",
+    imageIds: ["cracknell-cleanup-points"],
+  },
+  {
+    slug: "cracknell-revit-toolbar",
+    title: "Cracknell Revit Toolbar",
+    categoryHref: "/work/bim-tools",
+    employer: "Cracknell",
+    employerNote: "This project was developed during my employment at Cracknell. Images and context are owned by Cracknell. Source code is proprietary and not available. Included here for portfolio purposes only.",
+    overview:
+      "Designed and built the full custom Revit ribbon toolbar for Cracknell, housing all internal BIM automation tools under a single consistent interface.",
+    engagement:
+      "A ribbon UI that acts as the home base for all Cracknell internal Revit tools, making them discoverable and easy to access for the whole production team.",
+    problem:
+      "As more internal tools were built, the team had no central place to find and launch them — tools were scattered and inconsistently accessible.",
+    solution:
+      "Created a custom Revit ribbon tab with organized panels for each tool category, giving the team a clean, branded entry point for all internal automation.",
+    result:
+      "Unified tool access under one interface, improved team adoption, and made onboarding new tools easier going forward.",
+    tags: ["Revit", "BIM", "Ribbon UI", "Internal Tools", "Tooling"],
+    technologies: ["C#", "Revit API", "Revit Ribbon API", "WPF"],
+    keyFeatures: [
+      "Custom Revit ribbon tab",
+      "Organized panels per tool category",
+      "Branded internal tool interface",
+      "Single access point for all Cracknell tools",
+      "Scalable for future tool additions",
+    ],
+    imageId: "cracknell-revit-toolbar",
+    imageIds: ["cracknell-revit-toolbar"],
+  },
+  {
+    slug: "cracknell-detail-legend",
+    title: "Detail Legend",
+    categoryHref: "/work/bim-tools",
+    employer: "Cracknell",
+    employerNote: "This project was developed during my employment at Cracknell. Images and context are owned by Cracknell. Source code is proprietary and not available. Included here for portfolio purposes only.",
+    overview:
+      "Built a Revit tool to automate the creation and population of detail legends, reducing the manual effort of maintaining consistent annotation across landscape drawing sets.",
+    engagement:
+      "A drafting automation tool for the Cracknell production team that removes the repetitive work of building and updating detail legends on deliverable sheets.",
+    problem:
+      "Creating and keeping detail legends consistent across large drawing sets was time-consuming and prone to manual error.",
+    solution:
+      "Developed a tool that reads detail components from the model and generates or updates legend views automatically, maintaining consistency with minimal user input.",
+    result:
+      "Reduced legend setup time, improved annotation consistency across sheets, and removed a repetitive manual step from the Cracknell drawing workflow.",
+    tags: ["Revit", "BIM", "Legends", "Annotation", "Automation", "Landscape"],
+    technologies: ["C#", "Revit API", "WPF"],
+    keyFeatures: [
+      "Automated legend view generation",
+      "Reads detail components from the model",
+      "Consistent annotation across drawing sets",
+      "Reduces manual legend setup steps",
+      "Integrates into Cracknell sheet workflow",
+    ],
+    imageId: "cracknell-detail-legend",
+    imageIds: ["cracknell-detail-legend"],
   },
   {
     slug: "structural-retrofit-estimator",

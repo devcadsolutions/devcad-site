@@ -45,7 +45,7 @@ export default function ContactPage() {
         </div>
         <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center animate-in fade-in slide-in-from-top-4 duration-700">
-            <h1 className="font-headline text-4xl font-bold tracking-tighter text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="font-headline text-4xl font-bold text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
               DevCAD Solutions
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground md:text-xl">
@@ -57,7 +57,7 @@ export default function ContactPage() {
 
       <section>
         <div className="container mx-auto max-w-2xl px-4 text-center animate-in fade-in slide-in-from-bottom-8 duration-700 sm:px-6 lg:px-8">
-          <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Get in Touch</h2>
+          <h2 className="font-headline text-3xl font-bold sm:text-4xl">Get in Touch</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Reach out through any of the platforms below.
           </p>

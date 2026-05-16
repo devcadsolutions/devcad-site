@@ -46,7 +46,7 @@ export default function PortfolioTagBrowser({ projects }: PortfolioTagBrowserPro
           <div className="section-shell px-6 py-8 sm:px-8">
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div className="max-w-3xl space-y-3">
-                <h2 className="font-headline text-3xl font-bold tracking-tight">Browse by Tag</h2>
+                <h2 className="font-headline text-3xl font-bold">Browse by Tag</h2>
                 <p className="text-muted-foreground">
                   Jump straight into the kinds of projects you want to review.
                 </p>

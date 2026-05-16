@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 
 export default function CtaBand() {
   return (
@@ -10,13 +11,10 @@ export default function CtaBand() {
           <div className="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_center,hsl(39_44%_76%_/_0.22),transparent_65%)]" />
           <div className="relative grid gap-8 lg:grid-cols-[1.4fr_0.8fr] lg:items-end">
             <div className="space-y-4 reveal-left">
-              <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground/80">
-                Contact CTA
-              </span>
-              <h2 className="font-headline text-3xl font-bold tracking-tight md:text-4xl">
+              <h2 className="font-headline text-3xl font-bold md:text-4xl">
                 Ready to talk about your workflow?
               </h2>
-              <p className="max-w-2xl text-base leading-7 text-primary-foreground/78 md:text-lg">
+              <p className="max-w-2xl text-base text-primary-foreground/78 md:text-lg">
                 Reach out directly by Gmail or LinkedIn and I&apos;ll get back to you.
               </p>
             </div>
@@ -34,7 +32,7 @@ export default function CtaBand() {
                 className="rounded-full border-white/35 bg-transparent px-6 text-base text-primary-foreground hover:bg-white/10 hover:text-primary-foreground"
               >
                 <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=devcadsolutions@gmail.com"
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.links.email}`}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -43,15 +41,6 @@ export default function CtaBand() {
                 </a>
               </Button>
               <div className="flex gap-3 lg:justify-end">
-                <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=devcadsolutions@gmail.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/30 bg-white/10 text-primary-foreground transition hover:bg-white/18"
-                  aria-label="Email DevCAD Solutions on Gmail"
-                >
-                  <Mail className="h-5 w-5" />
-                </a>
                 <a
                   href="https://www.linkedin.com/in/engrjvb/"
                   target="_blank"

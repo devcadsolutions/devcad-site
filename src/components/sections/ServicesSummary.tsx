@@ -9,6 +9,15 @@ const serviceAccents = [
   "bg-[#e8e2d5] text-[#6c5c3e]",
 ];
 
+const serviceLabels = [
+  "Revit API",
+  "AutoCAD",
+  "APS / Cloud",
+  "BIM Workflow",
+  "Modernization",
+  "Documentation",
+];
+
 export default function ServicesSummary() {
   return (
     <section>
@@ -30,10 +39,10 @@ export default function ServicesSummary() {
                 style={{ animationDelay: `${100 + index * 70}ms` }}
               >
                 <div className={`inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] ${serviceAccents[index % serviceAccents.length]}`}>
-                  Core Service
+                  {serviceLabels[index % serviceLabels.length]}
                 </div>
                 <h3 className="mt-4 font-headline text-xl font-semibold text-foreground">{service.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{service.description}</p>
+                <p className="mt-3 flex-1 text-sm text-muted-foreground">{service.description}</p>
                 <div className="mt-6 border-t border-border/70 pt-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/75">Focus Stack</p>
                   <div className="mt-3 flex flex-wrap gap-2">

@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { siteConfig } from "@/config/site";
 import PortfolioTagBrowser from "@/components/portfolio/PortfolioTagBrowser";
 import { portfolioProjects } from "@/lib/portfolio-projects";
+import PageHeroBackground from "@/components/layout/PageHeroBackground";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -11,25 +12,19 @@ export const metadata: Metadata = {
 };
 
 export default function WorkPage() {
-  const portfolioCategories = siteConfig.portfolioCategories;
+  const portfolioCategories = siteConfig.portfolioCategories.filter((c) => !c.hidden);
 
   return (
     <>
       <header className="relative overflow-hidden pt-24 pb-12 md:pt-32 md:pb-20">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 top-0 h-full bg-cover bg-center reveal-up"
-          style={{ backgroundImage: `url('${siteConfig.basePath}/legacy/page-header.jpg')` }}
-        >
-          <div className="absolute inset-0 bg-background/82" />
-        </div>
+        <PageHeroBackground opacity="82" />
         <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center reveal-up">
             <span className="eyebrow">Portfolio</span>
-            <h1 className="mx-auto mt-5 max-w-5xl font-headline text-4xl font-bold tracking-tighter text-foreground sm:text-5xl md:text-6xl">
+            <h1 className="mx-auto mt-5 max-w-5xl font-headline text-4xl font-bold text-foreground sm:text-5xl md:text-6xl">
               Automation projects for BIM, CAD, and technical teams.
             </h1>
-            <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-muted-foreground md:text-xl">
+            <p className="mx-auto mt-5 max-w-3xl text-lg text-muted-foreground md:text-xl">
               Browse by category, then review concise case studies across CAD, BIM, APS, and delivery tooling.
             </p>
           </div>
@@ -41,7 +36,7 @@ export default function WorkPage() {
           <div className="section-shell px-6 py-8 sm:px-8">
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div className="max-w-2xl space-y-3">
-                <h2 className="font-headline text-3xl font-bold tracking-tight">Portfolio Categories</h2>
+                <h2 className="font-headline text-3xl font-bold">Portfolio Categories</h2>
                 <p className="text-muted-foreground">Pick a lane.</p>
               </div>
             </div>

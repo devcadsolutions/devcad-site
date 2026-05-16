@@ -35,7 +35,7 @@ export default function DownloadsPage() {
         </div>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
             <div className="text-center animate-in fade-in slide-in-from-top-4 duration-700">
-                <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-foreground">
+                <h1 className="font-headline text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl text-foreground">
                     DevCAD Solutions
                 </h1>
                 <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground md:text-xl">

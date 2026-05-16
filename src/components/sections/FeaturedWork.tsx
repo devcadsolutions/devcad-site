@@ -4,7 +4,17 @@ import { Button } from "@/components/ui/button";
 import ProjectCaseStudyList from "@/components/portfolio/ProjectCaseStudyList";
 import { portfolioProjects } from "@/lib/portfolio-projects";
 
+const FEATURED_SLUGS = [
+  "revit-toposolid-topography-alignment-tool",
+  "cracknell-import-family-via-cad",
+  "cracknell-revit-toolbar",
+];
+
 export default function FeaturedWork() {
+  const featured = FEATURED_SLUGS
+    .map((slug) => portfolioProjects.find((p) => p.slug === slug))
+    .filter(Boolean) as typeof portfolioProjects;
+
   return (
     <section>
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -26,7 +36,7 @@ export default function FeaturedWork() {
             </Button>
           </div>
 
-          <ProjectCaseStudyList projects={portfolioProjects} />
+          <ProjectCaseStudyList projects={featured} />
         </div>
       </div>
     </section>

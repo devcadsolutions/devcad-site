@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download } from "lucide-react";
-import { siteConfig } from "@/config/site";
+import { ArrowRight } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import PageHeroBackground from "@/components/layout/PageHeroBackground";
 
 export default function Hero() {
     const heroImage = PlaceHolderImages.find(img => img.id === 'hero-image-1');
@@ -11,20 +11,14 @@ export default function Hero() {
     return (
         <section>
             <div className="relative overflow-hidden pt-24 pb-12 md:pt-32 md:pb-16">
-                <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-cover bg-center reveal-up"
-                    style={{ backgroundImage: `url('${siteConfig.basePath}/legacy/page-header.jpg')` }}
-                >
-                    <div className="absolute inset-0 bg-background/78"></div>
-                </div>
+                <PageHeroBackground />
                 <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="text-center reveal-up">
-                        <span className="eyebrow">DevCAD Solutions</span>
-                        <h1 className="mx-auto mt-5 max-w-5xl font-headline text-4xl font-bold tracking-tighter text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+                        <span className="eyebrow">AEC Automation Specialist</span>
+                        <h1 className="mx-auto mt-5 max-w-5xl font-headline text-4xl font-bold text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
                             I build automation tools for Revit, AutoCAD, and AEC workflows.
                         </h1>
-                        <p className="mx-auto mt-5 max-w-4xl text-lg leading-8 text-muted-foreground md:text-xl">
+                        <p className="mx-auto mt-5 max-w-4xl text-lg text-muted-foreground md:text-xl">
                             Specializing in Revit API, AutoCAD .NET, AutoLISP modernization, WPF desktop tools, and Autodesk Platform Services integrations for BIM/CAD teams.
                         </p>
                     </div>
@@ -35,7 +29,7 @@ export default function Hero() {
                 <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:items-center">
                     <div className="space-y-6 reveal-left" style={{ animationDelay: "120ms" }}>
                         <span className="eyebrow">What I Build</span>
-                        <p className="max-w-xl text-base leading-7 text-muted-foreground md:text-lg">
+                        <p className="max-w-xl text-base text-muted-foreground md:text-lg">
                             Custom tools for BIM and CAD teams that want less manual work, cleaner delivery, and more reliable internal workflows.
                         </p>
                         <div className="flex flex-wrap gap-2 text-sm">
@@ -54,12 +48,6 @@ export default function Hero() {
                             </Button>
                             <Button asChild size="lg" variant="outline" className="rounded-full border-2 bg-transparent border-foreground text-foreground hover:bg-foreground hover:text-background transition-all duration-300">
                                 <Link href="/contact">Contact Me</Link>
-                            </Button>
-                            <Button asChild variant="ghost" size="lg" className="rounded-full transition-all duration-300 hover:bg-primary/10">
-                                <Link href="/downloads">
-                                    <Download className="mr-2 h-4 w-4" />
-                                    Download CV / Portfolio
-                                </Link>
                             </Button>
                         </div>
                     </div>

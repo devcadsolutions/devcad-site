@@ -100,12 +100,69 @@
   * {
     @apply border-border;
   }
+
+  /* ── Typography baseline ─────────────────────────────────────────────── */
+  html {
+    /* Smooth scrolling for anchor jumps */
+    scroll-behavior: smooth;
+    /* Prevent font-size inflation on mobile */
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
     @apply bg-background text-foreground;
     background-image:
       radial-gradient(circle at top, hsl(34 52% 90% / 0.65), transparent 38%),
       linear-gradient(180deg, hsl(35 27% 98%), hsl(32 26% 94%));
+
+    /* Body: 1.4× line-height, neutral letter-spacing */
+    line-height: 1.4;
+    letter-spacing: 0em;
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  /* Headings: 1.2× line-height, −2% letter-spacing */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  /* Body copy elements: 1.4× line-height */
+  p, li, blockquote, figcaption, label, td, th {
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  /* ── Interactive elements ────────────────────────────────────────────── */
+  a {
+    transition: color 200ms ease, opacity 200ms ease;
+  }
+
+  button, [role="button"] {
+    /* Touch-friendly minimum target */
+    min-height: 44px;
+    min-width: 44px;
+    cursor: pointer;
+    transition: background-color 180ms ease, color 180ms ease,
+                box-shadow 180ms ease, opacity 180ms ease,
+                transform 120ms ease;
+  }
+
+  button:active, [role="button"]:active {
+    transform: scale(0.98);
+  }
+
+  /* Visible keyboard focus ring */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: var(--radius);
+  }
+
+  /* ── Layout ──────────────────────────────────────────────────────────── */
   section {
     @apply w-full py-12 md:py-16 lg:py-20;
   }
@@ -166,6 +223,7 @@
 }
 
 @layer utilities {
+  /* ── Structural shells ───────────────────────────────────────────────── */
   .section-shell {
     @apply rounded-[2rem] border border-white/60 bg-white/90 shadow-[0_24px_70px_-36px_rgba(79,62,46,0.45)];
   }
@@ -174,18 +232,34 @@
     @apply rounded-[1.5rem] border border-white/70 bg-white/95 shadow-[0_18px_40px_-30px_rgba(79,62,46,0.4)];
   }
 
+  /* ── Labels & eyebrows ───────────────────────────────────────────────── */
   .eyebrow {
     @apply inline-flex items-center rounded-full border border-primary/15 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-primary/80;
+    /* Override body letter-spacing for this intentional label treatment */
+    letter-spacing: 0.22em;
   }
 
+  /* ── Headings ────────────────────────────────────────────────────────── */
   .section-heading {
-    @apply font-headline text-3xl font-bold tracking-tight text-foreground md:text-4xl;
+    /* Inherits h2 line-height:1.2 and letter-spacing:−0.02em from base */
+    @apply font-headline text-3xl font-bold text-foreground md:text-4xl;
   }
 
+  /* ── Body copy ───────────────────────────────────────────────────────── */
   .section-copy {
-    @apply text-base leading-7 text-muted-foreground md:text-lg;
+    /* Inherits p line-height:1.4 from base */
+    @apply text-base text-muted-foreground md:text-lg;
   }
 
+  /* ── Card hover ──────────────────────────────────────────────────────── */
+  .card-interactive {
+    @apply transition-all duration-200 ease-out;
+  }
+  .card-interactive:hover {
+    @apply -translate-y-0.5 shadow-[0_28px_60px_-28px_rgba(79,62,46,0.35)];
+  }
+
+  /* ── Animations ──────────────────────────────────────────────────────── */
   .reveal-up,
   .reveal-left,
   .reveal-right {

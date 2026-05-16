@@ -1,17 +1,18 @@
+﻿"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { MapPin, Mail, MoveRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { cn } from "@/lib/utils";
 
 export default function Footer() {
+  const pathname = usePathname();
   const footerAvatar = PlaceHolderImages.find((img) => img.id === "footer-avatar");
   const footerLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About Me" },
-    { href: "/services", label: "Services" },
-    { href: "/work", label: "Portfolio" },
-    { href: "/downloads", label: "Downloads" },
+    ...siteConfig.navLinks,
     { href: "/contact", label: "Contact" },
   ];
 
@@ -34,8 +35,8 @@ export default function Footer() {
                   />
                 )}
                 <div className="max-w-xl space-y-3">
-                  <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground">Software built around real workflow friction.</h2>
-                  <p className="text-sm leading-7 text-muted-foreground sm:text-base">
+                  <h2 className="font-headline text-3xl font-bold text-foreground">Software built around real workflow friction.</h2>
+                  <p className="text-sm text-muted-foreground sm:text-base">
                     I help architects, engineers, and technical teams turn repetitive process pain into cleaner tools,
                     better automation, and more reliable day-to-day delivery.
                   </p>
@@ -74,15 +75,19 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="rounded-full border border-transparent px-3 py-1.5 transition hover:border-border hover:bg-white/65 hover:text-foreground"
+                  className={cn(
+                    "rounded-full border px-3 py-1.5 transition hover:border-border hover:bg-white/65 hover:text-foreground",
+                    pathname === link.href
+                      ? "border-border bg-white/80 font-semibold text-foreground"
+                      : "border-transparent text-muted-foreground"
+                  )}
                 >
                   {link.label}
                 </Link>
               ))}
             </nav>
             <div className="text-sm text-muted-foreground">
-              <p>Design created by {siteConfig.name}</p>
-              <p>&copy; 2025 {siteConfig.name}. All rights reserved.</p>
+              <p>&copy; 2025 {siteConfig.name} · Design by {siteConfig.name}. All rights reserved.</p>
             </div>
           </div>
         </div>
@@ -90,3 +95,4 @@ export default function Footer() {
     </footer>
   );
 }
+

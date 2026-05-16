@@ -11,7 +11,7 @@ export default function ServiceDetails() {
             <div className="lg:col-span-1">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary/70">Service {index + 1}</p>
               <h3 className="mt-3 font-headline text-2xl font-bold transition-colors hover:text-primary">{service.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p>
+              <p className="mt-3 text-sm text-muted-foreground">{service.description}</p>
             </div>
             <div className="lg:col-span-2">
               <Card className="soft-panel border-white/70 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(79,62,46,0.45)]">
@@ -20,7 +20,7 @@ export default function ServiceDetails() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div>
-                    <p className="text-sm leading-6 text-muted-foreground">{service.details}</p>
+                    <p className="text-sm text-muted-foreground">{service.description}</p>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>

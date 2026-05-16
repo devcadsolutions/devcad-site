@@ -80,7 +80,7 @@ export default function Header() {
                     onMouseLeave={() => setIsPortfolioMenuOpen(false)}
                     onCloseAutoFocus={(event) => event.preventDefault()}
                   >
-                    {siteConfig.portfolioCategories.map((category) => (
+                    {siteConfig.portfolioCategories.filter((c) => !c.hidden).map((category) => (
                       <DropdownMenuItem key={category.href} asChild>
                         <Link
                           href={category.href}
@@ -128,7 +128,7 @@ export default function Header() {
                   <div key={link.href} className="flex flex-col space-y-2">
                     <NavLink href={link.href}>{link.label}</NavLink>
                     {link.href === "/work" &&
-                      siteConfig.portfolioCategories.map((category) => (
+                      siteConfig.portfolioCategories.filter((c) => !c.hidden).map((category) => (
                         <Link
                           key={category.href}
                           href={category.href}

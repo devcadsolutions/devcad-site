@@ -45,7 +45,7 @@ function IconCard({ name, logo }: { name: string; logo: string }) {
             className="max-h-full w-full object-contain"
           />
         </div>
-        <span className="mt-4 text-center text-sm font-medium leading-tight text-muted-foreground opacity-0 transition-all duration-300 ease-out group-hover:translate-y-1 group-hover:opacity-100">
+        <span className="mt-4 text-center text-sm font-medium leading-tight text-muted-foreground transition-all duration-300 ease-out group-hover:translate-y-1">
           {name}
         </span>
       </div>
@@ -56,7 +56,7 @@ function IconCard({ name, logo }: { name: string; logo: string }) {
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <div className="inline-block bg-primary text-primary-foreground py-2 px-8 rounded-md mb-8">
-      <h2 className="font-headline text-3xl font-bold tracking-tight">
+      <h2 className="font-headline text-3xl font-bold">
         {children}
       </h2>
     </div>

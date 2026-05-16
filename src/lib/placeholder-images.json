@@ -113,6 +113,66 @@
       "description": "Legacy AutoLISP loading screenshot from the previous DevCAD website.",
       "imageUrl": "/legacy/autolisp-load-dialog.png",
       "imageHint": "autolisp loading"
+    },
+    {
+      "id": "cracknell-aligntopo-1",
+      "description": "Revit toposolid alignment — point projection with blue dots on purple pad geometry.",
+      "imageUrl": "/cracknell/aligntopo-1.png",
+      "imageHint": "toposolid alignment points"
+    },
+    {
+      "id": "cracknell-aligntopo-2",
+      "description": "Revit toposolid alignment — pink terrain surface separated from purple pad before alignment.",
+      "imageUrl": "/cracknell/aligntopo-2.png",
+      "imageHint": "terrain surface alignment"
+    },
+    {
+      "id": "cracknell-extract-links",
+      "description": "Revit Link Manager — Extract Links WPF dialog showing linked RVT and DWG file list.",
+      "imageUrl": "/cracknell/extract-links.png",
+      "imageHint": "revit link manager dialog"
+    },
+    {
+      "id": "cracknell-revit-toolbar",
+      "description": "Cracknell custom Revit ribbon toolbar showing internal BIM tools.",
+      "imageUrl": "/cracknell/cracknell-revit-toolbar.png",
+      "imageHint": "revit ribbon toolbar"
+    },
+    {
+      "id": "cracknell-import-topo-1",
+      "description": "Import Topography from CAD — step 1 showing CAD source geometry.",
+      "imageUrl": "/cracknell/import-topo-from-cad-1.png",
+      "imageHint": "import topography cad step 1"
+    },
+    {
+      "id": "cracknell-import-topo-2",
+      "description": "Import Topography from CAD — step 2 showing resulting Revit toposolid.",
+      "imageUrl": "/cracknell/import-topo-from-cad-2.png",
+      "imageHint": "import topography cad step 2"
+    },
+    {
+      "id": "cracknell-add-family-1",
+      "description": "Add Family via CAD — step 1 showing CAD geometry selection.",
+      "imageUrl": "/cracknell/add-family-via-cad-1.png",
+      "imageHint": "add family cad step 1"
+    },
+    {
+      "id": "cracknell-add-family-2",
+      "description": "Add Family via CAD — step 2 showing placed Revit families from CAD.",
+      "imageUrl": "/cracknell/add-family-via-cad-2.png",
+      "imageHint": "add family cad step 2"
+    },
+    {
+      "id": "cracknell-cleanup-points",
+      "description": "Cracknell Clean-up Points tool — Revit point cleanup workflow.",
+      "imageUrl": "/cracknell/cleanup-points.png",
+      "imageHint": "revit cleanup points"
+    },
+    {
+      "id": "cracknell-detail-legend",
+      "description": "Cracknell Detail Legend tool — Revit detail legend automation.",
+      "imageUrl": "/cracknell/detail-legend.png",
+      "imageHint": "revit detail legend"
     }
   ]
 }
