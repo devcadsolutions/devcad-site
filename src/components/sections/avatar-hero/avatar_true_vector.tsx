@@ -52,34 +52,28 @@ export default function AvatarTrueVector({ className }: AvatarTrueVectorProps) {
           clipRule="evenodd"
         />
       </g>
-      <g
-        id="eyes"
-        style={{
-          transformBox: "fill-box",
-          transformOrigin: "50% 50%",
-        }}
-      >
-        <g transform="translate(432 415)">
-          <g
-            data-pupil
-            style={{
-              transformBox: "fill-box",
-              transformOrigin: "50% 50%",
-            }}
-          >
-            <circle cx="0" cy="0" r="13.5" fill="#4a347b" />
-          </g>
+      <g id="eyes">
+        <ellipse cx="430" cy="420" rx="20" ry="16" fill="#f8fbfd" opacity="0.96" />
+        <ellipse cx="579" cy="418" rx="20" ry="16" fill="#f8fbfd" opacity="0.96" />
+        <g
+          id="pupil-left"
+          style={{
+            transformBox: "fill-box",
+            transformOrigin: "50% 50%",
+          }}
+        >
+          <circle cx="430" cy="420" r="8.5" fill="#1f2a37" />
+          <circle cx="433" cy="417" r="2.2" fill="#ffffff" fillOpacity="0.8" />
         </g>
-        <g transform="translate(583 415)">
-          <g
-            data-pupil
-            style={{
-              transformBox: "fill-box",
-              transformOrigin: "50% 50%",
-            }}
-          >
-            <circle cx="0" cy="0" r="13.5" fill="#4a347b" />
-          </g>
+        <g
+          id="pupil-right"
+          style={{
+            transformBox: "fill-box",
+            transformOrigin: "50% 50%",
+          }}
+        >
+          <circle cx="579" cy="418" r="8.5" fill="#1f2a37" />
+          <circle cx="582" cy="415" r="2.2" fill="#ffffff" fillOpacity="0.8" />
         </g>
       </g>
       <g id="eyebrows" />
