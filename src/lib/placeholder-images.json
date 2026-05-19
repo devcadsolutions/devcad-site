@@ -173,6 +173,126 @@
       "description": "Cracknell Detail Legend tool — Revit detail legend automation.",
       "imageUrl": "/cracknell/detail-legend.png",
       "imageHint": "revit detail legend"
+    },
+    {
+      "id": "the-coffee-pup-pc-home",
+      "description": "The Coffee Pup desktop home screen with hero, calls to action, announcements, and best sellers.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-pc/mainmenu01.png",
+      "imageHint": "coffee ordering desktop home"
+    },
+    {
+      "id": "the-coffee-pup-pc-home-best-sellers",
+      "description": "The Coffee Pup desktop home screen showing best seller product cards.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-pc/mainmenu02.png",
+      "imageHint": "coffee best sellers desktop"
+    },
+    {
+      "id": "the-coffee-pup-pc-menu",
+      "description": "The Coffee Pup desktop menu screen with product categories and drink cards.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-pc/menu01.png",
+      "imageHint": "coffee menu desktop"
+    },
+    {
+      "id": "the-coffee-pup-pc-menu-category",
+      "description": "The Coffee Pup desktop menu category screen.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-pc/menu02.png",
+      "imageHint": "coffee category desktop"
+    },
+    {
+      "id": "the-coffee-pup-pc-customize",
+      "description": "The Coffee Pup desktop product customization screen with quantity and size options.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-pc/customize.png",
+      "imageHint": "coffee customization desktop"
+    },
+    {
+      "id": "the-coffee-pup-pc-order",
+      "description": "The Coffee Pup desktop order screen.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-pc/order.png",
+      "imageHint": "coffee order desktop"
+    },
+    {
+      "id": "the-coffee-pup-pc-checkout",
+      "description": "The Coffee Pup desktop checkout screen with customer details, delivery method, and payment method.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-pc/checkout.png",
+      "imageHint": "coffee checkout desktop"
+    },
+    {
+      "id": "the-coffee-pup-pc-order-confirmation",
+      "description": "The Coffee Pup desktop order confirmation screen.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-pc/orderconfirm.png",
+      "imageHint": "coffee order confirmation"
+    },
+    {
+      "id": "the-coffee-pup-pc-community",
+      "description": "The Coffee Pup desktop community screen with announcements and customer reviews.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-pc/reviews.png",
+      "imageHint": "coffee community reviews desktop"
+    },
+    {
+      "id": "the-coffee-pup-pc-account",
+      "description": "The Coffee Pup desktop account login screen.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-pc/account-log-in.png",
+      "imageHint": "coffee account login desktop"
+    },
+    {
+      "id": "the-coffee-pup-mobile-home",
+      "description": "The Coffee Pup mobile home screen with best sellers and bottom navigation.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-mobile/home.png",
+      "imageHint": "coffee ordering mobile home"
+    },
+    {
+      "id": "the-coffee-pup-mobile-menu",
+      "description": "The Coffee Pup mobile menu screen.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-mobile/menu01.png",
+      "imageHint": "coffee menu mobile"
+    },
+    {
+      "id": "the-coffee-pup-mobile-menu-category",
+      "description": "The Coffee Pup mobile menu category screen.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-mobile/menu02.png",
+      "imageHint": "coffee category mobile"
+    },
+    {
+      "id": "the-coffee-pup-mobile-product",
+      "description": "The Coffee Pup mobile product detail screen.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-mobile/menu03.png",
+      "imageHint": "coffee product mobile"
+    },
+    {
+      "id": "the-coffee-pup-mobile-customize",
+      "description": "The Coffee Pup mobile order customization screen.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-mobile/menu04.png",
+      "imageHint": "coffee customization mobile"
+    },
+    {
+      "id": "the-coffee-pup-mobile-checkout",
+      "description": "The Coffee Pup mobile checkout screen.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-mobile/checkout01.png",
+      "imageHint": "coffee checkout mobile"
+    },
+    {
+      "id": "the-coffee-pup-mobile-checkout-details",
+      "description": "The Coffee Pup mobile checkout details screen.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-mobile/checkout02.png",
+      "imageHint": "coffee checkout details mobile"
+    },
+    {
+      "id": "the-coffee-pup-mobile-community",
+      "description": "The Coffee Pup mobile community screen with announcements and customer reviews.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-mobile/checkout03.png",
+      "imageHint": "coffee community mobile"
+    },
+    {
+      "id": "the-coffee-pup-mobile-account",
+      "description": "The Coffee Pup mobile account screen.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-mobile/account01.png",
+      "imageHint": "coffee account mobile"
+    },
+    {
+      "id": "the-coffee-pup-mobile-reviews",
+      "description": "The Coffee Pup mobile reviews screen.",
+      "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-mobile/reviews.png",
+      "imageHint": "coffee reviews mobile"
     }
   ]
 }

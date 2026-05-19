@@ -23,6 +23,55 @@ export type PortfolioProject = {
 
 export const portfolioProjects: PortfolioProject[] = [
   {
+    slug: "the-coffee-pup-ordering-web-app",
+    title: "The Coffee Pup Ordering Web App",
+    categoryHref: "/work/web-apps-sites",
+    overview:
+      "Designed and built a responsive cafe ordering web app for The Coffee Pup, combining menu browsing, product customization, checkout, account access, announcements, and customer reviews in a polished app-style experience.",
+    engagement:
+      "A product-focused ordering experience for a coffee brand, built to feel like a modern customer app rather than a static cafe website.",
+    problem:
+      "The cafe concept needed a digital storefront where customers could browse products, customize drinks, and move through checkout from desktop or mobile.",
+    solution:
+      "Created a responsive React web app with category-based menu browsing, product cards, customization screens, cart and checkout flows, account access, announcements, and community reviews.",
+    result:
+      "Delivered a complete portfolio-ready ordering concept that showcases responsive UI design, branded product presentation, and practical e-commerce flow thinking.",
+    tags: ["Web App", "Ordering App", "Coffee Shop", "E-Commerce", "Responsive UI", "React", "Tailwind CSS", "Cloudflare Workers"],
+    technologies: ["React", "Tailwind CSS", "lucide-react", "Cloudflare Workers", "Responsive Web App"],
+    keyFeatures: [
+      "Responsive home screen with hero messaging, calls to action, announcements, and best sellers",
+      "Category-based menu browsing for drinks, bottles, toasts, and pastries",
+      "Product cards with pricing, bestseller labels, and add-to-order actions",
+      "Drink customization flow with quantity and size options",
+      "Cart and checkout screens with customer details, delivery method, notes, and payment options",
+      "Community area for announcements, schedules, and customer reviews",
+    ],
+    imageId: "the-coffee-pup-pc-home",
+    imageIds: [
+      "the-coffee-pup-pc-home",
+      "the-coffee-pup-pc-home-best-sellers",
+      "the-coffee-pup-pc-menu",
+      "the-coffee-pup-pc-menu-category",
+      "the-coffee-pup-pc-customize",
+      "the-coffee-pup-pc-order",
+      "the-coffee-pup-pc-checkout",
+      "the-coffee-pup-pc-order-confirmation",
+      "the-coffee-pup-pc-community",
+      "the-coffee-pup-pc-account",
+      "the-coffee-pup-mobile-home",
+      "the-coffee-pup-mobile-menu",
+      "the-coffee-pup-mobile-menu-category",
+      "the-coffee-pup-mobile-product",
+      "the-coffee-pup-mobile-customize",
+      "the-coffee-pup-mobile-checkout",
+      "the-coffee-pup-mobile-checkout-details",
+      "the-coffee-pup-mobile-community",
+      "the-coffee-pup-mobile-account",
+      "the-coffee-pup-mobile-reviews",
+    ],
+    liveUrl: "https://the-coffee-pup-app.devcadsolutions.workers.dev/",
+  },
+  {
     slug: "revit-pdf-dwg-exporter-via-aps",
     title: "Revit PDF & DWG Export Automation via APS",
     categoryHref: "/work/aps",
