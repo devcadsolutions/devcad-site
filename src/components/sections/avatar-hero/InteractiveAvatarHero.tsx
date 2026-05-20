@@ -25,6 +25,7 @@ export default function InteractiveAvatarHero() {
     pupilY: 0,
   });
   const idleTRef = useRef(0);
+  const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -107,12 +108,12 @@ export default function InteractiveAvatarHero() {
           : (lastPointerRef.current.x - 0.5) * 3.2;
       const targetPupilX =
         !mouseActiveRef.current || coarsePointerRef.current || reducedMotionRef.current
-          ? Math.cos(idleTRef.current * 0.8) * 0.8
-          : (lastPointerRef.current.x - 0.5) * 6.4;
+          ? Math.cos(idleTRef.current * 0.8) * 0.55
+          : clamp((lastPointerRef.current.x - 0.5) * 5.6, -4.8, 4.8);
       const targetPupilY =
         !mouseActiveRef.current || coarsePointerRef.current || reducedMotionRef.current
-          ? Math.sin(idleTRef.current * 1.05) * 0.45
-          : (lastPointerRef.current.y - 0.45) * 4.2;
+          ? Math.sin(idleTRef.current * 1.05) * 0.35
+          : clamp((lastPointerRef.current.y - 0.45) * 3.8, -3.2, 3.2);
 
       currentRef.current.headX = lerp(currentRef.current.headX, targetHeadX, 0.09);
       currentRef.current.headY = lerp(currentRef.current.headY, targetHeadY, 0.09);

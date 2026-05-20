@@ -32,16 +32,32 @@ const softwareProficiency = {
     ]
 }
 
-function IconCard({ name, logo }: { name: string; logo: string }) {
+function IconCard({
+  name,
+  logo,
+  iconScale = "normal",
+}: {
+  name: string;
+  logo: string;
+  iconScale?: "normal" | "large";
+}) {
+  const isLarge = iconScale === "large";
+
   return (
     <div className="group flex flex-col items-center">
       <div className="flex h-36 w-full max-w-[9rem] flex-col items-center justify-start">
-        <div className="flex h-28 w-28 items-center justify-center rounded-3xl border border-border/60 bg-card/70 p-5 shadow-sm transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:scale-110 group-hover:shadow-lg">
+        <div
+          className={[
+            "flex items-center justify-center rounded-3xl border border-border/60 bg-card/70 shadow-sm transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:scale-110 group-hover:shadow-lg",
+            "h-28 w-28",
+            isLarge ? "p-3.5" : "p-5",
+          ].join(" ")}
+        >
           <Image
             src={logo}
             alt={name}
-            width={96}
-            height={96}
+            width={isLarge ? 112 : 96}
+            height={isLarge ? 112 : 96}
             className="max-h-full w-full object-contain"
           />
         </div>
@@ -102,7 +118,7 @@ export default function Skills() {
             <h3 className="font-headline text-xl font-semibold mb-4">Office Suite and others</h3>
              <div className="grid grid-cols-2 gap-4 items-start justify-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
                 {softwareProficiency.office.map(sw => (
-                    <IconCard key={sw.name} name={sw.name} logo={sw.logo} />
+                    <IconCard key={sw.name} name={sw.name} logo={sw.logo} iconScale="large" />
                 ))}
             </div>
         </div>

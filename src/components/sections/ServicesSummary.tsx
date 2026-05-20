@@ -1,3 +1,4 @@
+import { Braces, Cloud, FileStack, GraduationCap, RefreshCcw, Wrench } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 const serviceAccents = [
@@ -18,6 +19,8 @@ const serviceLabels = [
   "Documentation",
 ];
 
+const serviceIcons = [Braces, Wrench, Cloud, FileStack, RefreshCcw, GraduationCap];
+
 export default function ServicesSummary() {
   return (
     <section>
@@ -32,14 +35,22 @@ export default function ServicesSummary() {
           </div>
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {siteConfig.services.map((service, index) => (
+            {siteConfig.services.map((service, index) => {
+              const ServiceIcon = serviceIcons[index % serviceIcons.length];
+
+              return (
               <article
                 key={service.title}
                 className="soft-panel group flex h-full flex-col p-6 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(79,62,46,0.45)] reveal-up"
                 style={{ animationDelay: `${100 + index * 70}ms` }}
               >
-                <div className={`inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] ${serviceAccents[index % serviceAccents.length]}`}>
-                  {serviceLabels[index % serviceLabels.length]}
+                <div className="flex items-start justify-between gap-4">
+                  <div className={`inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] ${serviceAccents[index % serviceAccents.length]}`}>
+                    {serviceLabels[index % serviceLabels.length]}
+                  </div>
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-border/70 bg-white/80 text-foreground/80">
+                    <ServiceIcon className="h-6 w-6" strokeWidth={1.8} />
+                  </div>
                 </div>
                 <h3 className="mt-4 font-headline text-xl font-semibold text-foreground">{service.title}</h3>
                 <p className="mt-3 flex-1 text-sm text-muted-foreground">{service.description}</p>
@@ -57,7 +68,8 @@ export default function ServicesSummary() {
                   </div>
                 </div>
               </article>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

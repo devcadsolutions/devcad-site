@@ -1,11 +1,22 @@
-import LightboxImage from "@/components/ui/LightboxImage";
+import Image from "next/image";
 import Link from "next/link";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Braces, Code2, Cpu, Workflow } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+const programmingTools = [
+  { name: "C#", logo: "/logos/programming/csharp.png" },
+  { name: "JavaScript", logo: "/logos/programming/javascript.png" },
+  { name: "AutoLISP", logo: "/logos/programming/autolisp.png" },
+  { name: "VBA", logo: "/logos/programming/vba.png" },
+];
+
+const codeLines = [
+  "const workflow = automate(aecProcess);",
+  "if (manualSteps > 0) optimize();",
+  "deploy({ reliable: true, maintainable: true });",
+];
+
 export default function AboutTeaser() {
-  const aboutImage = PlaceHolderImages.find(img => img.id === 'about-image');
-  
   return (
     <section>
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -37,16 +48,81 @@ export default function AboutTeaser() {
             </Button>
           </div>
           <div className="order-first lg:order-last">
-            {aboutImage && (
-              <LightboxImage
-                src={aboutImage.imageUrl}
-                alt={aboutImage.description}
-                data-ai-hint={aboutImage.imageHint}
-                width={800}
-                height={600}
-                className="w-full h-auto rounded-[1.75rem] object-contain shadow-lg"
+            <div className="relative overflow-hidden rounded-[1.75rem] border border-border/70 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.94))] p-6 shadow-[0_28px_80px_-34px_rgba(15,23,42,0.72)]">
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.22),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.16),transparent_32%)]"
               />
-            )}
+              <div className="relative space-y-6">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-300">
+                      Programming Stack
+                    </p>
+                    <h3 className="mt-2 font-headline text-2xl font-bold text-white">
+                      Software-first workflow thinking.
+                    </h3>
+                  </div>
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-slate-100">
+                    <Code2 className="h-7 w-7" />
+                  </div>
+                </div>
+
+                <div className="rounded-[1.35rem] border border-white/10 bg-slate-950/55 p-4 backdrop-blur-sm">
+                  <div className="mb-4 flex items-center gap-2">
+                    <span className="h-3 w-3 rounded-full bg-rose-400/90" />
+                    <span className="h-3 w-3 rounded-full bg-amber-400/90" />
+                    <span className="h-3 w-3 rounded-full bg-emerald-400/90" />
+                  </div>
+                  <div className="space-y-3 font-mono text-sm text-slate-200/90">
+                    {codeLines.map((line, index) => (
+                      <p key={line} className="flex gap-3">
+                        <span className="select-none text-slate-500">{index + 1}</span>
+                        <span>{line}</span>
+                      </p>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {programmingTools.map((tool) => (
+                    <div
+                      key={tool.name}
+                      className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 backdrop-blur-sm"
+                    >
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/95 p-2 shadow-sm">
+                        <Image
+                          src={tool.logo}
+                          alt={tool.name}
+                          width={40}
+                          height={40}
+                          className="h-10 w-10 object-contain"
+                        />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-white">{tool.name}</p>
+                        <p className="text-xs text-slate-300">Production-ready automation</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-3">
+                  <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 text-slate-100">
+                    <Workflow className="h-5 w-5 text-slate-300" />
+                    <p className="mt-3 text-sm font-semibold">Workflow Logic</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 text-slate-100">
+                    <Braces className="h-5 w-5 text-slate-300" />
+                    <p className="mt-3 text-sm font-semibold">Clean Structure</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 text-slate-100">
+                    <Cpu className="h-5 w-5 text-slate-300" />
+                    <p className="mt-3 text-sm font-semibold">Tooling Mindset</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
