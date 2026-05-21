@@ -72,6 +72,150 @@ export const portfolioProjects: PortfolioProject[] = [
     liveUrl: "https://the-coffee-pup-app.devcadsolutions.workers.dev/",
   },
   {
+    slug: "made4her-clothing-shop",
+    title: "Made4Her Clothing Shop",
+    categoryHref: "/work/web-apps-sites",
+    overview:
+      "Designed and built a responsive clothing shop website for Made4Her, focused on presenting collections, product browsing, customer reviews, and a clean shopping experience across desktop and mobile.",
+    engagement:
+      "A fashion retail web experience built to make the brand, collections, and products easy to browse without feeling cluttered.",
+    problem:
+      "The clothing shop needed a polished online presence where customers could quickly understand the brand, explore product categories, and browse available items.",
+    solution:
+      "Created a responsive storefront layout with a strong home page, category browsing, product list presentation, and review content to support trust and product discovery.",
+    result:
+      "Delivered a portfolio-ready retail website concept that showcases fashion-focused UI design, product organization, and mobile-friendly shopping flow.",
+    tags: ["Website", "Clothing Shop", "E-Commerce", "Fashion", "Responsive UI", "Product Catalog"],
+    technologies: ["React", "Tailwind CSS", "Responsive Web Design", "Product Catalog UI"],
+    keyFeatures: [
+      "Brand-focused home page for the Made4Her clothing shop",
+      "Product category browsing for easier discovery",
+      "Product list layout for showcasing clothing items",
+      "Customer review section to support trust signals",
+      "Responsive layout for desktop and mobile browsing",
+      "Clean retail interface designed for quick scanning",
+    ],
+    imageId: "made4her-main",
+    imageIds: [
+      "made4her-main",
+      "made4her-categories",
+      "made4her-product-list",
+      "made4her-reviews",
+    ],
+  },
+  {
+    slug: "projectforge-aps-enabled-model-viewer",
+    title: "ProjectForge APS-Enabled Model Viewer",
+    categoryHref: "/work/web-apps-sites",
+    overview:
+      "Designed and built ProjectForge, an APS-enabled web application for viewing Autodesk design files in the browser without requiring users to install local Autodesk software.",
+    engagement:
+      "A browser-based design review platform built for teams that need fast access to Autodesk files, project dashboards, and export workflows from a web interface.",
+    problem:
+      "Users needed a way to access and review Autodesk project files without installing heavy desktop software or moving through a slow local setup.",
+    solution:
+      "Built a web application around Autodesk Platform Services workflows, including login, project creation, dashboards, source download access, Revit export flow, and browser-based viewing.",
+    result:
+      "Made Autodesk project viewing more accessible from the browser, reduced local software dependency, and created a cleaner front end for APS-powered project workflows.",
+    tags: ["Website", "Web App", "APS", "Autodesk", "Model Viewer", "Revit", "Browser-Based Viewer"],
+    technologies: ["Autodesk Platform Services", "APS Viewer", "Model Derivative API", "React", "Tailwind CSS", "Web App"],
+    keyFeatures: [
+      "APS-enabled browser access for Autodesk design files",
+      "Model viewing without installing local Autodesk software",
+      "Login and project dashboard screens",
+      "Project creation workflow",
+      "Download source file workflow",
+      "Revit export and project processing screens",
+    ],
+    imageId: "projectforge-main",
+    imageIds: [
+      "projectforge-main",
+      "projectforge-login",
+      "projectforge-create-project",
+      "projectforge-project-dashboard",
+      "projectforge-download-source",
+      "projectforge-revit-export",
+    ],
+  },
+  {
+    slug: "apex-digital-website",
+    title: "ApexDigital Website",
+    categoryHref: "/work/web-apps-sites",
+    overview:
+      "Designed and built a polished website for ApexDigital, presenting a modern digital services brand with homepage storytelling, feature sections, about content, and pricing-focused conversion areas.",
+    engagement:
+      "A premium website experience for a digital brand, built to communicate services clearly and guide visitors from first impression to pricing and inquiry.",
+    problem:
+      "The brand needed a stronger online presence that could explain its value, show feature benefits, and make pricing or service exploration feel straightforward.",
+    solution:
+      "Created a responsive website structure with multiple homepage sections, feature highlights, about content, and pricing presentation to support trust and conversion.",
+    result:
+      "Delivered a portfolio-ready digital agency-style website that demonstrates responsive layout design, strong visual hierarchy, and service-focused product storytelling.",
+    tags: ["Website", "Digital Agency", "Landing Page", "Pricing", "Responsive UI", "Product Marketing"],
+    technologies: ["React", "Tailwind CSS", "Responsive Web Design", "Landing Page UI"],
+    keyFeatures: [
+      "Multi-section homepage for a modern digital brand",
+      "Feature sections for communicating service value",
+      "About page content for trust and positioning",
+      "Pricing section for conversion-focused browsing",
+      "Responsive desktop and mobile-friendly layout",
+      "Clean visual hierarchy suited to a premium service website",
+    ],
+    imageId: "apex-digital-home-1",
+    imageIds: [
+      "apex-digital-home-1",
+      "apex-digital-home-2",
+      "apex-digital-home-3",
+      "apex-digital-home-4",
+      "apex-digital-features-1",
+      "apex-digital-features-2",
+      "apex-digital-about",
+      "apex-digital-pricing",
+    ],
+  },
+  {
+    slug: "whats-my-tone-web-app",
+    title: "WhatsMyTone Web App",
+    categoryHref: "/work/web-apps-sites",
+    overview:
+      "Designed and built WhatsMyTone, a web app experience for reviewing writing tone through focused sessions, saved archives, account access, feature education, and settings screens.",
+    engagement:
+      "A product-style web application concept built around tone review, session history, and a clear user workflow from landing page to analysis session.",
+    problem:
+      "Users needed a clean interface for understanding tone, starting review sessions, returning to previous work, and managing their account without a cluttered writing-tool experience.",
+    solution:
+      "Created a responsive web app with landing pages, login, session screens, archived work, feature explanations, about content, and settings views.",
+    result:
+      "Delivered a complete portfolio-ready SaaS-style web app concept that showcases product UI, account flows, session workflows, and content-focused dashboard design.",
+    tags: ["Web App", "SaaS", "Writing Tool", "Tone Analysis", "Dashboard", "Responsive UI"],
+    technologies: ["React", "Tailwind CSS", "Responsive Web App", "Dashboard UI", "Product UX"],
+    keyFeatures: [
+      "Landing pages that explain the tone-review product",
+      "Login and account-oriented screens",
+      "Focused session workflow for reviewing writing tone",
+      "Archive screen for saved or previous sessions",
+      "Settings screen for user preferences",
+      "Responsive app-style layout for product exploration",
+    ],
+    imageId: "whats-my-tone-home-1",
+    imageIds: [
+      "whats-my-tone-home-1",
+      "whats-my-tone-home-2",
+      "whats-my-tone-home-3",
+      "whats-my-tone-home-4",
+      "whats-my-tone-home-5",
+      "whats-my-tone-features-1",
+      "whats-my-tone-about-1",
+      "whats-my-tone-about-2",
+      "whats-my-tone-login",
+      "whats-my-tone-session-1",
+      "whats-my-tone-session-2",
+      "whats-my-tone-session-3",
+      "whats-my-tone-archive",
+      "whats-my-tone-settings",
+    ],
+  },
+  {
     slug: "revit-pdf-dwg-exporter-via-aps",
     title: "Revit PDF & DWG Export Automation via APS",
     categoryHref: "/work/aps",

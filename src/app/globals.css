@@ -239,6 +239,13 @@
     letter-spacing: 0.22em;
   }
 
+  .hero-eyebrow {
+    max-width: 100%;
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+  }
+
   /* ── Headings ────────────────────────────────────────────────────────── */
   .section-heading {
     /* Inherits h2 line-height:1.2 and letter-spacing:−0.02em from base */
@@ -284,6 +291,26 @@
   .filter-fade {
     animation: filter-fade 220ms ease-out;
   }
+
+  .premium-portfolio-carousel-track {
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    transform-style: preserve-3d;
+  }
+
+  .premium-portfolio-carousel-viewport {
+    overflow: visible;
+    perspective: 1200px;
+  }
+
+  .premium-portfolio-carousel-card {
+    backface-visibility: hidden;
+    transform-origin: center center;
+    transition-property: transform, opacity, filter, box-shadow, border-color;
+    transition-duration: 520ms;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity, filter;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -293,5 +320,16 @@
     opacity: 1;
     animation: none;
     transform: none;
+  }
+
+  .premium-portfolio-carousel-track {
+    transform: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero-eyebrow {
+    letter-spacing: 0.16em;
+    line-height: 1.35;
   }
 }

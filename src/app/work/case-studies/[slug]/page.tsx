@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import LightboxImage from "@/components/ui/LightboxImage";
+import PremiumPortfolioGalleryCarousel from "@/components/portfolio/PremiumPortfolioGalleryCarousel";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Building2, ExternalLink, ShieldAlert } from "lucide-react";
@@ -58,6 +59,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const ungroupedGalleryImages = galleryImages.filter(
     (item) => !desktopGalleryImages.includes(item) && !mobileGalleryImages.includes(item)
   );
+  const usesPremiumGallery = registeredImages.length > 1;
   const categoryLabel = siteConfig.portfolioCategories.find((c) => c.href === project.categoryHref)?.label ?? "Portfolio";
 
   return (
@@ -203,13 +205,21 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                   Product Screens
                 </h2>
                 <p className="text-base text-muted-foreground">
-                  Desktop and mobile views are separated so the responsive experience is easy to review.
+                  {usesPremiumGallery
+                    ? "Hover to inspect each screen, use the side arrows to glide faster, or click any screenshot to open a full-size preview."
+                    : "Desktop and mobile views are separated so the responsive experience is easy to review."}
                 </p>
               </div>
 
-              <GallerySection title="Desktop" images={desktopGalleryImages} />
-              <GallerySection title="Mobile" images={mobileGalleryImages} mobile />
-              <GallerySection title="Additional Screens" images={ungroupedGalleryImages} />
+              {usesPremiumGallery ? (
+                <PremiumPortfolioGalleryCarousel images={registeredImages} />
+              ) : (
+                <>
+                  <GallerySection title="Desktop" images={desktopGalleryImages} />
+                  <GallerySection title="Mobile" images={mobileGalleryImages} mobile />
+                  <GallerySection title="Additional Screens" images={ungroupedGalleryImages} />
+                </>
+              )}
             </div>
           )}
         </div>

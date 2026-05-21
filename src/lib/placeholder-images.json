@@ -293,6 +293,198 @@
       "description": "The Coffee Pup mobile reviews screen.",
       "imageUrl": "/portfolio/thecoffeepup/thecoffeepup-mobile/reviews.png",
       "imageHint": "coffee reviews mobile"
+    },
+    {
+      "id": "made4her-main",
+      "description": "Made4Her clothing shop main website screen.",
+      "imageUrl": "/portfolio/made4her/Main.jpg",
+      "imageHint": "clothing shop homepage"
+    },
+    {
+      "id": "made4her-categories",
+      "description": "Made4Her clothing shop category browsing screen.",
+      "imageUrl": "/portfolio/made4her/Categories.jpg",
+      "imageHint": "fashion categories"
+    },
+    {
+      "id": "made4her-product-list",
+      "description": "Made4Her clothing shop product list screen.",
+      "imageUrl": "/portfolio/made4her/ProductList.jpg",
+      "imageHint": "clothing product list"
+    },
+    {
+      "id": "made4her-reviews",
+      "description": "Made4Her clothing shop customer reviews screen.",
+      "imageUrl": "/portfolio/made4her/reviews.jpg",
+      "imageHint": "fashion customer reviews"
+    },
+    {
+      "id": "projectforge-main",
+      "description": "ProjectForge APS-enabled web application main screen.",
+      "imageUrl": "/portfolio/projectforge/Main.jpg",
+      "imageHint": "aps model viewer main"
+    },
+    {
+      "id": "projectforge-login",
+      "description": "ProjectForge login screen.",
+      "imageUrl": "/portfolio/projectforge/log-in.jpg",
+      "imageHint": "projectforge login"
+    },
+    {
+      "id": "projectforge-create-project",
+      "description": "ProjectForge create project screen.",
+      "imageUrl": "/portfolio/projectforge/create-project.jpg",
+      "imageHint": "create project dashboard"
+    },
+    {
+      "id": "projectforge-project-dashboard",
+      "description": "ProjectForge project dashboard screen.",
+      "imageUrl": "/portfolio/projectforge/project-dashboard.jpg",
+      "imageHint": "project dashboard"
+    },
+    {
+      "id": "projectforge-download-source",
+      "description": "ProjectForge download source file screen.",
+      "imageUrl": "/portfolio/projectforge/download-source.jpg",
+      "imageHint": "download source file"
+    },
+    {
+      "id": "projectforge-revit-export",
+      "description": "ProjectForge Revit export workflow screen.",
+      "imageUrl": "/portfolio/projectforge/revit-export.jpg",
+      "imageHint": "revit export aps"
+    },
+    {
+      "id": "apex-digital-home-1",
+      "description": "ApexDigital website homepage hero screen.",
+      "imageUrl": "/portfolio/ApexDigital/home1.jpg",
+      "imageHint": "digital agency homepage"
+    },
+    {
+      "id": "apex-digital-home-2",
+      "description": "ApexDigital website homepage section two.",
+      "imageUrl": "/portfolio/ApexDigital/home2.jpg",
+      "imageHint": "agency homepage section"
+    },
+    {
+      "id": "apex-digital-home-3",
+      "description": "ApexDigital website homepage section three.",
+      "imageUrl": "/portfolio/ApexDigital/home3.jpg",
+      "imageHint": "digital services website"
+    },
+    {
+      "id": "apex-digital-home-4",
+      "description": "ApexDigital website homepage section four.",
+      "imageUrl": "/portfolio/ApexDigital/home4.jpg",
+      "imageHint": "service website section"
+    },
+    {
+      "id": "apex-digital-features-1",
+      "description": "ApexDigital website features screen.",
+      "imageUrl": "/portfolio/ApexDigital/features1.jpg",
+      "imageHint": "digital service features"
+    },
+    {
+      "id": "apex-digital-features-2",
+      "description": "ApexDigital website secondary features screen.",
+      "imageUrl": "/portfolio/ApexDigital/features2.jpg",
+      "imageHint": "agency feature details"
+    },
+    {
+      "id": "apex-digital-about",
+      "description": "ApexDigital website about screen.",
+      "imageUrl": "/portfolio/ApexDigital/about.jpg",
+      "imageHint": "agency about page"
+    },
+    {
+      "id": "apex-digital-pricing",
+      "description": "ApexDigital website pricing screen.",
+      "imageUrl": "/portfolio/ApexDigital/pricing.jpg",
+      "imageHint": "pricing page"
+    },
+    {
+      "id": "whats-my-tone-home-1",
+      "description": "WhatsMyTone web app homepage hero screen.",
+      "imageUrl": "/portfolio/WhatsMyTone/home1.jpg",
+      "imageHint": "tone app homepage"
+    },
+    {
+      "id": "whats-my-tone-home-2",
+      "description": "WhatsMyTone web app homepage section two.",
+      "imageUrl": "/portfolio/WhatsMyTone/home2.jpg",
+      "imageHint": "writing app homepage"
+    },
+    {
+      "id": "whats-my-tone-home-3",
+      "description": "WhatsMyTone web app homepage section three.",
+      "imageUrl": "/portfolio/WhatsMyTone/home3.jpg",
+      "imageHint": "tone analysis landing"
+    },
+    {
+      "id": "whats-my-tone-home-4",
+      "description": "WhatsMyTone web app homepage section four.",
+      "imageUrl": "/portfolio/WhatsMyTone/home4.jpg",
+      "imageHint": "writing tool section"
+    },
+    {
+      "id": "whats-my-tone-home-5",
+      "description": "WhatsMyTone web app homepage section five.",
+      "imageUrl": "/portfolio/WhatsMyTone/home5.jpg",
+      "imageHint": "saas homepage section"
+    },
+    {
+      "id": "whats-my-tone-features-1",
+      "description": "WhatsMyTone web app features screen.",
+      "imageUrl": "/portfolio/WhatsMyTone/features1.jpg",
+      "imageHint": "tone app features"
+    },
+    {
+      "id": "whats-my-tone-about-1",
+      "description": "WhatsMyTone web app about screen.",
+      "imageUrl": "/portfolio/WhatsMyTone/about-1.jpg",
+      "imageHint": "tone app about"
+    },
+    {
+      "id": "whats-my-tone-about-2",
+      "description": "WhatsMyTone web app secondary about screen.",
+      "imageUrl": "/portfolio/WhatsMyTone/about-2.jpg",
+      "imageHint": "writing product about"
+    },
+    {
+      "id": "whats-my-tone-login",
+      "description": "WhatsMyTone web app login screen.",
+      "imageUrl": "/portfolio/WhatsMyTone/log-in.jpg",
+      "imageHint": "app login"
+    },
+    {
+      "id": "whats-my-tone-session-1",
+      "description": "WhatsMyTone web app session screen.",
+      "imageUrl": "/portfolio/WhatsMyTone/session01.jpg",
+      "imageHint": "tone review session"
+    },
+    {
+      "id": "whats-my-tone-session-2",
+      "description": "WhatsMyTone web app session detail screen.",
+      "imageUrl": "/portfolio/WhatsMyTone/session-2.jpg",
+      "imageHint": "writing session detail"
+    },
+    {
+      "id": "whats-my-tone-session-3",
+      "description": "WhatsMyTone web app session results screen.",
+      "imageUrl": "/portfolio/WhatsMyTone/session-3.jpg",
+      "imageHint": "tone session results"
+    },
+    {
+      "id": "whats-my-tone-archive",
+      "description": "WhatsMyTone web app archive screen.",
+      "imageUrl": "/portfolio/WhatsMyTone/archive01.jpg",
+      "imageHint": "session archive"
+    },
+    {
+      "id": "whats-my-tone-settings",
+      "description": "WhatsMyTone web app settings screen.",
+      "imageUrl": "/portfolio/WhatsMyTone/settings1.jpg",
+      "imageHint": "app settings"
     }
   ]
 }

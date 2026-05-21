@@ -101,7 +101,7 @@ export default function Header() {
             )}
           </nav>
 
-          <Button asChild>
+          <Button asChild className="hidden sm:inline-flex">
             <Link href="/contact">Contact</Link>
           </Button>
 
