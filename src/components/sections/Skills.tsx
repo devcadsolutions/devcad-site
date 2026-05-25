@@ -45,12 +45,12 @@ function IconCard({
 
   return (
     <div className="group flex flex-col items-center">
-      <div className="flex h-36 w-full max-w-[9rem] flex-col items-center justify-start">
+      <div className="flex h-32 w-full max-w-32 flex-col items-center justify-start">
         <div
           className={[
-            "flex items-center justify-center rounded-3xl border border-border/60 bg-card/70 shadow-sm transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:scale-110 group-hover:shadow-lg",
-            "h-28 w-28",
-            isLarge ? "p-3.5" : "p-5",
+            "flex items-center justify-center rounded-xl border border-border/60 bg-card/70 shadow-sm transition-all duration-300 ease-out group-hover:-translate-y-1 group-hover:shadow-md",
+            "h-24 w-24",
+            isLarge ? "p-3" : "p-4",
           ].join(" ")}
         >
           <Image
@@ -71,8 +71,8 @@ function IconCard({
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <div className="inline-block bg-primary text-primary-foreground py-2 px-8 rounded-md mb-8">
-      <h2 className="font-headline text-3xl font-bold">
+    <div className="mb-8 inline-block border-b border-primary/30 pb-2">
+      <h2 className="font-headline text-2xl font-semibold tracking-[-0.03em] text-foreground">
         {children}
       </h2>
     </div>
@@ -94,8 +94,15 @@ export default function Skills() {
     <>
     <section>
       <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-        <SectionTitle>Programming Language</SectionTitle>
-        <div className="mt-8 grid grid-cols-2 gap-4 items-start justify-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+        <div className="mx-auto mb-12 max-w-2xl space-y-4">
+          <span className="eyebrow">Tooling Context</span>
+          <h2 className="section-heading">The stack is only useful when it fits the workflow.</h2>
+          <p className="section-copy">
+            These are the languages and platforms I use to turn CAD/BIM production logic into tools people can maintain, explain, and roll out.
+          </p>
+        </div>
+        <SectionTitle>Programming Languages</SectionTitle>
+        <div className="mt-8 grid grid-cols-2 items-start justify-center gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {programmingLanguages.map(lang => (
                 <IconCard key={lang.name} name={lang.name} logo={lang.logo} />
             ))}
@@ -103,20 +110,20 @@ export default function Skills() {
       </div>
     </section>
     <ArrowDown />
-     <section className="py-0">
+     <section className="py-16 md:py-20">
       <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-        <SectionTitle>Software Proficiency</SectionTitle>
+        <SectionTitle>AEC And Production Software</SectionTitle>
         <div className="mt-8">
-            <h3 className="font-headline text-xl font-semibold mb-4">Engineering and Architecture</h3>
-             <div className="grid grid-cols-2 gap-4 items-start justify-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            <h3 className="mb-6 font-headline text-xl font-semibold tracking-[-0.02em]">Engineering and Architecture</h3>
+             <div className="grid grid-cols-2 items-start justify-center gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                 {softwareProficiency.engineering.map(sw => (
                     <IconCard key={sw.name} name={sw.name} logo={sw.logo} />
                 ))}
             </div>
         </div>
-        <div className="mt-12">
-            <h3 className="font-headline text-xl font-semibold mb-4">Office Suite and others</h3>
-             <div className="grid grid-cols-2 gap-4 items-start justify-center sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        <div className="mt-16">
+            <h3 className="mb-6 font-headline text-xl font-semibold tracking-[-0.02em]">Documentation, estimating, and handoff tools</h3>
+             <div className="grid grid-cols-2 items-start justify-center gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
                 {softwareProficiency.office.map(sw => (
                     <IconCard key={sw.name} name={sw.name} logo={sw.logo} iconScale="large" />
                 ))}

@@ -278,7 +278,7 @@ export default function PremiumPortfolioGalleryCarousel({ images }: PremiumPortf
                 key={groupIndex}
                 ref={groupIndex === 0 ? firstGroupRef : undefined}
                 aria-hidden={groupIndex === 1}
-                className="flex shrink-0 gap-5 px-2 sm:gap-6 sm:px-3"
+                className="flex shrink-0 gap-4 px-2 sm:gap-6 sm:px-4"
               >
                 {images.map((image) => {
                   const isHovered = hoveredId === image.id;
@@ -308,7 +308,7 @@ export default function PremiumPortfolioGalleryCarousel({ images }: PremiumPortf
                       onBlur={() => setHoveredId(null)}
                       onClick={() => openLightbox(image)}
                     >
-                      <span className="absolute right-4 top-4 z-10 flex items-center gap-1.5 rounded-full border border-white/35 bg-black/45 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white opacity-0 shadow-lg backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                      <span className="absolute right-4 top-4 z-10 flex items-center gap-2 rounded-full border border-white/35 bg-black/45 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white opacity-0 shadow-lg backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
                         <ZoomIn className="h-3 w-3" />
                         Preview
                       </span>

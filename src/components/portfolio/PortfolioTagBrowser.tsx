@@ -43,11 +43,11 @@ export default function PortfolioTagBrowser({ projects }: PortfolioTagBrowserPro
     <>
       <section className="pt-0">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="section-shell px-6 py-8 sm:px-8">
-            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div className="section-shell px-6 py-12 sm:px-8 lg:py-16">
+            <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
               <div className="max-w-3xl space-y-3">
-                <h2 className="font-headline text-3xl font-bold">Browse by Tag</h2>
-                <p className="text-muted-foreground">
+                <h2 className="section-heading">Browse by Tag</h2>
+                <p className="text-base leading-7 text-muted-foreground">
                   Jump straight into the kinds of projects you want to review.
                 </p>
               </div>
@@ -62,7 +62,7 @@ export default function PortfolioTagBrowser({ projects }: PortfolioTagBrowserPro
               ) : null}
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-4">
               {allTags.map((tag) => {
                 const isActive = tag === selectedTag;
 
@@ -83,7 +83,7 @@ export default function PortfolioTagBrowser({ projects }: PortfolioTagBrowserPro
               })}
             </div>
 
-            <p className="mt-5 text-sm text-muted-foreground">
+            <p className="mt-6 text-sm leading-6 text-muted-foreground">
               {selectedTag
                 ? `${filteredProjects.length} project${filteredProjects.length === 1 ? "" : "s"} tagged "${selectedTag}".`
                 : `${projects.length} total case studies across all tags.`}

@@ -124,12 +124,12 @@ export default function AvatarHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden pt-24 pb-12 md:pt-32 md:pb-16"
+      className="relative overflow-hidden py-20 md:py-24 lg:py-32"
     >
       <PageHeroBackground />
 
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:gap-16">
+        <div className="flex flex-col items-center gap-12 md:flex-row md:items-center md:gap-16">
           <div className="flex shrink-0 justify-center md:order-last md:w-[42%]">
             <div
               ref={avatarRef}
@@ -157,7 +157,7 @@ export default function AvatarHero() {
                 />
                 <div
                   aria-hidden="true"
-                  className="absolute left-1/2 top-[30%] h-[68%] w-[70%] -translate-x-1/2 rounded-[44%] bg-white/35 blur-2xl"
+                  className="absolute left-1/2 top-[30%] h-[68%] w-[70%] -translate-x-1/2 rounded-full bg-white/35 blur-2xl"
                 />
                 <Image
                   src="/profile/moving-image-cutout.png"
@@ -175,29 +175,29 @@ export default function AvatarHero() {
           <div className="space-y-6 text-center reveal-up md:order-first md:flex-1 md:text-left">
             <span className="eyebrow">AEC Automation Specialist</span>
 
-            <h1 className="font-headline text-4xl font-bold text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="font-headline text-4xl font-semibold tracking-[-0.05em] text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
               Hey, I&apos;m <span className="text-primary">Justine.</span>
             </h1>
 
-            <p className="mx-auto max-w-xl text-lg text-muted-foreground md:mx-0 md:text-xl">
+            <p className="mx-auto max-w-xl text-lg leading-7 text-muted-foreground md:mx-0 md:text-xl md:leading-8">
               I build automation tools for{" "}
               <strong className="font-semibold text-foreground">Revit</strong>,{" "}
               <strong className="font-semibold text-foreground">AutoCAD</strong>, and{" "}
               <strong className="font-semibold text-foreground">AEC workflows</strong> by turning repetitive manual tasks into reliable internal tools.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-2 md:justify-start">
+            <div className="flex flex-wrap justify-center gap-4 md:justify-start">
               {["Revit API", "AutoCAD .NET", "AutoLISP", "WPF Tools", "APS / Cloud"].map((skill) => (
                 <span
                   key={skill}
-                  className="rounded-full border border-border/70 bg-white/75 px-3 py-1 text-sm text-foreground/80"
+                  className="rounded-full border border-border/70 bg-white/75 px-4 py-2 text-sm text-foreground/80"
                 >
                   {skill}
                 </span>
               ))}
             </div>
 
-            <div className="flex flex-wrap justify-center gap-3 md:justify-start">
+            <div className="flex flex-wrap justify-center gap-4 md:justify-start">
               <Button asChild size="lg" className="rounded-full px-6">
                 <Link href="/work">
                   View Projects
@@ -208,7 +208,7 @@ export default function AvatarHero() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="rounded-full border-2 border-foreground bg-transparent text-foreground transition-all duration-300 hover:bg-foreground hover:text-background"
+                className="rounded-full border border-foreground bg-transparent text-foreground transition-all duration-300 hover:bg-foreground hover:text-background"
               >
                 <Link href="/contact">Contact Me</Link>
               </Button>

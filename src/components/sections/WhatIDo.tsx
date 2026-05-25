@@ -1,10 +1,10 @@
-import { Code2, Wrench, Globe } from "lucide-react";
+import { Code2, Globe, Wrench } from "lucide-react";
 
 const cards = [
   {
     icon: Code2,
-    title: "What I Build",
-    intro: "Custom automation tools for BIM, CAD, and AEC delivery teams:",
+    title: "Workflow Tools",
+    intro: "Practical automation for BIM, CAD, and AEC delivery teams:",
     items: [
       { label: "Revit Add-ins", detail: "model checking, sheet workflows, geometry tools" },
       { label: "AutoCAD Automation", detail: "AutoLISP, .NET, batch processing, tool palettes" },
@@ -45,42 +45,36 @@ export default function WhatIDo() {
         <div className="mb-10 max-w-2xl reveal-up">
           <span className="eyebrow">Capabilities</span>
           <h2 className="section-heading mt-4">
-            Built for BIM, CAD, and technical delivery teams.
+            Built around the production steps teams repeat.
           </h2>
           <p className="section-copy mt-4">
-            Tools and workflows across the full AEC automation stack — from Revit add-ins and AutoCAD scripts to cloud-connected APS pipelines and web apps.
+            Tools and workflows across the full AEC automation stack - from Revit add-ins and AutoCAD scripts to cloud-connected APS pipelines and web apps.
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3 reveal-up" style={{ animationDelay: "100ms" }}>
+        <div className="grid gap-6 reveal-up md:grid-cols-3" style={{ animationDelay: "100ms" }}>
           {cards.map((card) => {
             const Icon = card.icon;
             return (
-              <div
-                key={card.title}
-                className="section-shell flex flex-col gap-5 p-6 sm:p-7"
-              >
-                {/* Icon + title */}
-                <div className="flex items-center gap-3">
+              <div key={card.title} className="section-shell flex flex-col gap-6 p-6 sm:p-8">
+                <div className="flex items-center gap-4">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="font-headline text-lg font-bold text-foreground">
+                  <h3 className="font-headline text-lg font-semibold tracking-[-0.02em] text-foreground">
                     {card.title}
                   </h3>
                 </div>
 
-                {/* Intro */}
-                <p className="text-sm text-muted-foreground">{card.intro}</p>
+                <p className="text-sm leading-6 text-muted-foreground">{card.intro}</p>
 
-                {/* Items */}
-                <ul className="space-y-2.5">
+                <ul className="space-y-4">
                   {card.items.map((item) => (
-                    <li key={item.label} className="flex flex-col gap-0.5">
+                    <li key={item.label} className="flex flex-col">
                       <span className="text-sm font-semibold text-foreground">
                         {item.label}
                       </span>
-                      <span className="text-xs text-muted-foreground">
+                      <span className="text-xs leading-5 text-muted-foreground">
                         {item.detail}
                       </span>
                     </li>

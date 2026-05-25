@@ -165,16 +165,16 @@ function MilestoneDetails({
   return (
     <div
       className={[
-        "w-full rounded-[1.5rem] border p-5 text-left shadow-[0_28px_72px_-42px_rgba(79,62,46,0.34)] backdrop-blur-sm",
+        "w-full rounded-2xl border p-6 text-left shadow-[0_24px_56px_-36px_rgba(79,62,46,0.34)] backdrop-blur-sm",
         accent.detail,
       ].join(" ")}
     >
       <div className="space-y-4">
         <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
             {item.period}
           </p>
-          <h3 className="font-headline text-2xl font-bold text-slate-900">
+          <h3 className="font-headline text-2xl font-semibold tracking-[-0.03em] text-slate-900">
             {item.title}
           </h3>
           <p className="text-sm font-medium text-slate-600">
@@ -182,15 +182,15 @@ function MilestoneDetails({
           </p>
         </div>
 
-        <p className="text-sm text-slate-700 sm:text-[0.95rem]">
+        <p className="text-sm leading-6 text-slate-700 sm:text-[0.95rem]">
           {item.details}
         </p>
 
         <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
             Key responsibilities
           </p>
-          <ul className="space-y-2 text-sm text-slate-700">
+          <ul className="space-y-2 text-sm leading-6 text-slate-700">
             {item.responsibilities.map((responsibility) => (
               <li key={responsibility} className="flex gap-2">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
@@ -201,7 +201,7 @@ function MilestoneDetails({
         </div>
 
         <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
             Tools used
           </p>
           <div className="flex flex-wrap gap-2">
@@ -209,7 +209,7 @@ function MilestoneDetails({
               <span
                 key={tool}
                 className={[
-                  "inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium",
+                  "inline-flex items-center rounded-full border px-4 py-2 text-xs font-medium",
                   accent.chip,
                 ].join(" ")}
               >
@@ -220,10 +220,10 @@ function MilestoneDetails({
         </div>
 
         <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
             Achievements
           </p>
-          <ul className="space-y-2 text-sm text-slate-700">
+          <ul className="space-y-2 text-sm leading-6 text-slate-700">
             {item.achievements.map((achievement) => (
               <li key={achievement} className="flex gap-2">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
@@ -257,11 +257,11 @@ export default function CareerTimeline() {
   return (
     <div
       ref={sectionRef}
-      className="section-shell relative overflow-visible px-6 py-8 text-foreground sm:px-8 lg:px-10 lg:py-10"
+      className="section-shell relative overflow-visible px-6 py-12 text-foreground sm:px-8 lg:px-12 lg:py-16"
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_top_left,rgba(191,219,254,0.18),transparent_32%),radial-gradient(circle_at_top_right,rgba(253,230,138,0.14),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.72),rgba(248,250,252,0.45))]"
+        className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.45),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.72),rgba(248,250,252,0.45))]"
       />
       <div
         aria-hidden="true"
@@ -270,10 +270,10 @@ export default function CareerTimeline() {
       <div className="relative space-y-8">
         <div className="max-w-3xl space-y-3">
           <span className="eyebrow">Career Path</span>
-          <h2 className="font-headline text-3xl font-bold text-foreground md:text-4xl">
+          <h2 className="font-headline text-3xl font-semibold tracking-[-0.035em] text-foreground md:text-4xl">
             From engineering foundations to AEC automation systems
           </h2>
-          <p className="max-w-2xl text-base text-muted-foreground md:text-lg">
+          <p className="max-w-2xl text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
             A fishbone-style view of the career path behind DevCAD: technical grounding, CAD production, software development, and BIM-focused automation work.
           </p>
         </div>
@@ -303,7 +303,7 @@ export default function CareerTimeline() {
                       onClick={() => setActiveIndex((current) => (current === index ? null : index))}
                       aria-expanded={isActive}
                       className={[
-                        "group absolute z-20 flex w-full max-w-[14rem] flex-col rounded-[1.35rem] border border-slate-200/85 bg-white/94 p-4 text-left shadow-[0_18px_46px_-36px_rgba(15,23,42,0.18)] backdrop-blur-sm transition duration-300",
+                        "group absolute z-20 flex w-full max-w-[14rem] flex-col rounded-2xl border border-slate-200/85 bg-white/94 p-4 text-left shadow-[0_18px_46px_-36px_rgba(15,23,42,0.18)] backdrop-blur-sm transition duration-300",
                         "hover:-translate-y-1 hover:border-slate-300/90 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300/80",
                         isAbove
                           ? "top-0"
@@ -314,7 +314,7 @@ export default function CareerTimeline() {
                       <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                         {item.period}
                       </span>
-                      <span className="mt-3 font-headline text-lg font-bold leading-tight text-foreground">
+                      <span className="mt-3 font-headline text-lg font-semibold leading-tight tracking-[-0.02em] text-foreground">
                         {item.title}
                       </span>
                       <span className="mt-2 text-sm font-medium text-primary">
@@ -402,7 +402,7 @@ export default function CareerTimeline() {
                 <button
                   type="button"
                   onClick={() => setActiveIndex((current) => (current === index ? null : index))}
-                  className="w-full rounded-[1.35rem] border border-slate-200/85 bg-white/94 p-4 text-left shadow-[0_18px_46px_-36px_rgba(15,23,42,0.18)] backdrop-blur-sm transition duration-300 hover:border-slate-300/90 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300/80"
+                  className="w-full rounded-2xl border border-slate-200/85 bg-white/94 p-4 text-left shadow-[0_18px_46px_-36px_rgba(15,23,42,0.18)] backdrop-blur-sm transition duration-300 hover:border-slate-300/90 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300/80"
                   aria-expanded={isActive}
                 >
                   <div className="flex items-start justify-between gap-3">
@@ -410,7 +410,7 @@ export default function CareerTimeline() {
                       <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                         {item.period}
                       </p>
-                      <h3 className="font-headline text-xl font-bold text-foreground">
+                      <h3 className="font-headline text-xl font-semibold tracking-[-0.02em] text-foreground">
                         {item.title}
                       </h3>
                       <p className="flex items-center gap-2 text-sm font-medium text-primary">
@@ -432,7 +432,7 @@ export default function CareerTimeline() {
                     </span>
                   </div>
 
-                  <p className="mt-4 text-sm text-muted-foreground">
+                  <p className="mt-4 text-sm leading-6 text-muted-foreground">
                     {item.shortDescription}
                   </p>
                 </button>

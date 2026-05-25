@@ -15,15 +15,15 @@ export default function ServicesPage() {
 
   return (
     <>
-      <header className="relative overflow-hidden pt-24 pb-12 md:pt-32 md:pb-20">
+      <header className="relative overflow-hidden py-20 md:py-24 lg:py-32">
         <PageHeroBackground opacity="82" />
         <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center reveal-up">
             <span className="eyebrow">Services</span>
-            <h1 className="mx-auto mt-5 max-w-5xl font-headline text-4xl font-bold text-foreground sm:text-5xl md:text-6xl">
+            <h1 className="mx-auto mt-6 max-w-5xl font-headline text-4xl font-semibold tracking-[-0.05em] text-foreground sm:text-5xl md:text-6xl">
               Revit, AutoCAD, APS, and workflow automation services.
             </h1>
-            <p className="mx-auto mt-5 max-w-3xl text-lg text-muted-foreground md:text-xl">
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-7 text-muted-foreground md:text-xl md:leading-8">
               Built for BIM, CAD, and technical delivery teams.
             </p>
           </div>
@@ -34,11 +34,11 @@ export default function ServicesPage() {
 
       <section>
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="section-shell grid gap-10 px-6 py-8 sm:px-8 md:grid-cols-2 md:items-center">
+          <div className="section-shell grid gap-12 px-6 py-12 sm:px-8 md:grid-cols-2 md:items-center lg:py-16">
             <div className="space-y-5 reveal-left">
               <span className="eyebrow">How I Work</span>
-              <h2 className="font-headline text-3xl font-bold">Focused builds for real production workflows.</h2>
-              <p className="text-lg text-muted-foreground">
+              <h2 className="section-heading">Focused builds for real production workflows.</h2>
+              <p className="section-copy">
                 The aim is simple: remove repetitive work, improve consistency, and ship tools people will actually use.
               </p>
             </div>
@@ -50,7 +50,7 @@ export default function ServicesPage() {
                   data-ai-hint={serviceImage.imageHint}
                   width={600}
                   height={450}
-                  className="w-full h-auto rounded-[1.5rem] object-contain shadow-lg"
+                  className="h-auto w-full rounded-xl object-contain shadow-[0_24px_56px_-36px_rgba(79,62,46,0.45)]"
                 />
               )}
             </div>

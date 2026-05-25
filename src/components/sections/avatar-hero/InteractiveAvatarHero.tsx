@@ -9,20 +9,28 @@ import AvatarTrueVector from "./avatar_true_vector";
 export default function InteractiveAvatarHero() {
   const sectionRef = useRef<HTMLElement>(null);
   const avatarFrameRef = useRef<HTMLDivElement>(null);
+  const avatarSvgRef = useRef<SVGSVGElement | null>(null);
   const headRef = useRef<SVGGElement | null>(null);
+  const leftBrowRef = useRef<SVGGElement | null>(null);
+  const rightBrowRef = useRef<SVGGElement | null>(null);
   const leftPupilRef = useRef<SVGGElement | null>(null);
   const rightPupilRef = useRef<SVGGElement | null>(null);
   const mouseActiveRef = useRef(false);
   const coarsePointerRef = useRef(false);
   const reducedMotionRef = useRef(false);
   const lastPointerRef = useRef({ x: 0.5, y: 0.45 });
+  const pointerClientRef = useRef({ x: 0, y: 0 });
   const currentRef = useRef({
     headX: 0,
     headY: 0,
     headRotate: 0,
     floatY: 0,
-    pupilX: 0,
-    pupilY: 0,
+    leftPupilX: 0,
+    leftPupilY: 0,
+    rightPupilX: 0,
+    rightPupilY: 0,
+    leftBrowY: 0,
+    rightBrowY: 0,
   });
   const idleTRef = useRef(0);
   const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
@@ -34,7 +42,10 @@ export default function InteractiveAvatarHero() {
       return;
     }
 
+    avatarSvgRef.current = section.querySelector("svg");
     headRef.current = section.querySelector("#head");
+    leftBrowRef.current = section.querySelector("#eyebrow-left");
+    rightBrowRef.current = section.querySelector("#eyebrow-right");
     leftPupilRef.current = section.querySelector("#pupil-left");
     rightPupilRef.current = section.querySelector("#pupil-right");
 
@@ -64,6 +75,10 @@ export default function InteractiveAvatarHero() {
         x: (event.clientX - rect.left) / rect.width,
         y: (event.clientY - rect.top) / rect.height,
       };
+      pointerClientRef.current = {
+        x: event.clientX,
+        y: event.clientY,
+      };
       mouseActiveRef.current = true;
       clearTimeout(idleTimer);
       idleTimer = setTimeout(() => {
@@ -84,9 +99,12 @@ export default function InteractiveAvatarHero() {
     let raf = 0;
     const tick = () => {
       const head = headRef.current;
+      const leftBrow = leftBrowRef.current;
+      const rightBrow = rightBrowRef.current;
       const leftPupil = leftPupilRef.current;
       const rightPupil = rightPupilRef.current;
-      if (!head || !leftPupil || !rightPupil) {
+      const avatarSvg = avatarSvgRef.current;
+      if (!head || !leftBrow || !rightBrow || !leftPupil || !rightPupil || !avatarSvg) {
         raf = requestAnimationFrame(tick);
         return;
       }
@@ -94,8 +112,10 @@ export default function InteractiveAvatarHero() {
       if (reducedMotionRef.current) {
         avatarFrame.style.transform = "translate3d(0, 0, 0)";
         head.style.transform = "translate(0, 0) rotate(0deg)";
-        leftPupil.style.transform = "translate(0, 0)";
-        rightPupil.style.transform = "translate(0, 0)";
+        leftBrow.setAttribute("transform", "translate(0 0)");
+        rightBrow.setAttribute("transform", "translate(0 0)");
+        leftPupil.setAttribute("transform", "rotate(-1 430 414)");
+        rightPupil.setAttribute("transform", "rotate(-1 589 404)");
         raf = requestAnimationFrame(tick);
         return;
       }
@@ -115,27 +135,65 @@ export default function InteractiveAvatarHero() {
         !mouseActiveRef.current || coarsePointerRef.current
           ? Math.sin(idleTRef.current * 0.7) * 0.5
           : (lastPointerRef.current.x - 0.5) * 3.2;
-      const targetPupilX =
-        !mouseActiveRef.current || coarsePointerRef.current
-          ? Math.cos(idleTRef.current * 0.8) * 0.55
-          : clamp((lastPointerRef.current.x - 0.5) * 5.6, -4.8, 4.8);
-      const targetPupilY =
-        !mouseActiveRef.current || coarsePointerRef.current
-          ? Math.sin(idleTRef.current * 1.05) * 0.35
-          : clamp((lastPointerRef.current.y - 0.45) * 3.8, -3.2, 3.2);
+      const getEyeTarget = (centerX: number, centerY: number, idleOffset = 0) => {
+        if (!mouseActiveRef.current || coarsePointerRef.current) {
+          return {
+            x: Math.cos(idleTRef.current * 0.8 + idleOffset) * 2.2,
+            y: Math.sin(idleTRef.current * 1.05 + idleOffset) * 1.4,
+          };
+        }
+
+        const svgRect = avatarSvg.getBoundingClientRect();
+        const scaleX = svgRect.width / 1024;
+        const scaleY = svgRect.height / 1024;
+        const eyeClientX = svgRect.left + centerX * scaleX;
+        const eyeClientY = svgRect.top + centerY * scaleY;
+
+        return {
+          x: clamp((pointerClientRef.current.x - eyeClientX) / scaleX * 0.1, -14, 14),
+          y: clamp((pointerClientRef.current.y - eyeClientY) / scaleY * 0.1, -11, 11),
+        };
+      };
+
+      const leftTarget = getEyeTarget(430, 414);
+      const rightTarget = getEyeTarget(589, 404, 0.35);
+      const cursorBias = mouseActiveRef.current && !coarsePointerRef.current ? lastPointerRef.current.x - 0.5 : 0;
+      const targetLeftBrowY =
+        mouseActiveRef.current && !coarsePointerRef.current
+          ? cursorBias < -0.04
+            ? -7
+            : -1
+          : Math.sin(idleTRef.current * 0.75) * -1.2;
+      const targetRightBrowY =
+        mouseActiveRef.current && !coarsePointerRef.current
+          ? cursorBias > 0.04
+            ? -7
+            : -1
+          : Math.sin(idleTRef.current * 0.75 + 0.45) * -1.2;
 
       currentRef.current.headX = lerp(currentRef.current.headX, targetHeadX, 0.09);
       currentRef.current.headY = lerp(currentRef.current.headY, targetHeadY, 0.09);
       currentRef.current.headRotate = lerp(currentRef.current.headRotate, targetHeadRotate, 0.09);
       currentRef.current.floatY = lerp(currentRef.current.floatY, idleFloat, 0.06);
-      currentRef.current.pupilX = lerp(currentRef.current.pupilX, targetPupilX, 0.12);
-      currentRef.current.pupilY = lerp(currentRef.current.pupilY, targetPupilY, 0.12);
+      currentRef.current.leftPupilX = lerp(currentRef.current.leftPupilX, leftTarget.x, 0.18);
+      currentRef.current.leftPupilY = lerp(currentRef.current.leftPupilY, leftTarget.y, 0.18);
+      currentRef.current.rightPupilX = lerp(currentRef.current.rightPupilX, rightTarget.x, 0.18);
+      currentRef.current.rightPupilY = lerp(currentRef.current.rightPupilY, rightTarget.y, 0.18);
+      currentRef.current.leftBrowY = lerp(currentRef.current.leftBrowY, targetLeftBrowY, 0.12);
+      currentRef.current.rightBrowY = lerp(currentRef.current.rightBrowY, targetRightBrowY, 0.12);
 
       avatarFrame.style.transform = `translate3d(0, ${currentRef.current.floatY.toFixed(2)}px, 0)`;
       head.style.transform = `translate(${currentRef.current.headX.toFixed(2)}px, ${currentRef.current.headY.toFixed(2)}px) rotate(${currentRef.current.headRotate.toFixed(2)}deg)`;
-      const pupilTransform = `translate(${currentRef.current.pupilX.toFixed(2)}px, ${currentRef.current.pupilY.toFixed(2)}px)`;
-      leftPupil.style.transform = pupilTransform;
-      rightPupil.style.transform = pupilTransform;
+      leftBrow.setAttribute("transform", `translate(0 ${currentRef.current.leftBrowY.toFixed(2)})`);
+      rightBrow.setAttribute("transform", `translate(0 ${currentRef.current.rightBrowY.toFixed(2)})`);
+      leftPupil.setAttribute(
+        "transform",
+        `translate(${currentRef.current.leftPupilX.toFixed(2)} ${currentRef.current.leftPupilY.toFixed(2)}) rotate(-1 430 414)`,
+      );
+      rightPupil.setAttribute(
+        "transform",
+        `translate(${currentRef.current.rightPupilX.toFixed(2)} ${currentRef.current.rightPupilY.toFixed(2)}) rotate(-1 589 404)`,
+      );
 
       raf = requestAnimationFrame(tick);
     };
@@ -153,10 +211,10 @@ export default function InteractiveAvatarHero() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden pt-24 pb-12 md:pt-32 md:pb-16">
+    <section ref={sectionRef} className="relative overflow-hidden py-20 md:py-24 lg:py-32">
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(226,232,240,0.72),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.45),rgba(248,250,252,0.18))]"
+        className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.42),rgba(248,250,252,0.16))]"
       />
       <div
         aria-hidden="true"
@@ -164,11 +222,11 @@ export default function InteractiveAvatarHero() {
       />
 
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center gap-10 md:flex-row md:items-center md:gap-16">
+        <div className="flex flex-col items-center gap-12 md:flex-row md:items-center md:gap-16 lg:gap-24">
           <div className="flex w-full shrink-0 justify-center md:order-last md:w-[42%]">
             <div
               ref={avatarFrameRef}
-              className="relative w-[min(82vw,20rem)] sm:w-[24rem] md:w-[28rem] lg:w-[31rem]"
+              className="relative w-[min(80vw,20rem)] sm:w-96 md:w-[28rem] lg:w-[31rem]"
               style={{ willChange: "transform" }}
             >
               <div
@@ -196,36 +254,40 @@ export default function InteractiveAvatarHero() {
 
           <div className="w-full space-y-6 text-center reveal-up md:order-first md:flex-1 md:text-left">
             <span className="eyebrow hero-eyebrow">
-              <span className="hidden sm:inline">CAD And BIM Software Developer</span>
+              <span className="hidden sm:inline">AEC Workflow Automation Developer</span>
               <span className="sm:hidden">CAD &amp; BIM Software Developer</span>
             </span>
 
-            <h1 className="font-headline text-[clamp(2rem,10vw,2.25rem)] font-bold text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="font-headline text-[clamp(2.5rem,12vw,4rem)] font-semibold tracking-[-0.05em] text-foreground md:text-7xl">
               Hey, I&apos;m <span className="block text-primary sm:inline">Justine.</span>
             </h1>
 
-            <p className="mx-auto max-w-[20rem] px-1 text-base text-muted-foreground sm:max-w-xl sm:px-0 sm:text-lg md:mx-0 md:text-xl">
-              I build automation tools for{" "}
-              <strong className="font-semibold text-foreground">Revit</strong>,{" "}
-              <strong className="font-semibold text-foreground">AutoCAD</strong>, and{" "}
-              <strong className="font-semibold text-foreground">AEC workflows</strong> by turning repetitive manual tasks into reliable internal tools.
+            <p className="mx-auto max-w-xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8 md:mx-0">
+              I work close to real CAD/BIM production problems: repeated clicks, slow exports, missing references, and standards that are easy to break under deadline pressure.
             </p>
 
-            <div className="mx-auto flex max-w-[20rem] flex-wrap justify-center gap-2 sm:max-w-full md:mx-0 md:justify-start">
+            <p className="mx-auto max-w-xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8 md:mx-0">
+              I build practical tools for{" "}
+              <strong className="font-semibold text-foreground">Revit</strong>,{" "}
+              <strong className="font-semibold text-foreground">AutoCAD</strong>, and{" "}
+              <strong className="font-semibold text-foreground">AEC workflows</strong> so teams can reduce repetitive work and deliver with more consistency.
+            </p>
+
+            <div className="mx-auto flex max-w-xl flex-wrap justify-center gap-2 md:mx-0 md:justify-start">
               {["Revit API", "AutoCAD .NET", "AutoLISP", "WPF Tools", "APS / Cloud"].map((skill) => (
                 <span
                   key={skill}
-                  className="rounded-full border border-border/70 bg-white/75 px-3 py-1 text-sm text-foreground/80"
+                  className="rounded-full border border-border/70 bg-white/70 px-4 py-2 text-sm text-foreground/80"
                 >
                   {skill}
                 </span>
               ))}
             </div>
 
-            <div className="flex flex-col justify-center gap-3 sm:flex-row md:justify-start">
+            <div className="flex flex-col justify-center gap-4 sm:flex-row md:justify-start">
               <Button asChild size="lg" className="w-full rounded-full px-6 sm:w-auto">
                 <Link href="/work">
-                  View Projects
+                  See Project Examples
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -233,9 +295,9 @@ export default function InteractiveAvatarHero() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="w-full rounded-full border-2 border-foreground bg-transparent text-foreground transition-all duration-300 hover:bg-foreground hover:text-background sm:w-auto"
+                className="w-full rounded-full border border-foreground bg-transparent text-foreground transition-all duration-300 hover:bg-foreground hover:text-background sm:w-auto"
               >
-                <Link href="/contact">Contact Me</Link>
+                <Link href="/contact">Tell Me The Workflow</Link>
               </Button>
             </div>
           </div>

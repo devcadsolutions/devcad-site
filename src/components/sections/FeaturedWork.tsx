@@ -18,19 +18,19 @@ export default function FeaturedWork() {
   return (
     <section>
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="space-y-8">
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="space-y-12">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl space-y-4 reveal-left">
-              <span className="eyebrow">Featured Projects</span>
-              <h2 className="section-heading">Case studies that show the problem, the build, and the practical outcome.</h2>
+              <span className="eyebrow">Project Examples</span>
+              <h2 className="section-heading">Workflow pain turned into practical internal tools.</h2>
               <p className="section-copy">
-                This is where the work gets specific: Revit tooling, AutoCAD automation, APS-connected workflows,
-                and engineering estimation systems built for real delivery teams.
+                A few examples from the places where production teams lose time: Revit geometry, CAD-to-BIM placement,
+                internal tool access, Autodesk cloud extraction, and repeatable technical delivery work.
               </p>
             </div>
-            <Button asChild size="lg" className="rounded-full px-6">
+            <Button asChild size="lg" className="w-full rounded-full px-6 sm:w-auto">
               <Link href="/work">
-                Explore Full Portfolio
+                See More Project Examples
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

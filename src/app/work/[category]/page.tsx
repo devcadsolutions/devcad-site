@@ -40,19 +40,23 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const projects = getProjectsByCategory(config.href);
 
   return (
-    <section className="pt-24 md:pt-32">
+    <section className="pt-20 md:pt-24 lg:pt-32">
       <div className="container mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-10 text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-muted-foreground">Portfolio Category</p>
-          <h1 className="mt-4 font-headline text-4xl font-bold sm:text-5xl">{config.label}</h1>
-          <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground">{config.description}</p>
+        <div className="mb-12 text-center">
+          <p className="eyebrow">Portfolio Category</p>
+          <h1 className="mt-6 font-headline text-4xl font-semibold tracking-[-0.05em] sm:text-5xl">
+            {config.label}
+          </h1>
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">
+            {config.description}
+          </p>
         </div>
 
         {projects.length > 0 ? (
           <ProjectCaseStudyList projects={projects} />
         ) : (
           <div className="py-16 text-center text-muted-foreground">
-            <p className="text-lg">No case studies yet — check back soon.</p>
+            <p className="text-lg">No case studies yet - check back soon.</p>
           </div>
         )}
 
