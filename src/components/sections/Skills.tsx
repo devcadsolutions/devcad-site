@@ -79,7 +79,7 @@ export default function Skills() {
               className="grid gap-3 py-5 lg:grid-cols-[14rem_1fr] lg:items-center lg:gap-6"
             >
               <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/75">{group.title}</h3>
-              <ul className="grid grid-cols-3 gap-x-2 gap-y-3 sm:grid-cols-5 lg:grid-cols-9">
+              <ul className="grid grid-cols-4 gap-x-2 gap-y-3 sm:grid-cols-5 lg:grid-cols-9">
                 {group.tools.map((tool) => (
                   <ToolTile key={tool.name} {...tool} />
                 ))}

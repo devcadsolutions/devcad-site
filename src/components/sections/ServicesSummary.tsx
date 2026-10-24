@@ -53,7 +53,7 @@ export default function ServicesSummary() {
                 className="soft-panel group flex h-full flex-col p-5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(79,62,46,0.35)] reveal-up"
                 style={{ animationDelay: `${100 + index * 70}ms` }}
               >
-                <div className="flex items-start justify-between gap-4">
+                <div className="hidden items-start justify-between gap-4 sm:flex">
                   <div className={`inline-flex w-fit rounded-full border border-primary/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] ${serviceAccents[index % serviceAccents.length]}`}>
                     {serviceLabels[index % serviceLabels.length]}
                   </div>
@@ -61,12 +61,12 @@ export default function ServicesSummary() {
                     <ServiceIcon className="h-5 w-5" strokeWidth={1.8} />
                   </div>
                 </div>
-                <p className="mt-4 text-sm font-semibold text-primary">
+                <p className="text-sm font-semibold text-primary sm:mt-4">
                   {clientNeeds[index % clientNeeds.length]}
                 </p>
                 <h3 className="mt-1 font-headline text-lg font-semibold leading-snug tracking-[-0.02em] text-foreground">{service.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-6 text-muted-foreground">{service.description}</p>
-                <div className="mt-4 border-t border-border/70 pt-4">
+                <p className="mt-1.5 flex-1 text-sm leading-6 text-muted-foreground">{service.description}</p>
+                <div className="mt-4 hidden border-t border-border/70 pt-4 sm:block">
                   <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">Focus Stack</p>
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {service.tools.slice(0, 3).map((tool) => (

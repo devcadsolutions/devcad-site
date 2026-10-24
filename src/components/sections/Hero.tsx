@@ -21,11 +21,11 @@ export default function Hero() {
           <p className="max-w-3xl text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
             Most useful automation starts as ordinary production friction: the step someone repeats every week, the check that depends on memory, or the old script the team still needs but no longer wants to maintain.
           </p>
-          <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="grid grid-cols-2 gap-2 lg:grid-cols-4">
             {workflowFriction.map((item) => (
               <li
                 key={item}
-                className="border-l-2 border-primary/30 bg-white/60 px-3 py-2.5 text-sm font-medium text-foreground/80"
+                className="border-l-2 border-primary/30 bg-white/60 px-3 py-2 text-[13px] font-medium leading-snug sm:py-2.5 sm:text-sm text-foreground/80"
               >
                 {item}
               </li>
