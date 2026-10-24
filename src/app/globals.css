@@ -20,7 +20,7 @@
     --secondary-foreground: 24 10% 20%;
     
     --muted: 30 10% 75%;
-    --muted-foreground: 30 10% 37%;
+    --muted-foreground: 30 10% 35%;
 
     --accent: 27 8% 43%;
     --accent-foreground: 40 33% 97%;
@@ -32,68 +32,9 @@
     --input: 30 10% 90%;
     --ring: 27 8% 33%;
 
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    
     --radius: 0.5rem;
-    
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  .dark {
-    --background: 24 10% 15%;
-    --foreground: 36 25% 96%;
-
-    --card: 24 10% 20%;
-    --card-foreground: 36 25% 96%;
-
-    --popover: 24 10% 15%;
-    --popover-foreground: 36 25% 96%;
-
-    --primary: 36 25% 96%;
-    --primary-foreground: 27 8% 23%;
-
-    --secondary: 30 10% 25%;
-    --secondary-foreground: 36 25% 96%;
-
-    --muted: 30 10% 35%;
-    --muted-foreground: 30 10% 65%;
-
-    --accent: 36 25% 86%;
-    --accent-foreground: 27 8% 23%;
-    
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 30 10% 30%;
-    --input: 30 10% 30%;
-    --ring: 36 25% 86%;
-
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
 }
 
 @layer base {
@@ -103,8 +44,10 @@
 
     /* Typography baseline */
   html {
-    /* Smooth scrolling for anchor jumps */
+    /* Smooth scrolling for anchor jumps (disabled for reduced motion below) */
     scroll-behavior: smooth;
+    /* Keep anchor targets clear of the sticky header */
+    scroll-padding-top: 5rem;
     /* Prevent font-size inflation on mobile */
     -webkit-text-size-adjust: 100%;
   }
@@ -159,12 +102,11 @@
   :focus-visible {
     outline: 2px solid hsl(var(--ring));
     outline-offset: 2px;
-    border-radius: var(--radius);
   }
 
     /* Layout */
   section {
-    @apply w-full py-16 md:py-20 lg:py-24;
+    @apply w-full py-14 md:py-16 lg:py-20;
   }
 
 }
@@ -178,40 +120,6 @@
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes reveal-left {
-  from {
-    opacity: 0;
-    transform: translate3d(-20px, 0, 0);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes reveal-right {
-  from {
-    opacity: 0;
-    transform: translate3d(20px, 0, 0);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes filter-fade {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }
 
@@ -251,18 +159,8 @@
     @apply text-base leading-7 text-muted-foreground md:text-lg md:leading-8;
   }
 
-    /* Card hover */
-  .card-interactive {
-    @apply transition-all duration-200 ease-out;
-  }
-  .card-interactive:hover {
-    @apply -translate-y-0.5 shadow-[0_28px_60px_-28px_rgba(79,62,46,0.35)];
-  }
-
     /* Animations */
-  .reveal-up,
-  .reveal-left,
-  .reveal-right {
+  .reveal-up {
     opacity: 0;
     animation-duration: 420ms;
     animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
@@ -273,50 +171,25 @@
     animation-name: reveal-up;
   }
 
-  .reveal-left {
-    animation-name: reveal-left;
-  }
-
-  .reveal-right {
-    animation-name: reveal-right;
-  }
-
-  .filter-fade {
-    animation: filter-fade 220ms ease-out;
-  }
-
-  .premium-portfolio-carousel-track {
-    backface-visibility: hidden;
-    transform: translate3d(0, 0, 0);
-    transform-style: preserve-3d;
-  }
-
-  .premium-portfolio-carousel-viewport {
-    overflow: visible;
-    perspective: 1200px;
-  }
-
-  .premium-portfolio-carousel-card {
-    backface-visibility: hidden;
-    transform-origin: center center;
-    transition-property: transform, opacity, filter, box-shadow, border-color;
-    transition-duration: 520ms;
-    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform, opacity, filter;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal-up,
-  .reveal-left,
-  .reveal-right {
+  .reveal-up {
     opacity: 1;
     animation: none;
     transform: none;
   }
 
-  .premium-portfolio-carousel-track {
-    transform: none;
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { ChevronDown, Menu } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
+import { isActivePath } from "@/lib/nav";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -16,93 +17,109 @@ import {
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import Logo from "@/components/Logo";
 
-export default function Header() {
-  const pathname = usePathname();
-  const router = useRouter();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isPortfolioMenuOpen, setIsPortfolioMenuOpen] = useState(false);
-  const isPortfolioActive = pathname === "/work" || pathname.startsWith("/work/");
+const categories = siteConfig.portfolioCategories.filter((c) => !c.hidden);
 
-  const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
+const desktopLinkClass =
+  "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-primary/10 hover:text-foreground";
+
+function DesktopNavLink({ href, label, active }: { href: string; label: string; active: boolean }) {
+  return (
     <Link
       href={href}
-      className={cn(
-        "text-sm font-medium transition-colors hover:text-primary-foreground hover:bg-primary px-3 py-2 rounded-md",
-        pathname === href ? "bg-primary text-primary-foreground" : "text-muted-foreground"
-      )}
-      onClick={() => isMobileMenuOpen && setIsMobileMenuOpen(false)}
+      aria-current={active ? "page" : undefined}
+      className={cn(desktopLinkClass, active ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : "text-muted-foreground")}
     >
-      {children}
+      {label}
     </Link>
   );
+}
+
+function MobileNavLink({
+  href,
+  label,
+  active,
+  onNavigate,
+  nested = false,
+}: {
+  href: string;
+  label: string;
+  active: boolean;
+  onNavigate: () => void;
+  nested?: boolean;
+}) {
+  return (
+    <Link
+      href={href}
+      onClick={onNavigate}
+      aria-current={active ? "page" : undefined}
+      className={cn(
+        "flex min-h-11 items-center rounded-md px-3 transition-colors hover:bg-primary/10 hover:text-foreground",
+        nested ? "ml-3 text-sm" : "text-base font-medium",
+        active ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : nested ? "text-muted-foreground" : "text-foreground"
+      )}
+    >
+      {label}
+    </Link>
+  );
+}
+
+export default function Header() {
+  const pathname = usePathname() ?? "/";
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isPortfolioMenuOpen, setIsPortfolioMenuOpen] = useState(false);
+  const closeMobile = () => setIsMobileMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background shadow-[0_10px_30px_-24px_rgba(79,62,46,0.35)]">
-      <div className="container flex h-16 max-w-7xl items-center justify-between">
-        <div className="mr-4 flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Logo />
-          </Link>
-        </div>
-        
-        <div className="flex flex-1 items-center justify-end space-x-4">
-           <nav className="hidden items-center space-x-2 md:flex">
+    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 shadow-[0_10px_30px_-24px_rgba(79,62,46,0.35)] backdrop-blur supports-[backdrop-filter]:bg-background/85">
+      <div className="container flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex items-center rounded-md" aria-label={`${siteConfig.name} home`}>
+          <Logo />
+        </Link>
+
+        <div className="flex items-center gap-3">
+          <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
             {siteConfig.navLinks.map((link) =>
               link.href === "/work" ? (
-                <DropdownMenu
-                  key={link.href}
-                  open={isPortfolioMenuOpen}
-                  onOpenChange={setIsPortfolioMenuOpen}
-                >
-                  <DropdownMenuTrigger asChild>
-                    <Link
-                      href="/work"
-                      className={cn(
-                        "flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors outline-none hover:bg-primary hover:text-primary-foreground",
-                        isPortfolioActive ? "bg-primary text-primary-foreground" : "text-muted-foreground"
-                      )}
-                      onMouseEnter={() => setIsPortfolioMenuOpen(true)}
-                      onClick={(event) => {
-                        event.preventDefault();
-                        setIsPortfolioMenuOpen(false);
-                        router.push("/work");
+                <div key={link.href} className="flex items-center">
+                  <DesktopNavLink href={link.href} label={link.label} active={isActivePath(pathname, "/work")} />
+                  <DropdownMenu open={isPortfolioMenuOpen} onOpenChange={setIsPortfolioMenuOpen} modal={false}>
+                    <DropdownMenuTrigger
+                      aria-label="Portfolio categories"
+                      className="ml-0.5 inline-flex !min-h-9 !min-w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-primary/10 hover:text-foreground data-[state=open]:bg-primary/10"
+                      onPointerEnter={(event) => {
+                        if (event.pointerType === "mouse") setIsPortfolioMenuOpen(true);
                       }}
                     >
-                      <span>{link.label}</span>
-                      <ChevronDown className="h-4 w-4" />
-                    </Link>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent
-                    align="start"
-                    sideOffset={10}
-                    className="w-60 rounded-xl border-border/60 bg-background p-2 shadow-xl"
-                    onMouseEnter={() => setIsPortfolioMenuOpen(true)}
-                    onMouseLeave={() => setIsPortfolioMenuOpen(false)}
-                    onCloseAutoFocus={(event) => event.preventDefault()}
-                  >
-                    {siteConfig.portfolioCategories.filter((c) => !c.hidden).map((category) => (
-                      <DropdownMenuItem key={category.href} asChild>
-                        <Link
-                          href={category.href}
-                          className="cursor-pointer rounded-lg px-3 py-2 font-medium"
-                          onClick={() => setIsPortfolioMenuOpen(false)}
-                        >
-                          {category.label}
-                        </Link>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
+                      <ChevronDown className="h-4 w-4" aria-hidden="true" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent
+                      align="end"
+                      sideOffset={10}
+                      className="w-64 rounded-xl border-border/60 bg-background p-2 shadow-xl"
+                      onPointerLeave={(event) => {
+                        if (event.pointerType === "mouse") setIsPortfolioMenuOpen(false);
+                      }}
+                    >
+                      {categories.map((category) => (
+                        <DropdownMenuItem key={category.href} asChild>
+                          <Link href={category.href} className="cursor-pointer rounded-lg px-3 py-2 font-medium">
+                            {category.label}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
               ) : (
-                <NavLink key={link.href} href={link.href}>
-                  {link.label}
-                </NavLink>
+                <DesktopNavLink key={link.href} href={link.href} label={link.label} active={isActivePath(pathname, link.href)} />
               )
             )}
           </nav>
 
-          <Button asChild className="hidden sm:inline-flex">
-            <Link href="/contact">Contact</Link>
+          <Button asChild className="hidden rounded-full px-5 sm:inline-flex">
+            <Link href="/contact" aria-current={isActivePath(pathname, "/contact") ? "page" : undefined}>
+              Contact
+            </Link>
           </Button>
 
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -112,39 +129,45 @@ export default function Header() {
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-nav"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-md text-foreground transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:hidden"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-md text-foreground transition-colors hover:bg-primary/10 md:hidden"
               >
                 <Menu className="h-6 w-6" aria-hidden="true" />
               </button>
             </SheetTrigger>
-            <SheetContent id="mobile-nav" side="left" className="pr-0" aria-describedby={undefined}>
+            <SheetContent id="mobile-nav" side="left" className="overflow-y-auto pr-4" aria-describedby={undefined}>
               <SheetTitle className="sr-only">Site navigation</SheetTitle>
-              <Link
-                href="/"
-                className="mb-8 flex items-center"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
+              <Link href="/" className="mb-6 flex items-center" onClick={closeMobile}>
                 <Logo />
               </Link>
-              <div className="flex flex-col space-y-4">
+              <nav aria-label="Mobile" className="flex flex-col gap-1">
+                <MobileNavLink href="/" label="Home" active={isActivePath(pathname, "/")} onNavigate={closeMobile} />
                 {siteConfig.navLinks.map((link) => (
-                  <div key={link.href} className="flex flex-col space-y-2">
-                    <NavLink href={link.href}>{link.label}</NavLink>
+                  <div key={link.href} className="flex flex-col gap-1">
+                    <MobileNavLink
+                      href={link.href}
+                      label={link.label}
+                      active={link.href === "/work" ? isActivePath(pathname, "/work") && pathname.replace(/\/$/, "") === "/work" : isActivePath(pathname, link.href)}
+                      onNavigate={closeMobile}
+                    />
                     {link.href === "/work" &&
-                      siteConfig.portfolioCategories.filter((c) => !c.hidden).map((category) => (
-                        <Link
+                      categories.map((category) => (
+                        <MobileNavLink
                           key={category.href}
                           href={category.href}
-                          className="pl-4 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {category.label}
-                        </Link>
+                          label={category.label}
+                          active={isActivePath(pathname, category.href)}
+                          onNavigate={closeMobile}
+                          nested
+                        />
                       ))}
                   </div>
                 ))}
-                 <NavLink href="/contact">Contact</NavLink>
-              </div>
+                <Button asChild size="lg" className="mt-4 rounded-full">
+                  <Link href="/contact" onClick={closeMobile}>
+                    Contact
+                  </Link>
+                </Button>
+              </nav>
             </SheetContent>
           </Sheet>
         </div>

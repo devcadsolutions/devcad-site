@@ -1,3 +1,6 @@
+import { siteConfig } from "@/config/site";
+import { PlaceHolderImages, type ImagePlaceholder } from "@/lib/placeholder-images";
+
 export type PortfolioProject = {
   slug: string;
   title: string;
@@ -10,7 +13,8 @@ export type PortfolioProject = {
   tags: string[];
   technologies: string[];
   keyFeatures: string[];
-  imageId: string;
+  /** Cover image. Omit when no real screenshot can be shown (a styled placeholder is used instead). */
+  imageId?: string;
   /** Additional image IDs shown as a gallery in the case study */
   imageIds?: string[];
   /** Employer/client context chip, e.g. "Cracknell" */
@@ -239,7 +243,6 @@ export const portfolioProjects: PortfolioProject[] = [
       "Provides workflow progress tracking for users",
       "Improves error reporting and troubleshooting logs",
     ],
-    imageId: "service-digital-grid",
   },
   {
     slug: "aps-viewer-web-based-model-viewer",
@@ -265,7 +268,6 @@ export const portfolioProjects: PortfolioProject[] = [
       "Browser-based access",
       "Reduced need for local Autodesk software",
     ],
-    imageId: "website-dev-1",
   },
   {
     slug: "forma-admin-permission-management-tool",
@@ -291,7 +293,6 @@ export const portfolioProjects: PortfolioProject[] = [
       "Faster multi-user access handling",
       "Cleaner permission management flow",
     ],
-    imageId: "website-dev-2",
   },
   {
     slug: "large-revit-model-processing-with-aps",
@@ -317,7 +318,6 @@ export const portfolioProjects: PortfolioProject[] = [
       "Practical workflow for heavy project models",
       "Better handling of oversized model packages",
     ],
-    imageId: "service-digital-grid",
   },
   {
     slug: "revit-link-packaging-workflow-for-aps-translation",
@@ -343,7 +343,6 @@ export const portfolioProjects: PortfolioProject[] = [
       "APS translation readiness",
       "Reduced broken-reference issues",
     ],
-    imageId: "about-image",
   },
   {
     slug: "aps-model-preflight-checklist-for-revit-export-workflows",
@@ -369,7 +368,6 @@ export const portfolioProjects: PortfolioProject[] = [
       "Lower failed-job risk",
       "More confident export setup",
     ],
-    imageId: "training-material",
   },
   {
     slug: "user-friendly-aps-export-workflow-tracker",
@@ -395,7 +393,6 @@ export const portfolioProjects: PortfolioProject[] = [
       "Reduced user confusion",
       "More productized APS experience",
     ],
-    imageId: "app-dev-1",
   },
   {
     slug: "revit-link-manager-reference-workflow-tool",
@@ -641,7 +638,6 @@ export const portfolioProjects: PortfolioProject[] = [
       "Assumptions and structural library",
       "Excel 2019-compatible formula structure",
     ],
-    imageId: "training-material",
   },
 ];
 
@@ -651,6 +647,40 @@ export function getProjectsByCategory(categoryHref: string) {
 
 export function getProjectBySlug(slug: string) {
   return portfolioProjects.find((project) => project.slug === slug);
+}
+
+const categoryOrder = siteConfig.portfolioCategories.map((c) => c.href);
+
+/** Projects ordered by category priority (AEC tooling first), stable within a category. */
+export function getProjectsInDisplayOrder() {
+  return [...portfolioProjects].sort(
+    (a, b) => categoryOrder.indexOf(a.categoryHref) - categoryOrder.indexOf(b.categoryHref)
+  );
+}
+
+export function getCategoryLabel(categoryHref: string) {
+  return siteConfig.portfolioCategories.find((c) => c.href === categoryHref)?.label ?? "Portfolio";
+}
+
+export function getProjectCoverImage(project: PortfolioProject): ImagePlaceholder | undefined {
+  if (!project.imageId) return undefined;
+  return PlaceHolderImages.find((item) => item.id === project.imageId);
+}
+
+/** All screenshots for a project, cover first, without duplicates. */
+export function getProjectImages(project: PortfolioProject): ImagePlaceholder[] {
+  const ids = [project.imageId, ...(project.imageIds ?? [])].filter((id): id is string => Boolean(id));
+  return [...new Set(ids)]
+    .map((id) => PlaceHolderImages.find((item) => item.id === id))
+    .filter((item): item is ImagePlaceholder => Boolean(item));
+}
+
+export function getRelatedProjects(project: PortfolioProject, limit = 3) {
+  const sameCategory = portfolioProjects.filter((p) => p.slug !== project.slug && p.categoryHref === project.categoryHref);
+  const sharedTags = portfolioProjects.filter(
+    (p) => p.slug !== project.slug && p.categoryHref !== project.categoryHref && p.tags.some((t) => project.tags.includes(t))
+  );
+  return [...sameCategory, ...sharedTags].slice(0, limit);
 }
 
 export function getAllProjectTags() {
