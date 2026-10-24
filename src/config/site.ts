@@ -1,8 +1,7 @@
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-// NOTE: confirm the production domain (devcad.site vs devcad.tech). Canonical URLs, the sitemap and
-// Open Graph tags are all derived from this value, so it must match the live site.
-const defaultSiteUrl = "https://devcad.site";
+// Production site is served from the Hostinger VPS at devcad.tech.
+const defaultSiteUrl = "https://devcad.tech";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? defaultSiteUrl;
 
 export const siteConfig = {

@@ -42,7 +42,7 @@ jobs:
           GITHUB_ACTIONS: true
           GITHUB_REPOSITORY: ${{ github.repository }}
           NEXT_PUBLIC_BASE_PATH: ""
-          NEXT_PUBLIC_SITE_URL: https://devcad.site
+          NEXT_PUBLIC_SITE_URL: https://devcad.tech
         run: npm run build
 
       - name: Upload Pages artifact
