@@ -13,7 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import Logo from "@/components/Logo";
 
 export default function Header() {
@@ -107,15 +107,18 @@ export default function Header() {
 
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                className="px-2 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+              <button
+                type="button"
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-nav"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-md text-foreground transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:hidden"
               >
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle Menu</span>
-              </Button>
+                <Menu className="h-6 w-6" aria-hidden="true" />
+              </button>
             </SheetTrigger>
-            <SheetContent side="left" className="pr-0">
+            <SheetContent id="mobile-nav" side="left" className="pr-0" aria-describedby={undefined}>
+              <SheetTitle className="sr-only">Site navigation</SheetTitle>
               <Link
                 href="/"
                 className="mb-8 flex items-center"

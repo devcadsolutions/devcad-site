@@ -211,7 +211,7 @@ export default function InteractiveAvatarHero() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden py-20 md:py-24 lg:py-32">
+    <section ref={sectionRef} className="relative overflow-hidden py-6 sm:py-10 md:py-14 lg:py-20">
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.42),rgba(248,250,252,0.16))]"
@@ -222,11 +222,11 @@ export default function InteractiveAvatarHero() {
       />
 
       <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center gap-12 md:flex-row md:items-center md:gap-16 lg:gap-24">
-          <div className="flex w-full shrink-0 justify-center md:order-last md:w-[42%]">
+        <div className="flex flex-col items-center gap-3 sm:gap-8 md:flex-row md:items-center md:gap-12 lg:gap-16">
+          <div className="flex w-full shrink-0 justify-center md:order-last md:w-[38%]">
             <div
               ref={avatarFrameRef}
-              className="relative w-[min(80vw,20rem)] sm:w-96 md:w-[28rem] lg:w-[31rem]"
+              className="relative w-[min(40vw,9.5rem)] sm:w-64 md:w-[22rem] lg:w-[26rem]"
               style={{ willChange: "transform" }}
             >
               <div
@@ -252,21 +252,21 @@ export default function InteractiveAvatarHero() {
             </div>
           </div>
 
-          <div className="w-full space-y-6 text-center reveal-up md:order-first md:flex-1 md:text-left">
+          <div className="w-full space-y-4 text-center reveal-up sm:space-y-5 md:order-first md:flex-1 md:text-left">
             <span className="eyebrow hero-eyebrow">
               <span className="hidden sm:inline">AEC Workflow Automation Developer</span>
               <span className="sm:hidden">CAD &amp; BIM Software Developer</span>
             </span>
 
-            <h1 className="font-headline text-[clamp(2.5rem,12vw,4rem)] font-semibold tracking-[-0.05em] text-foreground md:text-7xl">
+            <h1 className="font-headline text-[clamp(2.25rem,10vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.05em] text-foreground md:text-6xl lg:text-7xl">
               Hey, I&apos;m <span className="block text-primary sm:inline">Justine.</span>
             </h1>
 
-            <p className="mx-auto max-w-xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8 md:mx-0">
+            <p className="mx-auto max-w-xl text-base leading-6 text-muted-foreground sm:text-lg sm:leading-8 md:mx-0">
               I work close to real CAD/BIM production problems: repeated clicks, slow exports, missing references, and standards that are easy to break under deadline pressure.
             </p>
 
-            <p className="mx-auto max-w-xl text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8 md:mx-0">
+            <p className="mx-auto max-w-xl text-base leading-6 text-muted-foreground sm:text-lg sm:leading-8 md:mx-0">
               I build practical tools for{" "}
               <strong className="font-semibold text-foreground">Revit</strong>,{" "}
               <strong className="font-semibold text-foreground">AutoCAD</strong>, and{" "}
@@ -277,14 +277,14 @@ export default function InteractiveAvatarHero() {
               {["Revit API", "AutoCAD .NET", "AutoLISP", "WPF Tools", "APS / Cloud"].map((skill) => (
                 <span
                   key={skill}
-                  className="rounded-full border border-border/70 bg-white/70 px-4 py-2 text-sm text-foreground/80"
+                  className="rounded-full border border-border/70 bg-white/70 px-3 py-1 text-[13px] text-foreground/80 sm:px-4 sm:py-2 sm:text-sm"
                 >
                   {skill}
                 </span>
               ))}
             </div>
 
-            <div className="flex flex-col justify-center gap-4 sm:flex-row md:justify-start">
+            <div className="flex flex-col justify-center gap-3 pt-1 sm:flex-row sm:gap-4 md:justify-start">
               <Button asChild size="lg" className="w-full rounded-full px-6 sm:w-auto">
                 <Link href="/work">
                   See Project Examples
