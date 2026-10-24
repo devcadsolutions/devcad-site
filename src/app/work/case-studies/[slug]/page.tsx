@@ -1,277 +1,218 @@
 import type { Metadata } from "next";
-import LightboxImage from "@/components/ui/LightboxImage";
-import PremiumPortfolioGalleryCarousel from "@/components/portfolio/PremiumPortfolioGalleryCarousel";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Building2, ExternalLink, ShieldAlert } from "lucide-react";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-import type { ImagePlaceholder } from "@/lib/placeholder-images";
-import { getProjectBySlug, portfolioProjects } from "@/lib/portfolio-projects";
-import { siteConfig } from "@/config/site";
+import { Button } from "@/components/ui/button";
+import ImageGallery from "@/components/ui/ImageGallery";
+import ProjectCard from "@/components/portfolio/ProjectCard";
+import { pageMetadata } from "@/lib/metadata";
+import {
+  getCategoryLabel,
+  getProjectBySlug,
+  getProjectImages,
+  getRelatedProjects,
+  portfolioProjects,
+} from "@/lib/portfolio-projects";
 
 type CaseStudyPageProps = {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: Promise<{ slug: string }>;
 };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  return portfolioProjects.map((project) => ({
-    slug: project.slug,
-  }));
+  return portfolioProjects.map((project) => ({ slug: project.slug }));
 }
 
 export async function generateMetadata({ params }: CaseStudyPageProps): Promise<Metadata> {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
-
-  if (!project) {
-    return {
-      title: "Case Study",
-    };
-  }
-
-  return {
+  if (!project) return { title: "Case Study" };
+  return pageMetadata({
     title: project.title,
     description: project.overview,
-  };
+    path: `/work/case-studies/${project.slug}`,
+    type: "article",
+  });
 }
 
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
+  if (!project) notFound();
 
-  if (!project) {
-    notFound();
-  }
-
-  const image = PlaceHolderImages.find((item) => item.id === project.imageId);
-  const registeredImages = project.imageIds
-    ? project.imageIds
-        .map((id) => PlaceHolderImages.find((item) => item.id === id))
-        .filter((item): item is ImagePlaceholder => Boolean(item))
-    : image
-    ? [image]
-    : [];
-  const galleryImages = registeredImages.filter((item) => item.id !== project.imageId);
-  const desktopGalleryImages = galleryImages.filter((item) => !item.id.includes("mobile"));
-  const mobileGalleryImages = galleryImages.filter((item) => item.id.includes("mobile"));
-  const ungroupedGalleryImages = galleryImages.filter(
-    (item) => !desktopGalleryImages.includes(item) && !mobileGalleryImages.includes(item)
-  );
-  const usesPremiumGallery = registeredImages.length > 1;
-  const categoryLabel = siteConfig.portfolioCategories.find((c) => c.href === project.categoryHref)?.label ?? "Portfolio";
+  const images = getProjectImages(project).map((img) => ({ id: img.id, src: img.imageUrl, alt: img.description }));
+  const [cover, ...rest] = images;
+  const categoryLabel = getCategoryLabel(project.categoryHref);
+  const related = getRelatedProjects(project);
 
   return (
-    <section className="pt-20 md:pt-24 lg:pt-32">
-      <div className="container mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
-          <Link
-            href={project.categoryHref}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:gap-4"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to {categoryLabel}
-          </Link>
-          <Link
-            href="/work/"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:gap-4"
-          >
-            Back to Portfolio
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
+    <article>
+      <section className="pb-8 pt-8 md:pb-10 md:pt-10 lg:pb-12 lg:pt-12">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <nav aria-label="Breadcrumb" className="mb-8 text-sm">
+            <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-muted-foreground">
+              <li>
+                <Link href="/work" className="underline-offset-4 hover:text-foreground hover:underline">
+                  Portfolio
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <Link href={project.categoryHref} className="underline-offset-4 hover:text-foreground hover:underline">
+                  {categoryLabel}
+                </Link>
+              </li>
+            </ol>
+          </nav>
 
-        <div className="space-y-12">
-          <div className="section-shell overflow-hidden p-6 sm:p-8">
-            <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-              <div className="space-y-6">
-                <div className="space-y-4">
-                  <span className="eyebrow">Product Showcase</span>
-                  <h1 className="font-headline text-4xl font-semibold tracking-[-0.05em] text-foreground sm:text-5xl lg:text-6xl">
-                    {project.title}
-                  </h1>
-                  {project.employer && (
-                    <div className="flex items-center gap-2">
-                      <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-4 py-2 text-xs font-semibold text-primary">
-                        <Building2 className="h-3 w-3" />
-                        Currently employed at {project.employer}
-                      </span>
-                    </div>
-                  )}
-                  <p className="max-w-3xl text-lg leading-8 text-muted-foreground">{project.overview}</p>
-                  <p className="max-w-3xl text-base leading-7 text-foreground/80">{project.engagement}</p>
-                </div>
+          <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-12">
+            <div className="space-y-5">
+              <span className="eyebrow">Case study · {categoryLabel}</span>
+              <h1 className="font-headline text-4xl font-semibold tracking-[-0.04em] text-foreground sm:text-5xl">
+                {project.title}
+              </h1>
+              {project.employer && (
+                <p className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs font-semibold text-primary">
+                  <Building2 className="h-3.5 w-3.5" aria-hidden="true" />
+                  Built in-house at {project.employer}
+                </p>
+              )}
+              <p className="section-copy">{project.overview}</p>
 
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <Link
-                      key={tag}
-                      href={`/work?tag=${encodeURIComponent(tag)}`}
-                      className="rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-xs font-medium text-primary transition hover:bg-primary hover:text-primary-foreground"
-                    >
-                      {tag}
-                    </Link>
-                  ))}
-                </div>
+              <ul className="flex flex-wrap gap-2" aria-label="Built with">
+                {project.technologies.map((tech) => (
+                  <li key={tech} className="rounded-full border border-border/70 bg-white/75 px-3 py-1.5 text-xs font-medium text-foreground/85">
+                    {tech}
+                  </li>
+                ))}
+              </ul>
 
-                <div className="flex flex-wrap gap-3">
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2 text-sm font-semibold text-primary-foreground transition hover:brightness-110"
-                    >
-                      Open Project
-                      <ExternalLink className="h-4 w-4" />
-                    </a>
-                  )}
-                  <Link
-                    href="#gallery"
-                    className="inline-flex items-center gap-2 rounded-full border border-border bg-white/75 px-6 py-2 text-sm font-semibold text-foreground transition hover:border-primary/30 hover:text-primary"
-                  >
-                    View Gallery
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-
-              {image && (
-                <div className="overflow-hidden rounded-xl border border-border/70 bg-primary/8 shadow-[0_24px_56px_-36px_rgba(79,62,46,0.45)]">
-                  <LightboxImage
-                    src={image.imageUrl}
-                    alt={image.description}
-                    data-ai-hint={image.imageHint}
-                    width={1200}
-                    height={800}
-                    className="w-full h-auto object-contain"
-                  />
-                </div>
+              {project.liveUrl && (
+                <Button asChild size="lg" className="rounded-full px-6">
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                    Open live project
+                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </Button>
               )}
             </div>
-          </div>
 
-          {project.employerNote && (
-            <div className="flex items-start gap-4 rounded-2xl border border-primary/15 bg-primary/5 px-6 py-4 text-sm leading-6 text-foreground/85">
-              <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0 text-primary/70" />
-              <p>{project.employerNote}</p>
-            </div>
-          )}
-
-          <div className="grid gap-6 lg:grid-cols-3">
-            <DetailCard label="Product Need" value={project.problem} />
-            <DetailCard label="Experience Built" value={project.solution} />
-            <DetailCard label="Portfolio Value" value={project.result} />
-          </div>
-
-          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="soft-panel p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/75">Feature Highlights</p>
-              <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                {project.keyFeatures.map((feature) => (
-                  <p key={feature} className="flex items-start gap-4 text-sm leading-6 text-foreground/85">
-                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary/70" />
-                    <span>{feature}</span>
-                  </p>
-                ))}
-              </div>
-            </div>
-
-            <div className="soft-panel p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/75">Built With</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full border border-border/70 bg-white/75 px-4 py-2 text-xs font-medium text-foreground/85"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-6 space-y-4 text-sm leading-6 text-foreground/80">
-                <p>{project.engagement}</p>
-                <p>{project.result}</p>
-              </div>
-            </div>
-          </div>
-
-          {galleryImages.length > 0 && (
-            <div id="gallery" className="space-y-8 scroll-mt-24">
-              <div className="max-w-3xl space-y-3">
-                <span className="eyebrow">Gallery</span>
-                <h2 className="font-headline text-3xl font-semibold tracking-[-0.035em] text-foreground sm:text-4xl">
-                  Product Screens
-                </h2>
-                <p className="text-base leading-7 text-muted-foreground">
-                  {usesPremiumGallery
-                    ? "Hover to inspect each screen, use the side arrows to glide faster, or click any screenshot to open a full-size preview."
-                    : "Desktop and mobile views are separated so the responsive experience is easy to review."}
+            {cover ? (
+              <ImageGallery
+                images={[cover]}
+                priorityFirst
+                sizes="(min-width: 1024px) 560px, 100vw"
+                itemClassName="shadow-[0_24px_56px_-36px_rgba(79,62,46,0.45)]"
+              />
+            ) : (
+              <div className="soft-panel p-6 text-sm leading-6 text-muted-foreground">
+                <p className="font-semibold text-foreground">No public screenshots</p>
+                <p className="mt-1">
+                  This work was delivered on client or internal infrastructure, so screenshots aren&apos;t published here. I can
+                  walk through the workflow on a call.
                 </p>
               </div>
+            )}
+          </div>
+        </div>
+      </section>
 
-              {usesPremiumGallery ? (
-                <PremiumPortfolioGalleryCarousel images={registeredImages} />
-              ) : (
-                <>
-                  <GallerySection title="Desktop" images={desktopGalleryImages} />
-                  <GallerySection title="Mobile" images={mobileGalleryImages} mobile />
-                  <GallerySection title="Additional Screens" images={ungroupedGalleryImages} />
-                </>
-              )}
+      <section className="pt-0 md:pt-0 lg:pt-0">
+        <div className="container mx-auto max-w-7xl space-y-10 px-4 sm:px-6 lg:px-8">
+          {project.employerNote && (
+            <aside className="flex items-start gap-3 rounded-xl border border-primary/15 bg-primary/5 px-5 py-4 text-sm leading-6 text-foreground/85">
+              <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0 text-primary/70" aria-hidden="true" />
+              <p>{project.employerNote}</p>
+            </aside>
+          )}
+
+          <div className="grid gap-4 md:grid-cols-3">
+            <StoryCard label="The problem" value={project.problem} />
+            <StoryCard label="What I built" value={project.solution} />
+            <StoryCard label="The result" value={project.result} />
+          </div>
+
+          <div className="soft-panel p-6 sm:p-8">
+            <h2 className="font-headline text-2xl font-semibold tracking-[-0.03em] text-foreground">Key features</h2>
+            <ul className="mt-5 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+              {project.keyFeatures.map((feature) => (
+                <li key={feature} className="flex items-start gap-3 text-sm leading-6 text-foreground/85">
+                  <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {rest.length > 0 && (
+            <div className="space-y-5">
+              <div className="flex items-end justify-between gap-4">
+                <h2 className="font-headline text-2xl font-semibold tracking-[-0.03em] text-foreground">Screens</h2>
+                <p className="text-sm text-muted-foreground">{images.length} images · select to enlarge</p>
+              </div>
+              <ImageGallery
+                images={images}
+                className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4"
+                itemClassName="aspect-[4/3]"
+                fit="cover"
+                sizes="(min-width: 1024px) 300px, 45vw"
+              />
             </div>
           )}
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
 
-function GallerySection({
-  title,
-  images,
-  mobile = false,
-}: {
-  title: string;
-  images: ImagePlaceholder[];
-  mobile?: boolean;
-}) {
-  if (images.length === 0) {
-    return null;
-  }
-
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between gap-4">
-        <h3 className="font-headline text-2xl font-semibold tracking-[-0.03em] text-foreground">{title}</h3>
-        <span className="rounded-full border border-border/70 bg-white/75 px-4 py-2 text-xs font-medium text-muted-foreground">
-          {images.length} screens
-        </span>
-      </div>
-      <div className={mobile ? "grid gap-6 sm:grid-cols-2 lg:grid-cols-3" : "grid gap-6 lg:grid-cols-2"}>
-        {images.map((img) => (
-          <div key={img.id} className="overflow-hidden rounded-xl border border-border/70 bg-primary/8">
-            <LightboxImage
-              src={img.imageUrl}
-              alt={img.description}
-              data-ai-hint={img.imageHint}
-              width={mobile ? 500 : 1000}
-              height={mobile ? 900 : 650}
-              className="w-full h-auto object-contain"
-            />
+      <section className="pt-0 md:pt-0 lg:pt-0">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-5 rounded-2xl bg-primary px-6 py-8 text-primary-foreground sm:flex-row sm:items-center sm:justify-between sm:px-10">
+            <div>
+              <h2 className="font-headline text-2xl font-semibold tracking-[-0.03em]">Need something similar?</h2>
+              <p className="mt-1 text-sm leading-6 text-primary-foreground/80">
+                Describe the workflow and the software involved. I&apos;ll reply with questions or a first take on scope.
+              </p>
+            </div>
+            <Button asChild size="lg" variant="secondary" className="w-full shrink-0 rounded-full px-6 sm:w-auto">
+              <Link href="/contact">
+                Start a conversation
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </Button>
           </div>
-        ))}
-      </div>
-    </div>
+
+          {related.length > 0 && (
+            <div className="mt-14 space-y-6">
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <h2 className="section-heading text-2xl md:text-3xl">Related work</h2>
+                <Link
+                  href={project.categoryHref}
+                  className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-primary transition-all hover:gap-3"
+                >
+                  <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                  All {categoryLabel}
+                </Link>
+              </div>
+              <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {related.map((p) => (
+                  <li key={p.slug}>
+                    <ProjectCard project={p} headingLevel="h3" />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </section>
+    </article>
   );
 }
 
-function DetailCard({ label, value }: { label: string; value: string }) {
+function StoryCard({ label, value }: { label: string; value: string }) {
   return (
-    <div className="soft-panel p-5">
-      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/75">{label}</p>
-      <p className="mt-3 text-sm leading-6 text-foreground/85">{value}</p>
+    <div className="soft-panel p-5 sm:p-6">
+      <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-primary/80">{label}</h2>
+      <p className="mt-3 text-sm leading-6 text-foreground/85 sm:text-[0.95rem] sm:leading-7">{value}</p>
     </div>
   );
 }
