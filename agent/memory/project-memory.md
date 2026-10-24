@@ -22,10 +22,14 @@
 
 ## Content Decisions
 
-- The shared profile image is stored at `public/profile/prof-pic.png`.
-- Legacy site imagery has been migrated into `public/legacy/`.
+- Profile image: `public/profile/prof-pic.webp` (About page, OG image). Home hero uses the inline SVG avatar.
+- Screenshots are WebP (max 1600px) because static export serves images unoptimized; convert new ones before adding.
+- Image registry: `src/lib/placeholder-images.json`. Projects without real screenshots omit `imageId` and get a styled placeholder; never use stock photos as project images.
 - Programming and software logos are stored under `public/logos/`.
-- The `Portfolio` nav item links to `/work` and also exposes category links on hover.
+- The `Portfolio` nav item links to `/work`; a separate chevron button opens the category menu.
+- Inner pages use `PageIntro` (no photo banners). Per-page metadata via `pageMetadata()` in `src/lib/metadata.ts`.
+- Contact details (email, LinkedIn, WhatsApp) live in `siteConfig.links`; WhatsApp buttons hide while empty.
+- Lint: `npm run lint` (ESLint flat config, `eslint.config.mjs`).
 
 ## Important Pages
 
@@ -33,7 +37,9 @@
 - About: `src/app/about/page.tsx`
 - Services: `src/app/services/page.tsx`
 - Portfolio landing: `src/app/work/page.tsx`
-- Portfolio category pages: `src/app/work/*`
+- Portfolio category pages: `src/app/work/[category]`
+- Case studies: `src/app/work/case-studies/[slug]` (data in `src/lib/portfolio-projects.ts`)
+- Contact: `src/app/contact/page.tsx`
 
 ## Current Design Priorities
 
