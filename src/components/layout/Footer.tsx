@@ -87,7 +87,7 @@ export default function Footer() {
               ))}
             </nav>
             <div className="text-sm text-muted-foreground">
-              <p>&copy; 2025 {siteConfig.name} · Design by {siteConfig.name}. All rights reserved.</p>
+              <p>&copy; {new Date().getFullYear()} {siteConfig.name} · Design by {siteConfig.name}. All rights reserved.</p>
             </div>
           </div>
         </div>
