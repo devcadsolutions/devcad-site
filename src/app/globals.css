@@ -20,7 +20,7 @@
     --secondary-foreground: 24 10% 20%;
     
     --muted: 30 10% 75%;
-    --muted-foreground: 30 10% 45%;
+    --muted-foreground: 30 10% 37%;
 
     --accent: 27 8% 43%;
     --accent-foreground: 40 33% 97%;
@@ -167,13 +167,6 @@
     @apply w-full py-16 md:py-20 lg:py-24;
   }
 
-  /* Let the browser defer offscreen section rendering during scroll. */
-  @supports (content-visibility: auto) {
-    section {
-      content-visibility: auto;
-      contain-intrinsic-size: 1px 900px;
-    }
-  }
 }
 
 @keyframes reveal-up {
@@ -271,7 +264,7 @@
   .reveal-left,
   .reveal-right {
     opacity: 0;
-    animation-duration: 680ms;
+    animation-duration: 420ms;
     animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
     animation-fill-mode: both;
   }
