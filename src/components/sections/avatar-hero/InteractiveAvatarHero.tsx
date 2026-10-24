@@ -211,7 +211,7 @@ export default function InteractiveAvatarHero() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden py-6 sm:py-10 md:py-14 lg:py-20">
+    <section ref={sectionRef} className="relative overflow-hidden pb-8 pt-6 sm:pb-10 sm:pt-10 md:pb-12 md:pt-14 lg:pb-14 lg:pt-16">
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.42),rgba(248,250,252,0.16))]"
@@ -262,15 +262,12 @@ export default function InteractiveAvatarHero() {
               Hey, I&apos;m <span className="block text-primary sm:inline">Justine.</span>
             </h1>
 
-            <p className="mx-auto max-w-xl text-base leading-6 text-muted-foreground sm:text-lg sm:leading-8 md:mx-0">
-              I work close to real CAD/BIM production problems: repeated clicks, slow exports, missing references, and standards that are easy to break under deadline pressure.
+            <p className="mx-auto max-w-xl text-lg font-medium leading-7 text-foreground/90 sm:text-xl sm:leading-8 md:mx-0">
+              I build Revit add-ins, AutoCAD tools, and Autodesk cloud workflows for architecture and engineering teams.
             </p>
 
             <p className="mx-auto max-w-xl text-base leading-6 text-muted-foreground sm:text-lg sm:leading-8 md:mx-0">
-              I build practical tools for{" "}
-              <strong className="font-semibold text-foreground">Revit</strong>,{" "}
-              <strong className="font-semibold text-foreground">AutoCAD</strong>, and{" "}
-              <strong className="font-semibold text-foreground">AEC workflows</strong> so teams can reduce repetitive work and deliver with more consistency.
+              Civil engineer turned developer, I work on the problems production teams live with: repeated clicks, slow exports, missing references, and standards that break under deadline pressure.
             </p>
 
             <div className="mx-auto flex max-w-xl flex-wrap justify-center gap-2 md:mx-0 md:justify-start">
@@ -287,8 +284,8 @@ export default function InteractiveAvatarHero() {
             <div className="flex flex-col justify-center gap-3 pt-1 sm:flex-row sm:gap-4 md:justify-start">
               <Button asChild size="lg" className="w-full rounded-full px-6 sm:w-auto">
                 <Link href="/work">
-                  See Project Examples
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  See project examples
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
               <Button
@@ -297,7 +294,7 @@ export default function InteractiveAvatarHero() {
                 variant="outline"
                 className="w-full rounded-full border border-foreground bg-transparent text-foreground transition-all duration-300 hover:bg-foreground hover:text-background sm:w-auto"
               >
-                <Link href="/contact">Tell Me The Workflow</Link>
+                <Link href="/contact">Describe your workflow</Link>
               </Button>
             </div>
           </div>

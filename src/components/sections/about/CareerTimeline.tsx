@@ -1,7 +1,4 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-import { BriefcaseBusiness, GraduationCap, MapPin, Wrench } from "lucide-react";
+import { BriefcaseBusiness, GraduationCap, MapPin } from "lucide-react";
 
 type CareerMilestone = {
   period: string;
@@ -117,339 +114,89 @@ const milestones: CareerMilestone[] = [
   },
 ];
 
-const accentSets = [
-  {
-    line: "from-slate-400/80 to-sky-500/65",
-    glow: "shadow-[0_0_0_6px_rgba(148,163,184,0.14)]",
-    chip: "border-slate-300/80 bg-slate-100/85 text-slate-700",
-    detail:
-      "border-slate-200/85 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,250,252,0.96))]",
-  },
-  {
-    line: "from-slate-400/80 to-blue-500/60",
-    glow: "shadow-[0_0_0_6px_rgba(125,211,252,0.14)]",
-    chip: "border-sky-200/90 bg-sky-50/90 text-sky-700",
-    detail:
-      "border-sky-100/90 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(240,249,255,0.96))]",
-  },
-  {
-    line: "from-stone-400/80 to-amber-500/60",
-    glow: "shadow-[0_0_0_6px_rgba(251,191,36,0.14)]",
-    chip: "border-amber-200/90 bg-amber-50/90 text-amber-700",
-    detail:
-      "border-amber-100/90 bg-[linear-gradient(180deg,rgba(255,251,235,0.98),rgba(255,255,255,0.96))]",
-  },
-  {
-    line: "from-slate-400/80 to-violet-500/55",
-    glow: "shadow-[0_0_0_6px_rgba(196,181,253,0.14)]",
-    chip: "border-violet-200/90 bg-violet-50/90 text-violet-700",
-    detail:
-      "border-violet-100/90 bg-[linear-gradient(180deg,rgba(250,245,255,0.98),rgba(255,255,255,0.96))]",
-  },
-  {
-    line: "from-slate-400/80 to-cyan-500/55",
-    glow: "shadow-[0_0_0_6px_rgba(103,232,249,0.14)]",
-    chip: "border-cyan-200/90 bg-cyan-50/90 text-cyan-700",
-    detail:
-      "border-cyan-100/90 bg-[linear-gradient(180deg,rgba(236,254,255,0.98),rgba(255,255,255,0.96))]",
-  },
-];
-
-function MilestoneDetails({
-  item,
-  accent,
-}: {
-  item: CareerMilestone;
-  accent: (typeof accentSets)[number];
-}) {
-  return (
-    <div
-      className={[
-        "w-full rounded-2xl border p-6 text-left shadow-[0_24px_56px_-36px_rgba(79,62,46,0.34)] backdrop-blur-sm",
-        accent.detail,
-      ].join(" ")}
-    >
-      <div className="space-y-4">
-        <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-            {item.period}
-          </p>
-          <h3 className="font-headline text-2xl font-semibold tracking-[-0.03em] text-slate-900">
-            {item.title}
-          </h3>
-          <p className="text-sm font-medium text-slate-600">
-            {item.organization} - {item.location}
-          </p>
-        </div>
-
-        <p className="text-sm leading-6 text-slate-700 sm:text-[0.95rem]">
-          {item.details}
-        </p>
-
-        <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-            Key responsibilities
-          </p>
-          <ul className="space-y-2 text-sm leading-6 text-slate-700">
-            {item.responsibilities.map((responsibility) => (
-              <li key={responsibility} className="flex gap-2">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
-                <span>{responsibility}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-            Tools used
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {item.tools.map((tool) => (
-              <span
-                key={tool}
-                className={[
-                  "inline-flex items-center rounded-full border px-4 py-2 text-xs font-medium",
-                  accent.chip,
-                ].join(" ")}
-              >
-                {tool}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-            Achievements
-          </p>
-          <ul className="space-y-2 text-sm leading-6 text-slate-700">
-            {item.achievements.map((achievement) => (
-              <li key={achievement} className="flex gap-2">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" />
-                <span>{achievement}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-}
-
+/**
+ * Vertical career timeline. Everything important (role, company, summary, tools)
+ * is visible without interaction; responsibilities and achievements sit in a
+ * native <details> so they work without JavaScript and with a keyboard.
+ */
 export default function CareerTimeline() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  useEffect(() => {
-    const handlePointerDown = (event: PointerEvent) => {
-      if (!sectionRef.current?.contains(event.target as Node)) {
-        setActiveIndex(null);
-      }
-    };
-
-    document.addEventListener("pointerdown", handlePointerDown);
-    return () => {
-      document.removeEventListener("pointerdown", handlePointerDown);
-    };
-  }, []);
+  const ordered = [...milestones].reverse();
 
   return (
-    <div
-      ref={sectionRef}
-      className="section-shell relative overflow-visible px-6 py-12 text-foreground sm:px-8 lg:px-12 lg:py-16"
-    >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.45),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.72),rgba(248,250,252,0.45))]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-slate-200/90 to-transparent"
-      />
-      <div className="relative space-y-8">
-        <div className="max-w-3xl space-y-3">
-          <span className="eyebrow">Career Path</span>
-          <h2 className="font-headline text-3xl font-semibold tracking-[-0.035em] text-foreground md:text-4xl">
-            From engineering foundations to AEC automation systems
-          </h2>
-          <p className="max-w-2xl text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
-            A fishbone-style view of the career path behind DevCAD: technical grounding, CAD production, software development, and BIM-focused automation work.
-          </p>
-        </div>
+    <div className="section-shell px-5 py-10 sm:px-8 lg:px-10 lg:py-12">
+      <div className="max-w-3xl space-y-3">
+        <span className="eyebrow">Career path</span>
+        <h2 className="section-heading">From engineering drawings to AEC automation.</h2>
+        <p className="section-copy">
+          Civil engineering, plant design and CAD production first, then software for the teams doing that work.
+        </p>
+      </div>
 
-        <div className="hidden lg:block">
-          <div className="relative px-3 py-14 pb-32">
-            <div className="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-slate-300/70 via-slate-200/85 to-slate-300/70" />
-            <div className="grid grid-cols-5 gap-4">
-              {milestones.map((item, index) => {
-                const accent = accentSets[index % accentSets.length];
-                const isAbove = index % 2 === 0;
-                const isActive = activeIndex === index;
-                const isFirst = index === 0;
-                const isLast = index === milestones.length - 1;
-
-                return (
-                  <div
-                    key={`${item.period}-${item.title}`}
-                    className="relative flex min-h-[31rem] justify-center"
-                    onMouseEnter={() => setActiveIndex(index)}
-                    onMouseLeave={() => setActiveIndex((current) => (current === index ? null : current))}
-                  >
-                    <button
-                      type="button"
-                      onFocus={() => setActiveIndex(index)}
-                      onBlur={() => setActiveIndex((current) => (current === index ? null : current))}
-                      onClick={() => setActiveIndex((current) => (current === index ? null : index))}
-                      aria-expanded={isActive}
-                      className={[
-                        "group absolute z-20 flex w-full max-w-[14rem] flex-col rounded-2xl border border-slate-200/85 bg-white/94 p-4 text-left shadow-[0_18px_46px_-36px_rgba(15,23,42,0.18)] backdrop-blur-sm transition duration-300",
-                        "hover:-translate-y-1 hover:border-slate-300/90 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300/80",
-                        isAbove
-                          ? "top-0"
-                          : "bottom-0",
-                        isActive ? "border-slate-300/90 bg-white shadow-[0_20px_54px_-34px_rgba(15,23,42,0.22)]" : "",
-                      ].join(" ")}
-                    >
-                      <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
-                        {item.period}
-                      </span>
-                      <span className="mt-3 font-headline text-lg font-semibold leading-tight tracking-[-0.02em] text-foreground">
-                        {item.title}
-                      </span>
-                      <span className="mt-2 text-sm font-medium text-primary">
-                        {item.organization}
-                      </span>
-                      <span className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground">
-                        <MapPin className="h-3.5 w-3.5" />
-                        {item.location}
-                      </span>
-                      <span
-                        className={[
-                          "absolute left-1/2 h-14 w-px -translate-x-1/2 bg-gradient-to-b",
-                          accent.line,
-                          isAbove ? "bottom-[-3.55rem]" : "top-[-3.55rem]",
-                        ].join(" ")}
-                      />
-                    </button>
-
-                    <div
-                      aria-hidden="true"
-                      className={[
-                        "absolute left-1/2 top-1/2 z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/80 bg-white",
-                        accent.glow,
-                      ].join(" ")}
-                    >
-                      <span
-                        className={[
-                          "absolute inset-[3px] rounded-full bg-gradient-to-br",
-                          accent.line,
-                        ].join(" ")}
-                      />
-                    </div>
-
-                    <div
-                      className={[
-                        "absolute z-30 w-[22rem] transition-all duration-300 ease-out",
-                        isFirst
-                          ? "left-0"
-                          : isLast
-                            ? "right-0"
-                            : "left-1/2 -translate-x-1/2",
-                        isAbove
-                          ? "top-[15.25rem]"
-                          : "bottom-[15.25rem]",
-                        isActive
-                          ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
-                          : isAbove
-                            ? "pointer-events-none translate-y-3 scale-[0.98] opacity-0"
-                            : "pointer-events-none -translate-y-3 scale-[0.98] opacity-0",
-                      ].join(" ")}
-                    >
-                      <MilestoneDetails item={item} accent={accent} />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        <div className="space-y-4 lg:hidden">
-          {milestones.map((item, index) => {
-            const accent = accentSets[index % accentSets.length];
-            const isActive = activeIndex === index;
-            const isEducation = index === 0;
-
-            return (
-              <div key={`${item.period}-${item.title}`} className="relative pl-10">
-                <div className="absolute bottom-0 left-3 top-0 w-px bg-gradient-to-b from-slate-300/80 via-slate-200/75 to-slate-300/80" />
-                <div
-                  aria-hidden="true"
-                  className={[
-                    "absolute left-[0.2rem] top-5 z-10 h-5 w-5 rounded-full border border-white/70 bg-white",
-                    accent.glow,
-                  ].join(" ")}
-                >
-                  <span
-                    className={[
-                      "absolute inset-[3px] rounded-full bg-gradient-to-br",
-                      accent.line,
-                    ].join(" ")}
-                  />
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => setActiveIndex((current) => (current === index ? null : index))}
-                  className="w-full rounded-2xl border border-slate-200/85 bg-white/94 p-4 text-left shadow-[0_18px_46px_-36px_rgba(15,23,42,0.18)] backdrop-blur-sm transition duration-300 hover:border-slate-300/90 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300/80"
-                  aria-expanded={isActive}
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="space-y-2">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
-                        {item.period}
-                      </p>
-                      <h3 className="font-headline text-xl font-semibold tracking-[-0.02em] text-foreground">
-                        {item.title}
-                      </h3>
-                      <p className="flex items-center gap-2 text-sm font-medium text-primary">
-                        {isEducation ? <GraduationCap className="h-4 w-4" /> : <BriefcaseBusiness className="h-4 w-4" />}
-                        <span>{item.organization}</span>
-                      </p>
-                      <p className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <MapPin className="h-3.5 w-3.5" />
-                        <span>{item.location}</span>
-                      </p>
-                    </div>
-                    <span
-                      className={[
-                        "mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200/80 bg-white text-foreground transition-transform duration-200",
-                        isActive ? "rotate-45" : "",
-                      ].join(" ")}
-                    >
-                      <Wrench className="h-4 w-4" />
-                    </span>
-                  </div>
-
-                  <p className="mt-4 text-sm leading-6 text-muted-foreground">
-                    {item.shortDescription}
+      <ol className="relative mt-10 space-y-8 border-l border-border pl-6 sm:pl-8">
+        {ordered.map((item) => {
+          const isEducation = item.title.startsWith("B.S.");
+          const Icon = isEducation ? GraduationCap : BriefcaseBusiness;
+          return (
+            <li key={`${item.period}-${item.title}`} className="relative">
+              <span
+                aria-hidden="true"
+                className="absolute -left-[2.3rem] top-0.5 flex h-7 w-7 items-center justify-center rounded-full border border-border bg-white text-primary sm:-left-[2.8rem]"
+              >
+                <Icon className="h-3.5 w-3.5" />
+              </span>
+              <div className="grid gap-3 lg:grid-cols-[13rem_1fr] lg:gap-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground lg:pt-1.5">{item.period}</p>
+                <div>
+                  <h3 className="font-headline text-xl font-semibold tracking-[-0.02em] text-foreground">{item.title}</h3>
+                  <p className="mt-1 text-sm font-medium text-primary">{item.organization}</p>
+                  <p className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground">
+                    <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
+                    {item.location}
                   </p>
-                </button>
-
-                <div
-                  className={[
-                    "overflow-hidden transition-all duration-300 ease-out",
-                    isActive ? "mt-3 max-h-[40rem] opacity-100" : "max-h-0 opacity-0",
-                  ].join(" ")}
-                >
-                  <MilestoneDetails item={item} accent={accent} />
+                  <p className="mt-3 max-w-3xl text-sm leading-6 text-foreground/85 sm:text-base sm:leading-7">{item.details}</p>
+                  <ul className="mt-3 flex flex-wrap gap-1.5" aria-label="Tools">
+                    {item.tools.map((tool) => (
+                      <li key={tool} className="rounded-full border border-border/70 bg-white/75 px-2.5 py-1 text-xs font-medium text-foreground/80">
+                        {tool}
+                      </li>
+                    ))}
+                  </ul>
+                  <details className="group mt-3 max-w-3xl">
+                    <summary className="inline-flex min-h-11 cursor-pointer list-none items-center gap-1 text-sm font-semibold text-primary underline-offset-4 hover:underline [&::-webkit-details-marker]:hidden">
+                      <span className="group-open:hidden">Responsibilities &amp; highlights</span>
+                      <span className="hidden group-open:inline">Hide details</span>
+                    </summary>
+                    <div className="mt-2 grid gap-4 rounded-xl border border-border/70 bg-white/70 p-4 sm:grid-cols-2">
+                      <div>
+                        <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">Responsibilities</h4>
+                        <ul className="mt-2 space-y-1.5 text-sm leading-6 text-foreground/85">
+                          {item.responsibilities.map((r) => (
+                            <li key={r} className="flex gap-2">
+                              <span aria-hidden="true" className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-primary/60" />
+                              {r}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">Highlights</h4>
+                        <ul className="mt-2 space-y-1.5 text-sm leading-6 text-foreground/85">
+                          {item.achievements.map((a) => (
+                            <li key={a} className="flex gap-2">
+                              <span aria-hidden="true" className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-primary/60" />
+                              {a}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </details>
                 </div>
               </div>
-            );
-          })}
-        </div>
-      </div>
+            </li>
+          );
+        })}
+      </ol>
     </div>
   );
 }

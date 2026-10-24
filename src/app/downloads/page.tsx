@@ -1,137 +1,110 @@
-import type { Metadata } from "next";
-import LightboxImage from "@/components/ui/LightboxImage";
+import Image from "next/image";
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Download, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import PageIntro from "@/components/layout/PageIntro";
+import { siteConfig } from "@/config/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Downloads",
-  description: "Download custom AutoLISP functions to automate and streamline your AutoCAD workflow.",
-};
+export const metadata = pageMetadata({
+  title: "Free AutoLISP Routines",
+  description:
+    "Small AutoLISP routines for everyday AutoCAD drafting: copy-rotate, cursor rotate, join text, end pipe, and closing all drawings except the active one.",
+  path: "/downloads",
+});
+
+const loadSteps = [
+  "Save the .lsp file somewhere permanent, such as a shared CAD standards folder.",
+  "In AutoCAD, type APPLOAD and press Enter.",
+  "Browse to the file and click Load. Add it to the Startup Suite to load it in every session.",
+  "Type the routine's command name at the command line to run it.",
+];
+
+function requestHref(name: string) {
+  const subject = `AutoLISP request: ${name}`;
+  const body = `Hi Justine,\n\nCould you send me the "${name}" AutoLISP routine?\n\nAutoCAD version:\n\nThanks,`;
+  return `mailto:${siteConfig.links.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
 
 export default function DownloadsPage() {
-  const digitalGridImage = PlaceHolderImages.find((img) => img.id === "service-digital-grid");
-  const autolispImage = PlaceHolderImages.find((img) => img.id === "autolisp-blueprints");
-
   return (
     <>
-      <header className="relative overflow-hidden py-20 md:py-24 lg:py-32">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 top-0 h-full bg-cover bg-center animate-in fade-in duration-1000"
-          style={{ backgroundImage: `url('${siteConfig.basePath}/legacy/page-header.jpg')` }}
-        >
-          <div className="absolute inset-0 bg-background/84" />
-        </div>
-        <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center animate-in fade-in slide-in-from-top-4 duration-700">
-            <h1 className="font-headline text-4xl font-semibold tracking-[-0.05em] text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
-              DevCAD Solutions
-            </h1>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-7 text-muted-foreground md:text-xl md:leading-8">
-              Improving lives - one code at a time
-            </p>
-          </div>
-        </div>
-      </header>
+      <PageIntro eyebrow="Downloads" title="Free AutoLISP routines for everyday drafting.">
+        <p>
+          Small, single-purpose commands from my own AutoCAD toolkit. Useful on their own, and a good example of the
+          kind of time-saving work I build into larger tool palettes and add-ins.
+        </p>
+      </PageIntro>
 
-      <section>
+      <section className="pt-0 md:pt-0 lg:pt-0">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-16 md:grid-cols-2">
-            <div className="space-y-6 animate-in fade-in slide-in-from-left-8 duration-700">
-              <p className="text-lg leading-8 text-muted-foreground">
-                Solutions is actually my middle name.
-              </p>
-              <p className="text-lg leading-8 text-foreground">
-                Hi, I&apos;m Justine - a Licensed Civil Engineer turned Software Developer. I thrive on solving problems,
-                whether it&apos;s automating repetitive tasks or building software concepts from the ground up.
-              </p>
-              <blockquote className="border-l-4 border-primary pl-4 italic leading-7 text-muted-foreground transition-all duration-300 hover:border-foreground hover:pl-6">
-                &quot;Automation is to your time as compound interest is to your money.&quot;
-              </blockquote>
-              <p className="text-lg leading-8 text-foreground">
-                And I&apos;m here to help you invest wisely.
-              </p>
-            </div>
-            <div className="flex justify-center animate-in fade-in slide-in-from-right-8 duration-700 delay-200 fill-mode-both">
-              {digitalGridImage && (
-                <LightboxImage
-                  src={digitalGridImage.imageUrl}
-                  alt={digitalGridImage.description}
-                  data-ai-hint={digitalGridImage.imageHint}
-                  width={600}
-                  height={450}
-                  className="h-auto w-full rounded-xl object-contain shadow-[0_24px_56px_-36px_rgba(79,62,46,0.45)]"
-                />
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 grid items-center gap-8 animate-in fade-in slide-in-from-bottom-8 duration-700 md:grid-cols-2">
-            {autolispImage && (
-              <div className="overflow-hidden rounded-xl shadow-[0_24px_56px_-36px_rgba(79,62,46,0.45)]">
-                <LightboxImage
-                  src={autolispImage.imageUrl}
-                  alt={autolispImage.description}
-                  data-ai-hint={autolispImage.imageHint}
-                  width={500}
-                  height={350}
-                  className="h-auto w-full object-contain"
-                />
-              </div>
-            )}
-            <div className="space-y-4">
-              <h2 className="section-heading">AutoLISP</h2>
-              <p className="leading-7 text-muted-foreground">
-                Automate repetitive tasks, create custom commands, and streamline workflows in AutoCAD, resulting in
-                increased productivity and reduced errors.
-              </p>
-              <Button asChild className="transition-all duration-300 hover:shadow-md">
-                <Link href="#">How to Load AutoLisps</Link>
-              </Button>
-            </div>
-          </div>
-
-          <div className="mt-12 overflow-hidden rounded-xl border border-border/70 shadow-sm animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="font-semibold">Function</TableHead>
-                  <TableHead className="font-semibold">Description</TableHead>
-                  <TableHead className="text-right font-semibold">Link</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
+          <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+            <div className="soft-panel overflow-hidden">
+              <h2 className="border-b border-border/70 px-5 py-4 font-headline text-xl font-semibold tracking-[-0.02em] text-foreground sm:px-6">
+                Routines
+              </h2>
+              <ul className="divide-y divide-border/70">
                 {siteConfig.downloads.map((item) => (
-                  <TableRow key={item.function} className="group transition-colors hover:bg-muted/50">
-                    <TableCell className="font-medium transition-colors group-hover:text-primary">
-                      {item.function}
-                    </TableCell>
-                    <TableCell className="text-muted-foreground transition-colors group-hover:text-foreground">
-                      {item.description}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <Button variant="link" asChild className="transition-transform group-hover:translate-x-1">
-                        <Link href={item.link}>Download</Link>
+                  <li key={item.function} className="flex flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+                    <div>
+                      <h3 className="text-base font-semibold text-foreground">{item.function}</h3>
+                      <p className="mt-0.5 text-sm leading-6 text-muted-foreground">{item.description}</p>
+                    </div>
+                    {item.file ? (
+                      <Button asChild variant="outline" className="shrink-0 rounded-full border-foreground bg-transparent hover:bg-foreground hover:text-background">
+                        <a href={`${siteConfig.basePath}${item.file}`} download>
+                          <Download className="h-4 w-4" aria-hidden="true" />
+                          Download <span className="sr-only">{item.function}</span>
+                        </a>
                       </Button>
-                    </TableCell>
-                  </TableRow>
+                    ) : (
+                      <Button asChild variant="outline" className="shrink-0 rounded-full border-foreground bg-transparent hover:bg-foreground hover:text-background">
+                        <a href={requestHref(item.function)}>
+                          <Mail className="h-4 w-4" aria-hidden="true" />
+                          Request by email <span className="sr-only">: {item.function}</span>
+                        </a>
+                      </Button>
+                    )}
+                  </li>
                 ))}
-              </TableBody>
-            </Table>
+              </ul>
+            </div>
+
+            <aside className="rounded-xl border border-border/70 bg-white/60 p-5 sm:p-6" aria-labelledby="how-to-load">
+              <h2 id="how-to-load" className="font-headline text-xl font-semibold tracking-[-0.02em] text-foreground">
+                How to load an AutoLISP routine
+              </h2>
+              <ol className="mt-5 space-y-4">
+                {loadSteps.map((step, index) => (
+                  <li key={step} className="flex gap-3 text-sm leading-6 text-foreground/85">
+                    <span
+                      aria-hidden="true"
+                      className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-semibold text-primary"
+                    >
+                      {index + 1}
+                    </span>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ol>
+              <Image
+                src={`${siteConfig.basePath}/legacy/autolisp-load-dialog.png`}
+                alt="AutoCAD Load/Unload Applications dialog with an AutoLISP file selected and the Load button highlighted"
+                width={517}
+                height={530}
+                sizes="(min-width: 1024px) 360px, 90vw"
+                className="mx-auto mt-6 h-auto w-full max-w-sm rounded-lg border border-border/70"
+              />
+            </aside>
+          </div>
+
+          <div className="mt-10 rounded-2xl border border-border/70 bg-white/60 p-6 sm:flex sm:items-center sm:justify-between sm:gap-6 sm:p-8">
+            <p className="text-base leading-7 text-foreground/85">
+              Need something bigger than a single command, like a full tool palette or a .NET add-in?
+            </p>
+            <Button asChild size="lg" className="mt-4 w-full shrink-0 rounded-full px-6 sm:mt-0 sm:w-auto">
+              <Link href="/services">See services</Link>
+            </Button>
           </div>
         </div>
       </section>

@@ -1,21 +1,23 @@
-import type { Metadata } from "next";
 import { ArrowUpRight, Check, Linkedin, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CopyBriefButton from "@/components/contact/CopyBriefButton";
 import { siteConfig } from "@/config/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact",
-  description: "Get in touch with DevCAD Solutions. Let's discuss your project and how we can help you achieve your goals.",
-};
+  description:
+    "Describe the Revit, AutoCAD, or APS workflow that keeps wasting your team's time. Email or LinkedIn; a short description is enough to start.",
+  path: "/contact",
+});
 
 const email = siteConfig.links.email;
 const emailSubject = "Workflow automation enquiry";
 const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(emailSubject)}`;
 const gmailHref = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(emailSubject)}`;
-const linkedinHref = "https://www.linkedin.com/in/engrjvb/";
-// TODO: add the real WhatsApp link (e.g. "https://wa.me/63XXXXXXXXXX"). The button is hidden while this is empty.
-const whatsappHref = "";
+const linkedinHref = siteConfig.links.linkedin;
+// Hidden while empty. TODO(Justine): set siteConfig.links.whatsapp.
+const whatsappHref = siteConfig.links.whatsapp;
 
 const whatToSend = [
   {
@@ -81,9 +83,9 @@ const outlineButton =
 export default function ContactPage() {
   return (
     <>
-      <section className="pb-8 md:pb-10 lg:pb-12">
+      <section className="pb-8 pt-12 md:pb-10 md:pt-16 lg:pb-12 lg:pt-20">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl space-y-6 reveal-left">
+          <div className="max-w-3xl space-y-5 reveal-up">
             <span className="eyebrow">Contact</span>
             <h1 className="font-headline text-4xl font-semibold tracking-[-0.04em] text-foreground sm:text-5xl">
               Tell me the workflow that keeps wasting your team&apos;s time.
@@ -134,7 +136,7 @@ export default function ContactPage() {
               </p>
               <p className="inline-flex items-center gap-1.5">
                 <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
-                Based in Paranaque City, Philippines
+                Based in {siteConfig.location} · working with teams remotely
               </p>
             </div>
           </div>

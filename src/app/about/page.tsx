@@ -1,250 +1,122 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Lightbulb, Mail, Target } from "lucide-react";
-import LightboxImage from "@/components/ui/LightboxImage";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CareerTimeline from "@/components/sections/about/CareerTimeline";
+import CtaBand from "@/components/sections/CtaBand";
 import { siteConfig } from "@/config/site";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { pageMetadata } from "@/lib/metadata";
 
-const capabilityCards = [
+export const metadata = pageMetadata({
+  title: "About Justine Bautista",
+  description:
+    "Licensed civil engineer turned CAD/BIM software developer. Background in plant design and CAD production, now building Revit, AutoCAD, and APS automation for AEC teams.",
+  path: "/about",
+  type: "profile",
+});
+
+const principles = [
   {
-    title: "Workflow Automation",
-    body: "I design tools that remove repetitive steps, reduce avoidable checking, and make recurring technical work easier to execute consistently.",
+    title: "Engineering-aware",
+    body: "Built with drawing, model, and delivery constraints in mind, not treated as a generic software problem.",
   },
   {
-    title: "BIM / CAD Tooling",
-    body: "I build around the real constraints of drawing production, model management, exports, and standards-driven delivery instead of treating them like generic software problems.",
+    title: "Practical by design",
+    body: "Focused dialogs, clear buttons, useful defaults. Tools a production team can adopt and maintain.",
   },
   {
-    title: "Implementation Support",
-    body: "Useful tooling is not enough on its own. I also think about rollout, team usability, and what people need in order to trust and adopt a new workflow.",
-  },
-  {
-    title: "Documentation and Rollout",
-    body: "I create the supporting material that helps internal teams use a solution properly, onboard faster, and keep the process working after delivery.",
+    title: "Rollout-conscious",
+    body: "Setup notes, user guides, and edge cases documented, because a tool nobody uses has no value.",
   },
 ];
 
-export const metadata: Metadata = {
-  title: "About Me",
-  description:
-    "Learn more about Justine Bautista, the solutions engineer behind DevCAD Solutions.",
-};
-
-function Divider() {
-  return <div className="mx-auto h-px w-full max-w-6xl bg-primary/15" />;
-}
-
 export default function AboutPage() {
-  const profileImage =
-    PlaceHolderImages.find((img) => img.id === "hero-image-1") ??
-    PlaceHolderImages.find((img) => img.id === "footer-avatar");
-
   return (
-    <section className="bg-gradient-to-b from-secondary/45 via-background to-background py-20 md:py-24 lg:py-32">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="space-y-8">
-          <div className="section-shell overflow-hidden">
-            <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
-              <div className="bg-primary px-6 py-12 text-primary-foreground sm:px-8 lg:px-12 lg:py-16">
-                <div className="max-w-2xl space-y-6">
-                  <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/85">
-                    Founder Story
-                  </span>
-                  <div className="space-y-4">
-                    <h1 className="font-headline text-4xl font-semibold tracking-[-0.05em] sm:text-5xl lg:text-6xl">
-                      Justine Bautista
-                    </h1>
-                    <p className="text-lg leading-7 text-primary-foreground/78 sm:text-xl sm:leading-8">
-                      Solutions Engineer building practical automation for BIM, CAD, and technical delivery teams.
-                    </p>
-                    <p className="max-w-xl text-base leading-7 text-primary-foreground/86 sm:text-lg sm:leading-8">
-                      I started in engineering and drafting environments, where repetitive work, manual checking, and disconnected processes were part of everyday delivery. Over time, that pushed me toward building better systems instead of asking teams to keep working around the same friction.
-                    </p>
-                  </div>
-                  <div className="flex flex-wrap gap-4">
-                    <Button asChild size="lg" className="rounded-full bg-white px-6 text-primary hover:bg-white/92">
-                      <Link href="/contact">
-                        Contact Me
-                        <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    </Button>
-                    <Button
-                      asChild
-                      size="lg"
-                      variant="outline"
-                      className="rounded-full border-white/30 bg-transparent px-6 text-primary-foreground hover:bg-white/10 hover:text-primary-foreground"
-                    >
-                      <Link href="/work">View Portfolio</Link>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-center bg-card px-6 py-10 sm:px-8 lg:px-12">
-                <div className="w-full max-w-md space-y-6">
-                  {profileImage && (
-                    <LightboxImage
-                      src={profileImage.imageUrl}
-                      alt={profileImage.description}
-                      data-ai-hint={profileImage.imageHint}
-                      width={520}
-                      height={620}
-                  className="h-auto w-full rounded-2xl object-cover shadow-[0_24px_56px_-36px_rgba(79,62,46,0.45)]"
-                    />
-                  )}
-                  <div className="soft-panel space-y-3 p-5">
-                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/75">
-                      What I bring
-                    </p>
-                    <p className="text-base leading-7 text-foreground/85">
-                      Engineering-aware software thinking, delivery-focused tooling, and support material that helps teams actually use the systems they invest in.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="section-shell px-6 py-12 sm:px-8 lg:px-12 lg:py-16">
-            <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
-              <div className="space-y-5">
-                <span className="eyebrow">Why this work matters to me</span>
-                <h2 className="section-heading max-w-2xl">
-                  I care about software that makes technical work easier to trust, repeat, and maintain.
-                </h2>
-                <div className="space-y-4 text-base leading-7 text-foreground/82 md:text-lg md:leading-8">
-                  <p>
-                    A lot of workflow pain in BIM and CAD teams is not dramatic. It shows up as small repeated actions, manual checks, awkward handoffs, and tools that technically work but never fully fit how people deliver. Those small gaps add up quickly.
-                  </p>
-                  <p>
-                    My interest in software came from seeing that pattern over and over again. I wanted to build tools that respect the reality of production environments, not just the logic of the code. That means paying attention to usability, clarity, rollout, and the people who will depend on the result.
-                  </p>
-                  <p>
-                    The goal is simple: create systems that reduce friction, improve consistency, and help teams spend more time on valuable technical work instead of avoidable repetition.
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-                <div className="soft-panel p-5">
-                  <p className="text-sm font-semibold text-foreground">Engineering-aware</p>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    Built with drawing, model, and delivery constraints in mind.
-                  </p>
-                </div>
-                <div className="soft-panel p-5">
-                  <p className="text-sm font-semibold text-foreground">Practical by design</p>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    Focused on solutions that teams can actually adopt and maintain.
-                  </p>
-                </div>
-                <div className="soft-panel p-5">
-                  <p className="text-sm font-semibold text-foreground">Rollout-conscious</p>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    Documentation and support matter as much as the tool itself.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <CareerTimeline />
-
-          <div className="section-shell px-6 py-12 sm:px-8 lg:px-12 lg:py-16">
-            <div className="space-y-8">
-              <div className="max-w-3xl space-y-3">
-                <span className="eyebrow">Capabilities</span>
-                <h2 className="section-heading">What I can help teams do</h2>
-                <p className="section-copy">
-                  The work is not just about writing code. It is about improving the way technical teams deliver, support, and scale their workflows.
+    <>
+      <section className="pb-8 pt-12 md:pb-10 md:pt-16 lg:pb-12 lg:pt-20">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-10 md:grid-cols-[1fr_auto] md:items-center lg:gap-16">
+            <div className="max-w-3xl space-y-5 reveal-up">
+              <span className="eyebrow">About</span>
+              <h1 className="font-headline text-4xl font-semibold tracking-[-0.04em] text-foreground sm:text-5xl">
+                Justine Bautista
+              </h1>
+              <p className="text-lg font-medium leading-7 text-foreground/90 sm:text-xl sm:leading-8">
+                Licensed civil engineer turned software developer, building automation for BIM, CAD, and technical delivery teams.
+              </p>
+              <div className="section-copy space-y-4">
+                <p>
+                  I started in engineering and drafting environments, where repetitive work, manual checking, and
+                  disconnected processes were part of everyday delivery. Over time that pushed me toward building better
+                  systems instead of asking teams to keep working around the same friction.
+                </p>
+                <p>
+                  Today I build Revit add-ins, AutoCAD tools, and Autodesk Platform Services workflows, from the first
+                  conversation about the problem through to the user guide.
                 </p>
               </div>
-
-              <div className="grid gap-4 md:grid-cols-2">
-                {capabilityCards.map((card) => (
-                  <div key={card.title} className="soft-panel card-interactive p-6">
-                    <h3 className="font-headline text-2xl font-semibold tracking-[-0.03em] text-foreground">
-                      {card.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">
-                      {card.body}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="section-shell px-6 py-12 sm:px-8 lg:px-12 lg:py-16">
-            <div className="space-y-8">
-              <Divider />
-              <div className="grid gap-4 lg:grid-cols-2">
-                <div className="soft-panel p-6">
-                  <div className="flex items-center gap-4">
-                    <Target aria-hidden="true" className="h-10 w-10 shrink-0 text-foreground" strokeWidth={1.8} />
-                    <h2 className="font-headline text-3xl font-semibold tracking-[-0.035em] text-foreground">
-                      Mission
-                    </h2>
-                  </div>
-                  <p className="mt-4 text-base leading-7 text-muted-foreground">
-                    Improve drafting and modeling workflows through technical systems that are more efficient, more dependable, and easier to sustain.
-                  </p>
-                </div>
-
-                <div className="soft-panel p-6">
-                  <div className="flex items-center gap-4">
-                    <Lightbulb aria-hidden="true" className="h-10 w-10 shrink-0 text-foreground" strokeWidth={1.8} />
-                    <h2 className="font-headline text-3xl font-semibold tracking-[-0.035em] text-foreground">
-                      Vision
-                    </h2>
-                  </div>
-                  <p className="mt-4 text-base leading-7 text-muted-foreground">
-                    Support local and global teams with dependable CAD, BIM, and automation solutions that improve delivery quality and reduce avoidable manual work.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative overflow-hidden rounded-2xl border border-primary/10 bg-primary px-6 py-12 text-primary-foreground shadow-[0_24px_64px_-40px_rgba(62,46,33,0.62)] sm:px-8 lg:px-12 lg:py-16">
-            <div className="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_center,hsl(0_0%_100%_/_0.18),transparent_65%)]" />
-            <div className="relative grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
-              <div className="space-y-4">
-                <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/85">
-                  Let&apos;s Build Something Useful
-                </span>
-                <h2 className="font-headline text-3xl font-semibold tracking-[-0.035em] md:text-4xl">
-                  If your team is dealing with repetitive BIM or CAD work, let&apos;s talk about a better workflow.
-                </h2>
-                <p className="max-w-2xl text-base leading-7 text-primary-foreground/78 md:text-lg md:leading-8">
-                  I&apos;m most useful when there is real technical friction to solve: repetitive production steps, messy handoffs, internal tooling gaps, or a workflow that works on paper but slows the team down in practice.
-                </p>
-              </div>
-              <div className="flex flex-col gap-4 sm:flex-row lg:flex-col lg:items-end">
-                <Button asChild size="lg" variant="secondary" className="rounded-full px-6 text-base">
+              <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap">
+                <Button asChild size="lg" className="rounded-full px-6">
                   <Link href="/contact">
-                    Start the conversation
-                    <ArrowRight className="h-4 w-4" />
+                    Get in touch
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="rounded-full border-white/35 bg-transparent px-6 text-base text-primary-foreground hover:bg-white/10 hover:text-primary-foreground"
-                >
-                  <Link href={`mailto:${siteConfig.links.email}`}>
-                    <Mail className="h-4 w-4" />
-                    Email me directly
-                  </Link>
+                <Button asChild size="lg" variant="outline" className="rounded-full border-foreground bg-transparent px-6 hover:bg-foreground hover:text-background">
+                  <Link href="/work">See my work</Link>
                 </Button>
               </div>
+            </div>
+            <div className="mx-auto w-56 sm:w-64 md:w-72 lg:w-80">
+              <Image
+                src={`${siteConfig.basePath}/profile/prof-pic.webp`}
+                alt="Illustrated portrait of Justine at a desk with CAD drawings and code on screen"
+                width={640}
+                height={640}
+                priority
+                sizes="(min-width: 1024px) 320px, (min-width: 768px) 288px, 256px"
+                className="h-auto w-full rounded-2xl border border-border/70 shadow-[0_24px_56px_-36px_rgba(79,62,46,0.45)]"
+              />
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="pt-0 md:pt-0 lg:pt-0">
+        <div className="container mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:px-8">
+          <div className="section-shell grid gap-8 px-5 py-10 sm:px-8 lg:grid-cols-[1.1fr_1fr] lg:gap-12 lg:px-10 lg:py-12">
+            <div className="space-y-4">
+              <span className="eyebrow">Why this work</span>
+              <h2 className="section-heading">Software that makes technical work easier to trust, repeat, and maintain.</h2>
+              <div className="section-copy space-y-4">
+                <p>
+                  Most workflow pain in BIM and CAD teams isn&apos;t dramatic. It shows up as small repeated actions,
+                  manual checks, awkward handoffs, and tools that technically work but never quite fit how people deliver.
+                </p>
+                <p>
+                  I build tools that respect how production actually happens, so teams spend more time on valuable
+                  technical work and less on avoidable repetition.
+                </p>
+              </div>
+            </div>
+            <ul className="grid gap-3 self-center">
+              {principles.map((item) => (
+                <li key={item.title} className="soft-panel p-5">
+                  <h3 className="text-base font-semibold text-foreground">{item.title}</h3>
+                  <p className="mt-1 text-sm leading-6 text-muted-foreground">{item.body}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <CareerTimeline />
+        </div>
+      </section>
+
+      <CtaBand
+        title="If your team is dealing with repetitive BIM or CAD work, let’s talk."
+        body="I’m most useful when there is real technical friction to solve: repetitive production steps, messy handoffs, internal tooling gaps, or a workflow that works on paper but slows the team down in practice."
+      />
+    </>
   );
 }

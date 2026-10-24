@@ -50,6 +50,7 @@ function ToolTile({ name, logo }: Tool) {
         <Image
           src={`${siteConfig.basePath}${logo}`}
           alt=""
+          loading="lazy"
           width={40}
           height={40}
           className="h-9 w-9 object-contain"
@@ -62,13 +63,13 @@ function ToolTile({ name, logo }: Tool) {
 
 export default function Skills() {
   return (
-    <section>
+    <section aria-labelledby="tooling">
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto mb-10 max-w-2xl space-y-4 text-center">
-          <span className="eyebrow">Tooling Context</span>
-          <h2 className="section-heading">The stack is only useful when it fits the workflow.</h2>
+        <div className="mx-auto mb-8 max-w-2xl space-y-4 text-center">
+          <span className="eyebrow">Tooling</span>
+          <h2 id="tooling" className="section-heading">The stack is only useful when it fits the workflow.</h2>
           <p className="section-copy">
-            These are the languages and platforms I use to turn CAD/BIM production logic into tools people can maintain, explain, and roll out.
+            Languages and platforms I&apos;ve used in production to turn CAD/BIM logic into tools teams can maintain and roll out.
           </p>
         </div>
 
