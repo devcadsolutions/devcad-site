@@ -638,6 +638,10 @@ html { scrollbar-color: var(--rule-strong) var(--paper); }
     --shadow-tint: 0, 0, 0;
   }
   .viewport { border-color: var(--rule-strong); }
+  .model, .thumbs button, .portrait { border-color: var(--rule-strong); }
+  .model img, .thumbs img, .portrait img { filter: brightness(.86) contrast(1.04); transition: filter .2s ease; }
+  .detail:hover .model img, .gallery-main:hover img, .thumbs button:hover img { filter: none; }
+  .zoom img { filter: none; }
   .vp-label { color: #4d5964; }
   .closing .btn-ink, .zoom .btn-ink { color: #12181d; }
 }
