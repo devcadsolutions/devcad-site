@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import RevisionCloud from "@/components/site/RevisionCloud";
+import MovingAvatar from "@/components/site/MovingAvatar";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -167,19 +168,17 @@ export default function Home() {
             </div>
 
             <figure className="hero-figure" style={{ margin: 0 }}>
-              <div className="model" style={{ aspectRatio: "1078 / 600" }}>
-                <div className="model-bar">
-                  <span>Toposolid alignment, 3D view</span>
-                  <span>Revit</span>
-                </div>
-                <img
-                  src="/cracknell/aligntopo-1.png"
-                  alt="Revit 3D view of a site toposolid with a building pad being aligned to the terrain surface"
-                  width={1078}
-                  height={571}
-                />
+              <div className="viewport">
+                <span className="vp-label lettering" aria-hidden="true">Viewport 1, scale 1:1</span>
+                <MovingAvatar />
+                <span className="keynote k1" aria-hidden="true">
+                  <span className="kn-text"><strong>Civil engineer</strong> BSCE, FEU Tech</span>
+                </span>
+                <span className="keynote k2" aria-hidden="true">
+                  <span className="kn-text"><strong>Writes the code</strong> C#, Revit API, AutoLISP</span>
+                </span>
               </div>
-              <div className="dim-wrap"><figcaption className="dim">Topography Alignment Tool, built for a landscape practice</figcaption></div>
+              <div className="dim-wrap"><figcaption className="dim">Justine Bautista, the developer behind DevCAD</figcaption></div>
             </figure>
           </div>
 
