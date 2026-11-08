@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">DevCAD Solutions favicon</title>
+  <desc id="desc">A warm charcoal rounded square with a geometric DC monogram and a CAD-inspired accent stroke.</desc>
+  <defs>
+    <linearGradient id="bg" x1="10" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#655C55" />
+      <stop offset="1" stop-color="#4F463F" />
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#bg)" />
+  <path d="M19 17H31.5C40.06 17 47 23.94 47 32.5C47 41.06 40.06 48 31.5 48H19V17Z" fill="none" stroke="#F7F5F2" stroke-linecap="round" stroke-linejoin="round" stroke-width="6" />
+  <path d="M36 23H31C26.03 23 22 27.03 22 32C22 36.97 26.03 41 31 41H36" fill="none" stroke="#D8B07C" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" />
+  <path d="M17 47L48 16" stroke="#D8B07C" stroke-linecap="round" stroke-width="2.5" opacity="0.9" />
+  <circle cx="17" cy="47" r="2.5" fill="#F7F5F2" />
+  <circle cx="48" cy="16" r="2.5" fill="#F7F5F2" />
+</svg>
