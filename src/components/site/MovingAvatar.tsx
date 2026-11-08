@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import AvatarTrueVector from "@/components/sections/avatar-hero/avatar_true_vector";
+import AvatarTrueVector from "@/components/site/AvatarVector";
 
 /**
  * Justine's line-art avatar. The head, brows and pupils follow the pointer

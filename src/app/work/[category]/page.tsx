@@ -1,71 +1,54 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import ProjectCaseStudyList from "@/components/portfolio/ProjectCaseStudyList";
-import { getProjectsByCategory } from "@/lib/portfolio-projects";
-import { siteConfig } from "@/config/site";
+import { PageHead, WorkCard } from "@/components/site/parts";
+import { categories, orderedProjects } from "@/lib/work";
 
-type CategoryPageProps = {
-  params: Promise<{ category: string }>;
-};
-
-function getCategoryConfig(categorySlug: string) {
-  const href = `/work/${categorySlug}`;
-  return siteConfig.portfolioCategories.find((c) => c.href === href);
-}
+type Props = { params: Promise<{ category: string }> };
 
 export function generateStaticParams() {
-  return siteConfig.portfolioCategories.map((c) => ({
-    category: c.href.replace("/work/", ""),
-  }));
+  return categories.map((c) => ({ category: c.slug }));
 }
 
-export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category } = await params;
-  const config = getCategoryConfig(category);
-  if (!config) return { title: "Portfolio Category" };
-  return {
-    title: config.label,
-    description: config.description,
-  };
+  const c = categories.find((x) => x.slug === category);
+  if (!c) return { title: "Work" };
+  return { title: c.label, description: c.description, alternates: { canonical: `/work/${c.slug}/` } };
 }
 
-export default async function CategoryPage({ params }: CategoryPageProps) {
+export default async function CategoryPage({ params }: Props) {
   const { category } = await params;
-  const config = getCategoryConfig(category);
-
-  if (!config) notFound();
-
-  const projects = getProjectsByCategory(config.href);
+  const c = categories.find((x) => x.slug === category);
+  if (!c) notFound();
+  const projects = orderedProjects.filter((p) => p.categoryHref === c.href);
 
   return (
-    <section className="pt-20 md:pt-24 lg:pt-32">
-      <div className="container mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
-          <p className="eyebrow">Portfolio Category</p>
-          <h1 className="mt-6 font-headline text-4xl font-semibold tracking-[-0.05em] sm:text-5xl">
-            {config.label}
-          </h1>
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">
-            {config.description}
-          </p>
-        </div>
-
-        {projects.length > 0 ? (
-          <ProjectCaseStudyList projects={projects} />
-        ) : (
-          <div className="py-16 text-center text-muted-foreground">
-            <p className="text-lg">No case studies yet - check back soon.</p>
+    <>
+      <PageHead
+        title={c.label}
+        sheet={`W-${String(categories.indexOf(c) + 2).padStart(3, "0")}`}
+        lede={c.description}
+        meta={[
+          { label: "Case studies", value: projects.length },
+          { label: "Part of", value: <Link className="text-link" href="/work/">All work</Link> },
+        ]}
+      />
+      <section className="section" style={{ paddingTop: 40 }} aria-label={`${c.label} case studies`}>
+        <div className="wrap">
+          <nav className="filters" aria-label="Categories">
+            <Link href="/work/">All</Link>
+            {categories.map((x) => (
+              <Link key={x.slug} href={`/work/${x.slug}/`} aria-current={x.slug === c.slug ? "page" : undefined}>
+                {x.label} <span>{x.count}</span>
+              </Link>
+            ))}
+          </nav>
+          <div className="details work-grid">
+            {projects.map((p, i) => <WorkCard key={p.slug} p={p} no={i + 1} />)}
           </div>
-        )}
-
-        <div className="mt-10 text-center">
-          <Button asChild>
-            <Link href="/work">Back to Portfolio</Link>
-          </Button>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

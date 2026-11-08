@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import RevisionCloud from "@/components/site/RevisionCloud";
 import MovingAvatar from "@/components/site/MovingAvatar";
 import { siteConfig } from "@/config/site";
+import { steps } from "@/content/process";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -58,7 +59,7 @@ const tasks = [
 const details = [
   {
     no: "1",
-    kind: "Revit add-in",
+    kind: "Revit add-in, built at Cracknell",
     sheet: "BIM",
     title: "Import Topo from CAD",
     text: "Reads contour geometry from a linked survey DWG and builds the Revit toposolid, so site models start from the surveyor's data instead of a redraw.",
@@ -68,7 +69,7 @@ const details = [
   },
   {
     no: "2",
-    kind: "Revit add-in",
+    kind: "Revit add-in, built at Cracknell",
     sheet: "BIM",
     title: "Detail Legend",
     text: "Generates and updates legend views from the detail components already in the model, keeping annotation consistent across a large sheet set.",
@@ -98,24 +99,6 @@ const details = [
   },
 ];
 
-const steps = [
-  {
-    title: "Send the workflow",
-    text: "Describe the task, the software and versions you run, and where it goes wrong. A screen recording helps more than a spec.",
-  },
-  {
-    title: "Agree the scope",
-    text: "A short call or a few messages. You get a recommendation: a script, an add-in, an APS workflow, or sometimes just a better process.",
-  },
-  {
-    title: "Build on your files",
-    text: "I build and test against your real models and drawings, and send working versions as I go so your team can try them early.",
-  },
-  {
-    title: "Roll it out",
-    text: "Installer, a short guide and a handover your team can follow without me in the room.",
-  },
-];
 
 const career = [
   { year: "2025 to now", role: "Digital Solutions Programmer", org: "Cracknell, landscape architecture" },
@@ -131,6 +114,27 @@ const rows = ["1", "2", "3", "4"];
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            name: "DevCAD Solutions",
+            url: siteConfig.url,
+            email: siteConfig.links.email,
+            description: siteConfig.description,
+            areaServed: "Worldwide",
+            founder: {
+              "@type": "Person",
+              name: "Justine Bautista",
+              jobTitle: "CAD and BIM software developer",
+              sameAs: [siteConfig.links.linkedin],
+            },
+            knowsAbout: ["Revit API", "AutoCAD .NET", "AutoLISP", "Autodesk Platform Services", "BIM automation"],
+          }),
+        }}
+      />
       {/* Hero, drawn as sheet A-001 */}
       <section aria-labelledby="hero-title" className="wrap" style={{ paddingTop: 8, paddingBottom: 40 }}>
         <div className="sheet">
