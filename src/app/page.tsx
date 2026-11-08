@@ -156,13 +156,12 @@ export default function Home() {
 
           <div className="hero-grid">
             <h1 id="hero-title" className="display hero-title">
-              Revit and AutoCAD tools for the work your team repeats every week.
+              Revit and AutoCAD tools for the work your team repeats.
             </h1>
             <div className="hero-copy">
               <p className="lede">
-                I&rsquo;m Justine Bautista, a civil engineer who writes software. I build Revit add-ins,
-                AutoCAD automation and Autodesk Platform Services workflows for architecture and
-                engineering firms.
+                Civil engineer turned developer. I build Revit add-ins, AutoCAD automation and Autodesk cloud
+                workflows for AEC firms.
               </p>
               <div className="hero-actions">
                 <RevisionCloud note="Start with the step everyone dreads">
