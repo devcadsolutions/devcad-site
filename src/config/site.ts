@@ -1,6 +1,6 @@
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-const defaultSiteUrl = "https://devcad.site";
+const defaultSiteUrl = "https://devcad.tech";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? defaultSiteUrl;
 
 export const siteConfig = {
@@ -9,9 +9,10 @@ export const siteConfig = {
   url: siteUrl,
   ogImage: `${siteUrl}/og.jpg`,
   favicon: `${basePath}/icon.svg`,
-  description: "Custom automation tools for Revit, AutoCAD, and AEC workflows.",
+  description: "Revit add-ins, AutoCAD automation and Autodesk Platform Services workflows for architecture and engineering teams, built by Justine Bautista.",
   links: {
     email: "devcadsolutions@gmail.com",
+    linkedin: "https://www.linkedin.com/in/engrjvb/",
   },
   navLinks: [
     { href: "/", label: "Home" },
