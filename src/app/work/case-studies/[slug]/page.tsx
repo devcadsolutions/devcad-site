@@ -79,7 +79,7 @@ export default async function CaseStudyPage({ params }: Props) {
           {images.length ? (
             <Gallery images={images} label={p.title} />
           ) : (
-            <div className="model" style={{ aspectRatio: "16 / 7" }}>
+            <div className="model cs-placeholder">
               <div className="model-bar"><span>{p.title}</span><span>{cat?.label}</span></div>
               <DrawingPlaceholder code={code} title={p.title} />
             </div>

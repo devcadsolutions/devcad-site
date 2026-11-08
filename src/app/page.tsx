@@ -22,7 +22,7 @@ const tasks = [
   },
   {
     task: "Placing families from CAD",
-    before: "Every tree, light and bollard placed one at a time against the drawing.",
+    before: "Every boulder, tree and fixture placed one at a time against the drawing.",
     now: "Blocks in the DWG drive where each Revit family instance goes.",
     tool: "Import Family via CAD",
     slug: "cracknell-import-family-via-cad",
@@ -72,11 +72,11 @@ const details = [
     no: "2",
     kind: "Revit add-in, built at Cracknell",
     sheet: "BIM",
-    title: "Detail Legend",
-    text: "Generates and updates legend views from the detail components already in the model, keeping annotation consistent across a large sheet set.",
-    img: "/cracknell/detail-legend.png",
-    slug: "cracknell-detail-legend",
-    bar: ["Revit", "C#, WPF"],
+    title: "Import Family via CAD",
+    text: "Reads block positions from a CAD drawing and places the matching Revit families, so boulders, planting and site furniture land where the drawing puts them, in one pass.",
+    img: "/cracknell/add-family-via-cad-1.png",
+    slug: "cracknell-import-family-via-cad",
+    bar: ["Revit", "C#, Revit API"],
   },
   {
     no: "3",
@@ -169,6 +169,15 @@ export default function Home() {
                   <Link href="/contact/" className="btn btn-ink">Send me a workflow</Link>
                 </RevisionCloud>
                 <Link href="#work" className="btn btn-line">See the tools</Link>
+              </div>
+              <div className="hero-proof">
+                <span className="lettering">Tools built for teams at</span>
+                <ul>
+                  <li>Cracknell</li>
+                  <li>Mechwest</li>
+                  <li>T&amp;G Corporation</li>
+                  <li>Kawasaki plant projects</li>
+                </ul>
               </div>
             </div>
 
