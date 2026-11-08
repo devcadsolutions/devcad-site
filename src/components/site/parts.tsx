@@ -69,7 +69,7 @@ export function WorkCard({ p, no }: { p: PortfolioProject; no: number }) {
           <span>{p.employer ? `Built at ${p.employer}` : p.technologies[0]}</span>
         </div>
         {img ? (
-          <img src={img.src} alt="" loading="lazy" />
+          <img src={img.src} alt="" width={img.width} height={img.height} loading="lazy" />
         ) : (
           <DrawingPlaceholder code={code} title={p.title} />
         )}

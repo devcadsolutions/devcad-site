@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PageHead } from "@/components/site/parts";
-import WorkBrowser from "@/components/site/WorkBrowser";
+import { PageHead, WorkCard } from "@/components/site/parts";
+
 import { categories, orderedProjects } from "@/lib/work";
 
 export const metadata: Metadata = {
@@ -26,7 +26,17 @@ export default function WorkPage() {
       />
       <section className="section" style={{ paddingTop: 40 }} aria-label="Case studies">
         <div className="wrap">
-          <WorkBrowser projects={orderedProjects} categories={categories} />
+          <nav className="filters" aria-label="Categories">
+            <Link href="/work/" aria-current="page">All <span>{orderedProjects.length}</span></Link>
+            {categories.map((c) => (
+              <Link key={c.slug} href={`/work/${c.slug}/`}>
+                {c.label} <span>{c.count}</span>
+              </Link>
+            ))}
+          </nav>
+          <div className="details work-grid">
+            {orderedProjects.map((p, i) => <WorkCard key={p.slug} p={p} no={i + 1} />)}
+          </div>
         </div>
       </section>
       <section className="section closing" aria-labelledby="work-cta">

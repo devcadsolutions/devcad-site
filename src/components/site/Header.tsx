@@ -34,7 +34,7 @@ export default function Header() {
       <div className="wrap">
         <Link href="/" className="brand">
           <BrandMark />
-          DevCAD Solutions
+          <span translate="no">DevCAD Solutions</span>
         </Link>
         <button
           type="button"

@@ -1,6 +1,13 @@
 import { portfolioProjects, type PortfolioProject } from "@/lib/portfolio-projects";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { siteConfig } from "@/config/site";
+import sizes from "@/lib/image-sizes.json";
+
+const SIZES = sizes as unknown as Record<string, [number, number]>;
+export function imageSize(src: string) {
+  const s = SIZES[src];
+  return s ? { width: s[0], height: s[1] } : { width: 1600, height: 1000 };
+}
 
 /**
  * Only images that genuinely show the project. Several case studies used to
@@ -16,7 +23,7 @@ const REAL_IMAGE_PREFIXES = [
   "autocad-palette",
 ];
 
-export type WorkImage = { src: string; alt: string };
+export type WorkImage = { src: string; alt: string; width: number; height: number };
 
 export function projectImages(p: PortfolioProject): WorkImage[] {
   const ids = p.imageIds?.length ? p.imageIds : [p.imageId];
@@ -24,7 +31,7 @@ export function projectImages(p: PortfolioProject): WorkImage[] {
     .filter((id) => REAL_IMAGE_PREFIXES.some((pre) => id.startsWith(pre)))
     .map((id) => PlaceHolderImages.find((img) => img.id === id))
     .filter((img): img is NonNullable<typeof img> => Boolean(img))
-    .map((img, i) => ({ src: img.imageUrl, alt: `${p.title}, screenshot ${i + 1}` }));
+    .map((img, i) => ({ src: img.imageUrl, alt: `${p.title}, screenshot ${i + 1}`, ...imageSize(img.imageUrl) }));
 }
 
 export function coverImage(p: PortfolioProject): WorkImage | null {

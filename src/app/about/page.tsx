@@ -21,11 +21,11 @@ const principles = [
   },
   {
     title: "Make it easy to adopt",
-    text: "A tool nobody trusts doesn't get used. I think about the ribbon button, the error message and the first run.",
+    text: "A tool nobody trusts doesn’t get used. I think about the ribbon button, the error message and the first run.",
   },
   {
     title: "Leave it documented",
-    text: "Guides and handover notes so your team can use and maintain the tool after I've moved on.",
+    text: "Guides and handover notes so your team can use and maintain the tool after I’ve moved on.",
   },
 ];
 
@@ -35,7 +35,7 @@ export default function AboutPage() {
       <PageHead
         title="About Justine"
         sheet="P-001"
-        lede="Civil engineer by training, CAD and BIM software developer by trade. I've spent my career on the production side of drawings, which is why I build tools for it."
+        lede="Civil engineer by training, CAD and BIM software developer by trade. I’ve spent my career on the production side of drawings, which is why I build tools for it."
         meta={[
           { label: "Name", value: "Justine Bautista" },
           { label: "Education", value: "B.S. Civil Engineering, FEU Tech" },

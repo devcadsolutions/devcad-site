@@ -4,6 +4,7 @@ import RevisionCloud from "@/components/site/RevisionCloud";
 import MovingAvatar from "@/components/site/MovingAvatar";
 import { siteConfig } from "@/config/site";
 import { steps } from "@/content/process";
+import { imageSize } from "@/lib/work";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -62,7 +63,7 @@ const details = [
     kind: "Revit add-in, built at Cracknell",
     sheet: "BIM",
     title: "Import Topo from CAD",
-    text: "Reads contour geometry from a linked survey DWG and builds the Revit toposolid, so site models start from the surveyor's data instead of a redraw.",
+    text: "Reads contour geometry from a linked survey DWG and builds the Revit toposolid, so site models start from the surveyor’s data instead of a redraw.",
     img: "/cracknell/import-topo-from-cad-1.png",
     slug: "cracknell-import-topo-from-cad",
     bar: ["Revit 2024", "C#, Revit API"],
@@ -82,7 +83,7 @@ const details = [
     kind: "Web app on APS",
     sheet: "APS",
     title: "ProjectForge model viewer",
-    text: "Opens Autodesk files in the browser with project dashboards and a Revit export flow, for people who don't have Revit installed.",
+    text: "Opens Autodesk files in the browser with project dashboards and a Revit export flow, for people who don’t have Revit installed.",
     img: "/portfolio/projectforge/Main.jpg",
     slug: "projectforge-aps-enabled-model-viewer",
     bar: ["Browser", "APS Viewer, React"],
@@ -254,15 +255,14 @@ export default function Home() {
             {details.map((d) => (
               <Link key={d.slug} href={cs(d.slug)} className="detail">
                 <div className="model">
-                  <div className="model-bar"><span>{d.bar[0]}</span><span>{d.bar[1]}</span></div>
-                  <img src={d.img} alt={`Screenshot of ${d.title}`} loading="lazy" />
+                  <div className="model-bar"><span>{d.kind}</span><span>{d.bar[1]}</span></div>
+                  <img src={d.img} alt={`Screenshot of ${d.title}`} {...imageSize(d.img)} loading="lazy" />
                 </div>
                 <div className="detail-caption">
                   <span className="detail-callout" aria-hidden="true">
                     <span className="bubble"><span>{d.no}</span><span>{d.sheet}</span></span>
                   </span>
                   <div>
-                    <span className="lettering">{d.kind}</span>
                     <h3 className="h3">{d.title}</h3>
                     <p>{d.text}</p>
                   </div>

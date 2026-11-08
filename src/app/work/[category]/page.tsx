@@ -37,7 +37,7 @@ export default async function CategoryPage({ params }: Props) {
       <section className="section" style={{ paddingTop: 40 }} aria-label={`${c.label} case studies`}>
         <div className="wrap">
           <nav className="filters" aria-label="Categories">
-            <Link href="/work/">All</Link>
+            <Link href="/work/">All <span>{orderedProjects.length}</span></Link>
             {categories.map((x) => (
               <Link key={x.slug} href={`/work/${x.slug}/`} aria-current={x.slug === c.slug ? "page" : undefined}>
                 {x.label} <span>{x.count}</span>

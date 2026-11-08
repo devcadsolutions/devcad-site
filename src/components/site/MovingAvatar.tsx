@@ -119,7 +119,6 @@ export default function MovingAvatar() {
 
   return (
     <div className="avatar-frame" ref={frameRef}>
-      <span className="avatar-shirt" aria-hidden="true" />
       <AvatarTrueVector className="avatar-svg" />
     </div>
   );

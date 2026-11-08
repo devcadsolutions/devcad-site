@@ -1,0 +1,402 @@
+{
+"/cracknell/add-family-via-cad-1.png": [
+1242,
+715
+],
+"/cracknell/add-family-via-cad-2.png": [
+1227,
+706
+],
+"/cracknell/aligntopo-1.png": [
+1078,
+571
+],
+"/cracknell/aligntopo-2.png": [
+1077,
+612
+],
+"/cracknell/cleanup-points.png": [
+1392,
+526
+],
+"/cracknell/cracknell-revit-toolbar.png": [
+1390,
+143
+],
+"/cracknell/detail-legend.png": [
+1497,
+1019
+],
+"/cracknell/extract-links.png": [
+1266,
+753
+],
+"/cracknell/import-topo-from-cad-1.png": [
+1501,
+786
+],
+"/cracknell/import-topo-from-cad-2.png": [
+1067,
+907
+],
+"/legacy/about-studio.jpg": [
+533,
+800
+],
+"/legacy/autocad-tool-palette.png": [
+1594,
+918
+],
+"/legacy/autolisp-load-dialog.png": [
+517,
+530
+],
+"/legacy/bobbie-app-1.png": [
+799,
+610
+],
+"/legacy/bobbie-app-2.png": [
+1153,
+880
+],
+"/legacy/brand-collateral-1.jpg": [
+1600,
+1067
+],
+"/legacy/brand-collateral-2.jpg": [
+2400,
+1600
+],
+"/legacy/cad-workflow-1.png": [
+114,
+796
+],
+"/legacy/cad-workflow-2.png": [
+207,
+1445
+],
+"/legacy/founder-portrait.jpg": [
+1067,
+1600
+],
+"/legacy/page-header.jpg": [
+1600,
+2400
+],
+"/legacy/training-materials.png": [
+799,
+460
+],
+"/logos/programming/autolisp.png": [
+278,
+296
+],
+"/logos/programming/csharp.png": [
+710,
+799
+],
+"/logos/programming/google-apps-script.png": [
+800,
+800
+],
+"/logos/programming/javascript.png": [
+800,
+800
+],
+"/logos/programming/pml.png": [
+225,
+224
+],
+"/logos/programming/vba.png": [
+798,
+279
+],
+"/logos/programming/visual-basic.png": [
+800,
+800
+],
+"/logos/software/access.png": [
+800,
+533
+],
+"/logos/software/advance-steel.png": [
+256,
+256
+],
+"/logos/software/autocad.png": [
+225,
+225
+],
+"/logos/software/aveva-everything.png": [
+225,
+225
+],
+"/logos/software/canva.png": [
+800,
+420
+],
+"/logos/software/cubicost.png": [
+200,
+200
+],
+"/logos/software/excel.png": [
+800,
+533
+],
+"/logos/software/mathcad.png": [
+198,
+198
+],
+"/logos/software/navisworks.png": [
+256,
+256
+],
+"/logos/software/pdms.png": [
+259,
+258
+],
+"/logos/software/photoshop.png": [
+600,
+300
+],
+"/logos/software/powerpoint.png": [
+800,
+533
+],
+"/logos/software/revit.png": [
+512,
+512
+],
+"/logos/software/sketchup.png": [
+512,
+512
+],
+"/logos/software/word.png": [
+800,
+450
+],
+"/og.jpg": [
+1200,
+630
+],
+"/portfolio/ApexDigital/about.jpg": [
+1920,
+1065
+],
+"/portfolio/ApexDigital/features1.jpg": [
+1920,
+1065
+],
+"/portfolio/ApexDigital/features2.jpg": [
+1920,
+1065
+],
+"/portfolio/ApexDigital/home1.jpg": [
+1920,
+1065
+],
+"/portfolio/ApexDigital/home2.jpg": [
+1920,
+1065
+],
+"/portfolio/ApexDigital/home3.jpg": [
+1920,
+1065
+],
+"/portfolio/ApexDigital/home4.jpg": [
+1920,
+1065
+],
+"/portfolio/ApexDigital/pricing.jpg": [
+1920,
+1065
+],
+"/portfolio/WhatsMyTone/about-1.jpg": [
+1920,
+1065
+],
+"/portfolio/WhatsMyTone/about-2.jpg": [
+1920,
+1065
+],
+"/portfolio/WhatsMyTone/archive01.jpg": [
+1920,
+1065
+],
+"/portfolio/WhatsMyTone/features1.jpg": [
+1920,
+1065
+],
+"/portfolio/WhatsMyTone/home1.jpg": [
+1920,
+1065
+],
+"/portfolio/WhatsMyTone/home2.jpg": [
+1920,
+1065
+],
+"/portfolio/WhatsMyTone/home3.jpg": [
+1920,
+1065
+],
+"/portfolio/WhatsMyTone/home4.jpg": [
+1920,
+1065
+],
+"/portfolio/WhatsMyTone/home5.jpg": [
+1920,
+1065
+],
+"/portfolio/WhatsMyTone/log-in.jpg": [
+1920,
+1065
+],
+"/portfolio/WhatsMyTone/session-2.jpg": [
+1920,
+1065
+],
+"/portfolio/WhatsMyTone/session-3.jpg": [
+1920,
+1065
+],
+"/portfolio/WhatsMyTone/session01.jpg": [
+1920,
+1065
+],
+"/portfolio/WhatsMyTone/settings1.jpg": [
+1920,
+1065
+],
+"/portfolio/made4her/Categories.jpg": [
+1920,
+1031
+],
+"/portfolio/made4her/Main.jpg": [
+1920,
+1031
+],
+"/portfolio/made4her/ProductList.jpg": [
+1920,
+1031
+],
+"/portfolio/made4her/reviews.jpg": [
+1920,
+1031
+],
+"/portfolio/projectforge/Main.jpg": [
+1920,
+1065
+],
+"/portfolio/projectforge/create-project.jpg": [
+1920,
+1065
+],
+"/portfolio/projectforge/download-source.jpg": [
+1920,
+1065
+],
+"/portfolio/projectforge/log-in.jpg": [
+1920,
+1065
+],
+"/portfolio/projectforge/project-dashboard.jpg": [
+1920,
+1065
+],
+"/portfolio/projectforge/revit-export.jpg": [
+1920,
+1065
+],
+"/portfolio/thecoffeepup/thecoffeepup-mobile/account01.png": [
+594,
+944
+],
+"/portfolio/thecoffeepup/thecoffeepup-mobile/checkout01.png": [
+594,
+944
+],
+"/portfolio/thecoffeepup/thecoffeepup-mobile/checkout02.png": [
+594,
+944
+],
+"/portfolio/thecoffeepup/thecoffeepup-mobile/checkout03.png": [
+594,
+944
+],
+"/portfolio/thecoffeepup/thecoffeepup-mobile/home.png": [
+594,
+944
+],
+"/portfolio/thecoffeepup/thecoffeepup-mobile/menu01.png": [
+594,
+944
+],
+"/portfolio/thecoffeepup/thecoffeepup-mobile/menu02.png": [
+594,
+944
+],
+"/portfolio/thecoffeepup/thecoffeepup-mobile/menu03.png": [
+594,
+944
+],
+"/portfolio/thecoffeepup/thecoffeepup-mobile/menu04.png": [
+594,
+944
+],
+"/portfolio/thecoffeepup/thecoffeepup-mobile/reviews.png": [
+595,
+938
+],
+"/portfolio/thecoffeepup/thecoffeepup-pc/account-log-in.png": [
+1920,
+1031
+],
+"/portfolio/thecoffeepup/thecoffeepup-pc/checkout.png": [
+1920,
+1031
+],
+"/portfolio/thecoffeepup/thecoffeepup-pc/customize.png": [
+1920,
+1031
+],
+"/portfolio/thecoffeepup/thecoffeepup-pc/mainmenu01.png": [
+1920,
+1031
+],
+"/portfolio/thecoffeepup/thecoffeepup-pc/mainmenu02.png": [
+1920,
+1031
+],
+"/portfolio/thecoffeepup/thecoffeepup-pc/menu01.png": [
+1920,
+1031
+],
+"/portfolio/thecoffeepup/thecoffeepup-pc/menu02.png": [
+1920,
+1031
+],
+"/portfolio/thecoffeepup/thecoffeepup-pc/order.png": [
+1920,
+1031
+],
+"/portfolio/thecoffeepup/thecoffeepup-pc/orderconfirm.png": [
+1920,
+1031
+],
+"/portfolio/thecoffeepup/thecoffeepup-pc/reviews.png": [
+1920,
+1031
+],
+"/profile/moving-image-cutout.png": [
+1254,
+1254
+],
+"/profile/moving-image.png": [
+1254,
+1254
+],
+"/profile/prof-pic.png": [
+800,
+800
+]
+}

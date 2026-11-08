@@ -6,9 +6,9 @@ const EMAIL = "devcadsolutions@gmail.com";
 
 const fields = [
   { name: "software", label: "Software and versions", hint: "Revit 2024, AutoCAD, ACC, Excel…", rows: 1 },
-  { name: "today", label: "What someone does by hand today", hint: "What they click, copy or check, and how often.", rows: 3 },
-  { name: "breaks", label: "Where it goes wrong", hint: "Rework, delays, or a step that depends on one person.", rows: 2 },
-  { name: "output", label: "What a good result looks like", hint: "A clean sheet set, an export, a report, a checked model.", rows: 2 },
+  { name: "today", label: "What someone does by hand today", hint: "e.g. Re-placing light fixtures from the CAD plan after every revision…", rows: 3 },
+  { name: "breaks", label: "Where it goes wrong", hint: "e.g. Levels get missed, and only one person knows the steps…", rows: 2 },
+  { name: "output", label: "What a good result looks like", hint: "e.g. One click that places them all, ready to check…", rows: 2 },
 ] as const;
 
 export default function BriefForm() {
@@ -65,15 +65,15 @@ export default function BriefForm() {
         <label key={f.name}>
           <span className="lettering">{f.label}</span>
           {f.rows > 1 ? (
-            <textarea name={f.name} rows={f.rows} placeholder={f.hint} />
+            <textarea name={f.name} rows={f.rows} placeholder={f.hint} autoComplete="off" />
           ) : (
-            <input name={f.name} placeholder={f.hint} />
+            <input name={f.name} placeholder={f.hint} autoComplete="off" />
           )}
         </label>
       ))}
       <label>
         <span className="lettering">Timing (optional)</span>
-        <input name="timing" placeholder="A deadline, a milestone, or whenever it's ready" />
+        <input name="timing" autoComplete="off" placeholder="e.g. Before the December issue, or whenever it’s ready…" />
       </label>
       <div className="hero-actions">
         <button type="submit" className="btn btn-ink">Open in my email app</button>

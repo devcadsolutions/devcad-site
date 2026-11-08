@@ -15,7 +15,7 @@ export default function DownloadsPage() {
       <PageHead
         title="Downloads"
         sheet="D-001"
-        lede="Small AutoLISP routines I wrote for everyday drafting. Ask and I'll send the file with load instructions."
+        lede="Small AutoLISP routines I wrote for everyday drafting. Ask and I’ll send the file with load instructions."
         meta={[
           { label: "Platform", value: "AutoCAD" },
           { label: "Language", value: "AutoLISP" },

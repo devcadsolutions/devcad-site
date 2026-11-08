@@ -28,20 +28,20 @@ export default function Gallery({ images, label }: { images: WorkImage[]; label:
           <span>{i + 1} of {images.length}</span>
         </div>
         <button type="button" className="gallery-main" onClick={() => dlg.current?.showModal()} aria-label="View larger">
-          <img src={img.src} alt={img.alt} />
+          <img src={img.src} alt={img.alt} width={img.width} height={img.height} fetchPriority="high" />
         </button>
       </div>
       {images.length > 1 && (
         <div className="thumbs" role="group" aria-label="Screenshots">
           {images.map((m, n) => (
             <button key={m.src} type="button" aria-pressed={n === i} onClick={() => setI(n)} aria-label={`Show screenshot ${n + 1}`}>
-              <img src={m.src} alt="" loading="lazy" />
+              <img src={m.src} alt="" width={m.width} height={m.height} loading="lazy" />
             </button>
           ))}
         </div>
       )}
       <dialog ref={dlg} className="zoom" onClick={(e) => e.target === dlg.current && dlg.current?.close()}>
-        <img src={img.src} alt={img.alt} />
+        <img src={img.src} alt={img.alt} width={img.width} height={img.height} />
         <div className="zoom-bar">
           {images.length > 1 && (
             <>
