@@ -106,8 +106,8 @@ export const milestones: CareerMilestone[] = [
     ],
     tools: ["C#", "AutoLISP", "Revit API", "AutoCAD API", "WPF", "Autodesk Platform Services"],
     achievements: [
-      "Brings together engineering context, desktop tooling, BIM automation, and cloud workflows.",
-      "Focuses on scalable internal solutions rather than isolated one-off fixes.",
+      "Combines an engineering background with desktop, BIM and cloud tooling.",
+      "Builds internal tools meant to last, not one-off fixes.",
     ],
   },
 ];

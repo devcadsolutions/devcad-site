@@ -17,7 +17,7 @@ export type PortfolioProject = {
   employer?: string;
   /** Shown as a notice when the project was done under employment */
   employerNote?: string;
-  /** Optional live URL — shows 'Open Project' button in lightbox */
+  /** Optional live URL, shown as an 'Open the live app' button */
   liveUrl?: string;
   /** Optional short screen recording (mp4/webm in /public), shown above the screenshots */
   video?: { src: string; poster?: string; caption: string };
@@ -37,7 +37,7 @@ export const portfolioProjects: PortfolioProject[] = [
     title: "The Coffee Pup Ordering Web App",
     categoryHref: "/work/web-apps-sites",
     overview:
-      "Designed and built a responsive cafe ordering web app for The Coffee Pup, combining menu browsing, product customization, checkout, account access, announcements, and customer reviews in a polished app-style experience.",
+      "Designed and built a responsive cafe ordering web app for The Coffee Pup, combining menu browsing, product customization, checkout, account access, announcements, and customer reviews in an app-style layout.",
     engagement:
       "A product-focused ordering experience for a coffee brand, built to feel like a modern customer app rather than a static cafe website.",
     problem:
@@ -45,7 +45,7 @@ export const portfolioProjects: PortfolioProject[] = [
     solution:
       "Created a responsive React web app with category-based menu browsing, product cards, customization screens, cart and checkout flows, account access, announcements, and community reviews.",
     result:
-      "Delivered a complete portfolio-ready ordering concept that showcases responsive UI design, branded product presentation, and practical e-commerce flow thinking.",
+      "A complete ordering concept, from menu to checkout, that works on desktop and phone.",
     tags: ["Web App", "Ordering App", "Coffee Shop", "E-Commerce", "Responsive UI", "React", "Tailwind CSS", "Cloudflare Workers"],
     technologies: ["React", "Tailwind CSS", "lucide-react", "Cloudflare Workers", "Responsive Web App"],
     keyFeatures: [
@@ -90,17 +90,17 @@ export const portfolioProjects: PortfolioProject[] = [
     engagement:
       "A fashion retail web experience built to make the brand, collections, and products easy to browse without feeling cluttered.",
     problem:
-      "The clothing shop needed a polished online presence where customers could quickly understand the brand, explore product categories, and browse available items.",
+      "The clothing shop needed an online presence where customers could quickly understand the brand, explore product categories, and browse available items.",
     solution:
       "Created a responsive storefront layout with a strong home page, category browsing, product list presentation, and review content to support trust and product discovery.",
     result:
-      "Delivered a portfolio-ready retail website concept that showcases fashion-focused UI design, product organization, and mobile-friendly shopping flow.",
+      "A retail site concept with clear product categories and a shopping flow that works on phones.",
     tags: ["Website", "Clothing Shop", "E-Commerce", "Fashion", "Responsive UI", "Product Catalog"],
     technologies: ["React", "Tailwind CSS", "Responsive Web Design", "Product Catalog UI"],
     keyFeatures: [
       "Brand-focused home page for the Made4Her clothing shop",
       "Product category browsing for easier discovery",
-      "Product list layout for showcasing clothing items",
+      "Product list layout for clothing items",
       "Customer review section to support trust signals",
       "Responsive layout for desktop and mobile browsing",
       "Clean retail interface designed for quick scanning",
@@ -152,15 +152,15 @@ export const portfolioProjects: PortfolioProject[] = [
     title: "ApexDigital Website",
     categoryHref: "/work/web-apps-sites",
     overview:
-      "Designed and built a polished website for ApexDigital, presenting a modern digital services brand with homepage storytelling, feature sections, about content, and pricing-focused conversion areas.",
+      "Designed and built a website for ApexDigital, presenting a modern digital services brand with homepage storytelling, feature sections, about content, and pricing-focused conversion areas.",
     engagement:
-      "A premium website experience for a digital brand, built to communicate services clearly and guide visitors from first impression to pricing and inquiry.",
+      "A website for a digital brand, built to explain the services clearly and lead visitors to pricing and inquiry.",
     problem:
       "The brand needed a stronger online presence that could explain its value, show feature benefits, and make pricing or service exploration feel straightforward.",
     solution:
       "Created a responsive website structure with multiple homepage sections, feature highlights, about content, and pricing presentation to support trust and conversion.",
     result:
-      "Delivered a portfolio-ready digital agency-style website that demonstrates responsive layout design, strong visual hierarchy, and service-focused product storytelling.",
+      "A service-site concept that leads visitors from the home page to features and pricing on any screen size.",
     tags: ["Website", "Digital Agency", "Landing Page", "Pricing", "Responsive UI", "Product Marketing"],
     technologies: ["React", "Tailwind CSS", "Responsive Web Design", "Landing Page UI"],
     keyFeatures: [
@@ -196,7 +196,7 @@ export const portfolioProjects: PortfolioProject[] = [
     solution:
       "Created a responsive web app with landing pages, login, session screens, archived work, feature explanations, about content, and settings views.",
     result:
-      "Delivered a complete portfolio-ready SaaS-style web app concept that showcases product UI, account flows, session workflows, and content-focused dashboard design.",
+      "A SaaS-style web app concept covering sign-in, review sessions, saved archives and settings.",
     tags: ["Web App", "SaaS", "Writing Tool", "Tone Analysis", "Dashboard", "Responsive UI"],
     technologies: ["React", "Tailwind CSS", "Responsive Web App", "Dashboard UI", "Product UX"],
     keyFeatures: [
@@ -238,7 +238,7 @@ export const portfolioProjects: PortfolioProject[] = [
     solution:
       "Built an APS-based workflow that processes Revit models, translates them through Model Derivative, and extracts drawing outputs such as PDFs and DWGs.",
     result:
-      "Reduced manual export effort, improved batch processing, and created a scalable cloud-based workflow for drawing extraction.",
+      "Less manual exporting, exports run in batches, and drawing extraction no longer depends only on local Revit machines.",
     tags: ["APS", "Revit", "PDF Export", "DWG Export", "Automation"],
     technologies: ["C#", "WPF", "Autodesk Platform Services", "ACC / Autodesk Docs", "Model Derivative API", "Revit workflows"],
     keyFeatures: [
@@ -264,7 +264,7 @@ export const portfolioProjects: PortfolioProject[] = [
     solution:
       "Built a web application using Autodesk Platform Services to upload, translate, and display models through the APS Viewer, including support for 2D sheets, 3D models, DWGs, and other design data.",
     result:
-      "Improved accessibility to design files, reduced dependency on desktop software, and made model review easier for technical and non-technical users.",
+      "Design files can be reviewed in a browser, with less reliance on desktop software, by technical and non-technical people alike.",
     tags: ["APS", "Viewer", "Web App", "Revit", "DWG"],
     technologies: ["Autodesk Platform Services", "APS Viewer", "Model Derivative API", "JavaScript", "Web App"],
     keyFeatures: [
@@ -290,7 +290,7 @@ export const portfolioProjects: PortfolioProject[] = [
     solution:
       "Created a Forma Admin-style permission management tool that lets authorized users assign, share, and manage access from a simplified interface instead of repeatedly navigating ACC project settings.",
     result:
-      "Streamlined permission management, reduced repetitive admin steps, and improved the speed of granting access to project users.",
+      "Fewer repetitive admin steps, and access is granted faster than through ACC project settings.",
     tags: ["APS", "ACC", "Admin Tool", "Permissions", "Web App"],
     technologies: ["Autodesk Platform Services", "ACC Workflows", "Admin UI", "JavaScript", "Web App"],
     keyFeatures: [
@@ -308,22 +308,22 @@ export const portfolioProjects: PortfolioProject[] = [
     title: "Large Revit Model Processing with APS",
     categoryHref: "/work/aps",
     overview:
-      "Improved the upload and translation workflow for very large Revit model packages so APS processing becomes more reliable and practical on real projects.",
+      "Made uploading and translating very large Revit model packages through APS more reliable on real projects.",
     engagement:
       "A technical workflow optimization effort focused on pushing large, heavy Revit packages through cloud processing with fewer failures and less manual guesswork.",
     problem:
       "Large Revit models and consumed models were too heavy to upload and process reliably, sometimes reaching extremely large package sizes.",
     solution:
-      "Optimized model preparation, reduced unnecessary attachments, supported ZIP packaging, and implemented chunked upload handling for large files.",
+      "Trimmed model preparation, removed unnecessary attachments, and added ZIP packaging and chunked uploads for large files.",
     result:
-      "Improved upload reliability, reduced failure risk, and made large-model processing more practical for APS workflows.",
+      "Fewer failed uploads, and large models that APS can actually process.",
     tags: ["APS", "Revit", "Large Models", "Upload", "Cloud Processing"],
     technologies: ["Autodesk Platform Services", "Chunked Upload", "Revit", "ZIP Packaging", "Model Processing"],
     keyFeatures: [
       "Chunked upload handling for large files",
       "Large model packaging support",
       "Reduced attachment overhead",
-      "Improved translation reliability",
+      "More reliable translation",
       "Practical workflow for heavy project models",
       "Better handling of oversized model packages",
     ],
@@ -342,13 +342,13 @@ export const portfolioProjects: PortfolioProject[] = [
     solution:
       "Created a ZIP-based model packaging workflow where the main RVT and linked RVTs are organized with the correct relative folder structure for APS processing.",
     result:
-      "Improved link resolution during translation and allowed more complete model processing for federated Revit projects.",
+      "Linked models resolve during translation, so federated Revit projects process more completely.",
     tags: ["APS", "Revit", "Linked Models", "Translation", "Packaging"],
     technologies: ["Autodesk Platform Services", "Revit", "Linked Models", "ZIP Packaging", "Cloud Translation"],
     keyFeatures: [
       "Main and linked RVT packaging",
       "Relative folder structure support",
-      "Improved linked-model resolution",
+      "Better linked-model resolution",
       "Federated project processing workflow",
       "APS translation readiness",
       "Reduced broken-reference issues",
@@ -447,7 +447,7 @@ export const portfolioProjects: PortfolioProject[] = [
     solution:
       "Built custom commands, palette workflows, and modernization utilities for production drafting.",
     result:
-      "Improved consistency, speed, and day-to-day CAD productivity.",
+      "More consistent drawings and faster everyday drafting.",
     tags: ["AutoCAD", "CAD", "Tool Palette", "Automation", "Productivity"],
     technologies: ["AutoCAD .NET API", "C#", "AutoLISP", "Windows desktop tools"],
     keyFeatures: [
@@ -502,7 +502,7 @@ export const portfolioProjects: PortfolioProject[] = [
     solution:
       "Developed a tool that reads CAD geometry or block references and uses their positions to automatically place the matching Revit family instances in the model.",
     result:
-      "Significantly reduced family placement time and improved positional accuracy when working from CAD source drawings.",
+      "Less time placing families by hand, and positions that match the CAD source drawing.",
     tags: ["Revit", "BIM", "CAD Import", "Family Placement", "Landscape", "Automation"],
     technologies: ["C#", "Revit API", "CAD Import", "WPF"],
     keyFeatures: [
@@ -530,7 +530,7 @@ export const portfolioProjects: PortfolioProject[] = [
     solution:
       "Developed a tool that reads CAD contour geometry from a linked DWG and converts it directly into a Revit toposolid with the correct elevation data.",
     result:
-      "Reduced topography creation time significantly and produced more accurate terrain models aligned to the original CAD survey data.",
+      "Less time building topography, and terrain that matches the original CAD survey.",
     tags: ["Revit", "BIM", "CAD Import", "Topography", "Landscape", "Automation"],
     technologies: ["C#", "Revit API", "CAD Import", "Geometry API", "WPF"],
     keyFeatures: [
@@ -558,7 +558,7 @@ export const portfolioProjects: PortfolioProject[] = [
     solution:
       "Developed a point cleanup tool that identifies and removes problematic points from toposolid geometry to produce cleaner, more accurate surfaces.",
     result:
-      "Improved surface quality, reduced manual point editing, and sped up the topography cleanup step in the landscape BIM workflow.",
+      "Cleaner surfaces, less manual point editing, and a faster topography cleanup step in the landscape BIM workflow.",
     tags: ["Revit", "BIM", "Topography", "Geometry", "Cleanup", "Landscape"],
     technologies: ["C#", "Revit API", "Geometry API", "WPF"],
     keyFeatures: [
@@ -582,11 +582,11 @@ export const portfolioProjects: PortfolioProject[] = [
     engagement:
       "A ribbon UI that acts as the home base for all Cracknell internal Revit tools, making them discoverable and easy to access for the whole production team.",
     problem:
-      "As more internal tools were built, the team had no central place to find and launch them — tools were scattered and inconsistently accessible.",
+      "As more internal tools were built, the team had no central place to find and launch them. Tools were scattered and hard to get to.",
     solution:
       "Created a custom Revit ribbon tab with organized panels for each tool category, giving the team a clean, branded entry point for all internal automation.",
     result:
-      "Unified tool access under one interface, improved team adoption, and made onboarding new tools easier going forward.",
+      "One place to find every tool, which helped the team adopt them and made adding new tools easier.",
     tags: ["Revit", "BIM", "Ribbon UI", "Internal Tools", "Tooling"],
     technologies: ["C#", "Revit API", "Revit Ribbon API", "WPF"],
     keyFeatures: [
@@ -594,7 +594,7 @@ export const portfolioProjects: PortfolioProject[] = [
       "Organized panels per tool category",
       "Branded internal tool interface",
       "Single access point for all Cracknell tools",
-      "Scalable for future tool additions",
+      "Room for new tools as they are added",
     ],
     imageId: "cracknell-revit-toolbar",
     imageIds: ["cracknell-revit-toolbar"],
@@ -640,7 +640,7 @@ export const portfolioProjects: PortfolioProject[] = [
     solution:
       "Built a structured Excel estimator for quantities, cutting lists, summaries, and cost breakdowns.",
     result:
-      "Delivered faster estimation, cleaner summaries, and a more repeatable workbook workflow.",
+      "Faster estimates, cleaner summaries, and a workbook process the team can repeat.",
     tags: ["Excel", "Estimator", "Takeoff", "Retrofit", "BOQ"],
     technologies: ["Excel", "Engineering estimation logic", "BOQ automation", "Structured workbook design"],
     keyFeatures: [

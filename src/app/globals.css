@@ -546,7 +546,11 @@ img { max-width: 100%; display: block; }
 
 .checklist-ink { list-style: none; margin: 14px 0 0; padding: 0; }
 .checklist-ink li { position: relative; padding: 9px 0 9px 28px; border-bottom: 1px solid var(--rule); }
-.checklist-ink li::before { content: ""; position: absolute; left: 2px; top: 15px; width: 12px; height: 7px; border-left: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transform: rotate(-45deg); }
+.checklist-ink li::before {
+  content: ""; position: absolute; left: 0; top: 13px; width: 16px; height: 16px; background: var(--ink);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8.5l3.5 3.5 7.5-8' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2.5 8.5l3.5 3.5 7.5-8' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
 .tags { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
 .tags li { font-size: 0.85rem; font-variation-settings: "wdth" 84; font-weight: 560; padding: 4px 10px; border: 1px solid var(--rule-strong); background: var(--paper); border-radius: 2px; }
 
