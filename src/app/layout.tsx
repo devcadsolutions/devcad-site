@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from 'next';
 import { siteConfig } from '@/config/site';
 import Header from '@/components/site/Header';
 import Footer from '@/components/site/Footer';
+import CommandLine from '@/components/site/CommandLine';
+import { siteCommands } from '@/lib/commands';
+import { publishedNotes } from '@/content/notes';
 import '@fontsource-variable/archivo/wdth.css';
 import '@fontsource/kalam/latin-400.css';
 import './globals.css';
@@ -56,9 +59,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Header />
+        <Header showNotes={publishedNotes.length > 0} />
         <main id="main">{children}</main>
         <Footer />
+        <CommandLine commands={siteCommands} />
       </body>
     </html>
   );

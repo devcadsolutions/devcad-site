@@ -19,6 +19,16 @@ export type PortfolioProject = {
   employerNote?: string;
   /** Optional live URL — shows 'Open Project' button in lightbox */
   liveUrl?: string;
+  /** Optional short screen recording (mp4/webm in /public), shown above the screenshots */
+  video?: { src: string; poster?: string; caption: string };
+  /** Optional deeper write-up. Each renders only when filled in with real detail. */
+  decisions?: string[];
+  testing?: string[];
+  nextSteps?: string[];
+  /** Optional measured results, each with how it was measured */
+  measured?: { value: string; label: string; method: string }[];
+  /** Optional quote from someone who used the tool */
+  testimonial?: { quote: string; name: string; role: string };
 };
 
 export const portfolioProjects: PortfolioProject[] = [

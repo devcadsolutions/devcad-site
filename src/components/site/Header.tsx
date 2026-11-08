@@ -22,7 +22,7 @@ export function BrandMark({ size = 26 }: { size?: number }) {
   );
 }
 
-export default function Header() {
+export default function Header({ showNotes = false }: { showNotes?: boolean }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -53,7 +53,7 @@ export default function Header() {
           {open ? "Close" : "Menu"}
         </button>
         <nav id="site-nav" className="nav" data-open={open} aria-label="Main">
-          {links.map((l) => (
+          {[...links.slice(0, 3), ...(showNotes ? [{ href: "/notes/", label: "Notes" }] : []), ...links.slice(3)].map((l) => (
             <Link
               key={l.href}
               href={l.href}

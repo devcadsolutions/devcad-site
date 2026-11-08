@@ -670,3 +670,103 @@ html { scrollbar-color: var(--rule-strong) var(--paper); }
     }
   }
 }
+
+/* ---------- AutoCAD-style command line ---------- */
+.cmdline {
+  --cmd-font: ui-monospace, "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace;
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 45;
+  font-family: var(--cmd-font); font-size: 13px;
+  color: var(--on-model);
+  pointer-events: none;
+}
+.cmdline > * { pointer-events: auto; }
+.cmd-history { background: color-mix(in srgb, var(--model) 82%, transparent); backdrop-filter: blur(6px); }
+.cmd-history:empty { display: none; }
+.cmd-line { margin: 0; padding: 3px 16px; color: var(--on-model-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cmd-err { color: var(--redline); }
+.cmd-bar {
+  display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 8px 0 16px;
+  background: var(--model); border-top: 1px solid var(--model-line);
+}
+.cmd-prompt { color: var(--on-model-muted); flex: none; }
+.cmd-input {
+  flex: 1; min-width: 0; height: 100%; background: transparent; border: 0; outline: none;
+  color: var(--on-model-strong); font: inherit; letter-spacing: 0.02em; caret-color: var(--cyan);
+}
+.cmd-input::placeholder { color: color-mix(in srgb, var(--on-model-muted) 70%, transparent); }
+.cmd-bar:focus-within { box-shadow: inset 0 2px 0 var(--cyan); }
+.cmd-help {
+  flex: none; font: inherit; font-size: 12px; color: var(--on-model); background: transparent;
+  border: 1px solid var(--on-model-line); border-radius: 2px; padding: 3px 10px; cursor: pointer;
+}
+.cmd-help:hover, .cmd-help[aria-pressed="true"] { background: var(--model-hover); }
+.cmd-pop {
+  position: absolute; left: 16px; bottom: calc(100% + 6px);
+  width: min(560px, calc(100vw - 32px)); max-height: min(60vh, 460px); overflow-y: auto;
+  background: var(--model); border: 1px solid var(--on-model-line); border-radius: 2px;
+  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.55); padding: 4px; overscroll-behavior: contain;
+}
+.cmd-group + .cmd-group { margin-top: 6px; border-top: 1px solid var(--model-line); padding-top: 4px; }
+.cmd-group-name { margin: 4px 10px; color: var(--on-model-muted); font-size: 11.5px; }
+.cmd-opt {
+  display: grid; grid-template-columns: 9.5rem 1fr; gap: 12px; width: 100%; text-align: left;
+  padding: 6px 10px; border: 0; background: transparent; color: var(--on-model); font: inherit; cursor: pointer; border-radius: 2px;
+}
+.cmd-opt[aria-selected="true"], .cmd-opt:hover { background: var(--model-hover); }
+.cmd-name { color: var(--cyan); font-weight: 600; }
+.cmd-label { color: var(--on-model-muted); font-family: var(--font-sans); font-size: 13.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+body { padding-bottom: 38px; }
+@media (max-width: 899px) { .cmdline { display: none; } body { padding-bottom: 0; } }
+@media print { .cmdline { display: none; } }
+
+/* ---------- topo demo ---------- */
+.topo-canvas { --demo-frame: #3a434d; --demo-minor: #7fcfd8; --demo-major: #e9eef0; background: var(--model); }
+.topo-canvas canvas { display: block; width: 100%; }
+.topo-controls {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;
+  padding: 12px 14px; border-top: 1px solid var(--model-line); background: var(--model);
+}
+.topo-controls .btn-ink { background: var(--on-model-strong); color: #16202a; border-color: var(--on-model-strong); min-height: 40px; }
+.topo-controls .btn-ink:hover { background: var(--on-model); }
+.topo-range { flex: 1; min-width: 220px; display: flex; align-items: center; gap: 10px; color: var(--on-model-muted); font-size: 12px; font-variation-settings: "wdth" 72; }
+.topo-range input { flex: 1; accent-color: var(--cyan); height: 28px; }
+.demo-split { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.demo-split .checklist-ink { margin-top: 18px; }
+@media (max-width: 900px) { .demo-split { grid-template-columns: 1fr; } }
+
+/* ---------- case study depth ---------- */
+.cs-video video { display: block; width: 100%; background: var(--model); }
+.cs-video-cap { padding: 8px 12px; color: var(--on-model-muted); background: var(--model); margin: 0; }
+.cs-list { margin: 10px 0 0; padding-left: 1.2em; max-width: var(--measure); }
+.cs-list li { margin: 6px 0; font-size: var(--step-0); }
+.measured { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 12px 0 0; }
+.measured > div { border-top: 2px solid var(--ink); padding-top: 10px; }
+.measured dt { color: var(--graphite); font-size: var(--step--1); }
+.measured-value { margin: 2px 0 0; font-size: var(--step-2); font-weight: 760; font-variation-settings: "wdth" 112; font-variant-numeric: tabular-nums; }
+.measured-method { margin: 4px 0 0; color: var(--graphite); }
+.cs-quote { margin: 0; padding: 20px 24px; border: 1.5px solid var(--ink); background: var(--sheet); max-width: var(--measure); }
+.cs-quote blockquote { margin: 0; font-size: var(--step-1); line-height: 1.45; }
+.cs-quote figcaption { margin-top: 10px; color: var(--graphite); }
+
+/* ---------- notes ---------- */
+.note-list { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
+.note-list > li { display: grid; grid-template-columns: 11rem 1fr; gap: 8px 32px; padding: 24px 0; border-bottom: 1px solid var(--rule-strong); }
+.note-list h2 a { text-decoration: none; }
+.note-list h2 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.note-list p { margin: 6px 0 0; color: var(--graphite); max-width: var(--measure); }
+@media (max-width: 700px) { .note-list > li { grid-template-columns: 1fr; } }
+.note { max-width: 760px; padding-block: clamp(32px, 6vw, 72px); display: flex; flex-direction: column; gap: 16px; }
+.note-body { margin-top: 16px; border-top: 2px solid var(--ink); padding-top: 8px; }
+.note-body p, .note-body li { max-width: var(--measure); font-size: 1.06rem; line-height: 1.7; }
+.note-body h2 { margin: 32px 0 6px; }
+.note-body ul { padding-left: 1.2em; }
+.note-body li { margin: 6px 0; }
+.code {
+  margin: 16px 0; padding: 16px 18px; overflow-x: auto; background: var(--model); color: var(--on-model);
+  border: 1px solid var(--model-line); border-radius: 2px; font: 13.5px/1.6 ui-monospace, "Cascadia Mono", Consolas, monospace; tab-size: 4;
+}
+.code:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+.note-related { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--rule-strong); }
+.draft-flag { margin: 0; padding: 8px 12px; border: 1.5px dashed var(--redline); color: var(--redline); font-weight: 600; }
+.note-body ul, .cs-list { list-style: disc; }
+.note-body ul li::marker, .cs-list li::marker { color: var(--graphite); }

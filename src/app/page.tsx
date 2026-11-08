@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import RevisionCloud from "@/components/site/RevisionCloud";
 import MovingAvatar from "@/components/site/MovingAvatar";
+import TopoDemo from "@/components/site/TopoDemo";
 import { siteConfig } from "@/config/site";
 import { steps } from "@/content/process";
 import { imageSize } from "@/lib/work";
@@ -247,6 +248,28 @@ export default function Home() {
               ))}
             </tbody>
           </table>
+        </div>
+      </section>
+
+      {/* Playable illustration of one real tool */}
+      <section id="topo-demo" className="section" aria-labelledby="demo-title" style={{ scrollMarginTop: 72 }}>
+        <div className="wrap demo-split">
+          <TopoDemo />
+          <div>
+            <h2 id="demo-title" className="h2">Try one: contours to toposolid</h2>
+            <p className="lede" style={{ marginTop: 16 }}>
+              Import Topo from CAD reads the contour lines in a linked survey drawing and builds the Revit
+              toposolid from them. Press the button, or drag the slider, to see what it does.
+            </p>
+            <ul className="checklist-ink">
+              <li>Reads contour lines or point data from the linked DWG</li>
+              <li>Takes elevations straight from the CAD geometry</li>
+              <li>Generates the toposolid, with no manual point placement</li>
+            </ul>
+            <p style={{ marginTop: 20 }}>
+              <Link className="text-link" href={cs("cracknell-import-topo-from-cad")}>Read the case study</Link>
+            </p>
+          </div>
         </div>
       </section>
 

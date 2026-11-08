@@ -5,6 +5,7 @@ import { getProjectBySlug } from "@/lib/portfolio-projects";
 import { caseStudyHref, categoryOf, orderedProjects, projectImages, sheetCode } from "@/lib/work";
 import { DrawingPlaceholder } from "@/components/site/parts";
 import Gallery from "@/components/site/Gallery";
+import TopoDemo from "@/components/site/TopoDemo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -76,6 +77,13 @@ export default async function CaseStudyPage({ params }: Props) {
 
       <section className="section" style={{ paddingTop: 40 }} aria-label="Screenshots">
         <div className="wrap">
+          {p.video && (
+            <figure className="model cs-video" style={{ margin: "0 0 24px" }}>
+              <div className="model-bar"><span>{p.title}</span><span>Screen recording</span></div>
+              <video src={p.video.src} poster={p.video.poster} controls muted playsInline preload="metadata" />
+              <figcaption className="small cs-video-cap">{p.video.caption}</figcaption>
+            </figure>
+          )}
           {images.length ? (
             <Gallery images={images} label={p.title} />
           ) : (
@@ -86,6 +94,20 @@ export default async function CaseStudyPage({ params }: Props) {
           )}
         </div>
       </section>
+
+      {p.slug === "cracknell-import-topo-from-cad" && (
+        <section className="section" aria-labelledby="cs-demo">
+          <div className="wrap demo-split">
+            <TopoDemo />
+            <div>
+              <h2 id="cs-demo" className="h2">See what it does</h2>
+              <p className="lede" style={{ marginTop: 16 }}>
+                Press the button or drag the slider to watch contours from a survey drawing become a toposolid.
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="section" aria-label="Case study">
         <div className="wrap cs-body">
@@ -102,6 +124,44 @@ export default async function CaseStudyPage({ params }: Props) {
               <h2 className="h3 cs-label">What changed</h2>
               <p>{p.result}</p>
             </div>
+            {p.measured?.length ? (
+              <div>
+                <h2 className="h3 cs-label">Measured</h2>
+                <dl className="measured">
+                  {p.measured.map((m) => (
+                    <div key={m.label}>
+                      <dt>{m.label}</dt>
+                      <dd className="measured-value">{m.value}</dd>
+                      <dd className="small measured-method">{m.method}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ) : null}
+            {p.decisions?.length ? (
+              <div>
+                <h2 className="h3 cs-label">Decisions and tradeoffs</h2>
+                <ul className="cs-list">{p.decisions.map((d) => <li key={d}>{d}</li>)}</ul>
+              </div>
+            ) : null}
+            {p.testing?.length ? (
+              <div>
+                <h2 className="h3 cs-label">How I tested it</h2>
+                <ul className="cs-list">{p.testing.map((d) => <li key={d}>{d}</li>)}</ul>
+              </div>
+            ) : null}
+            {p.nextSteps?.length ? (
+              <div>
+                <h2 className="h3 cs-label">What I&rsquo;d do next</h2>
+                <ul className="cs-list">{p.nextSteps.map((d) => <li key={d}>{d}</li>)}</ul>
+              </div>
+            ) : null}
+            {p.testimonial && (
+              <figure className="cs-quote">
+                <blockquote>{p.testimonial.quote}</blockquote>
+                <figcaption className="small">{p.testimonial.name}, {p.testimonial.role}</figcaption>
+              </figure>
+            )}
             {p.engagement && (
               <div>
                 <h2 className="h3 cs-label">Context</h2>
